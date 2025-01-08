@@ -1,0 +1,232 @@
+.MainWrapper{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: red; */
+}
+.NavBarContainer{
+    background-color: var(--appwhite);
+    width: 100vw; 
+    height: 70px;
+    /* position: fixed; */
+    display: flex;
+}
+
+.NavBarLogo{
+    width: 300px;
+    height: 80px;
+    /* background-color: blue; */
+    font-weight: bolder;
+    color: var(--appblue);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.NavBarLogo h1{
+    width: 100%;
+    text-align: center;
+    height: max-content;
+    /* background-color: green; */
+}
+
+.NavBarLogo P{
+    width: 100%;
+    text-align: center;
+    /* background-color: yellow; */
+    letter-spacing: 4px;
+    margin-top: -15px
+}
+
+.NavBar{
+    width: calc(100vw - 600px);
+    height: 100%;
+    /* background-color: red; */
+
+}
+
+.NavBar nav{
+    width: 100%;
+    height: 100%;
+}
+
+.NavBar nav ul{
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(136, 136, 214); */
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--appblue);
+}
+
+.NavBar nav ul a{
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--appblue);
+    /* background-color: blue; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.NavBar nav ul a li{
+
+    
+}
+
+.NavBar nav ul li input{
+    outline: none;  
+    width: 300px;
+}
+
+.NavBar nav ul li button{
+    color: var(--appblue);
+    font-weight: bold;
+    background-color: var(--appwhite);
+}
+
+.authMain{
+    width: 300px;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    gap:5px;
+}
+
+.authMain h1{
+    font-size: large;
+    font-weight: bold;
+    color: var(--appblue);
+}
+
+.authMain a{
+    text-decoration: none;
+}
+
+.quickSearch{
+    width: 100vw;
+    height: 50px;
+    /* backgr5und-color: red; */
+    display: flex;
+    align-items:center ;
+    gap: 10px;
+    overflow-x: auto;
+    background-color: var(--appwhite);
+}
+
+.TextContent{
+    width: max-content;
+    min-width: 100px;
+    height: 30px;
+    background-color: var(--appblue);
+    font-weight: bold;
+    color: var(--appwhite);
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    font-size: large;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--appblue);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .Quicksearchwrapper{
+    display: flex;
+  }
+
+  .Quicksearchwrapper button{
+    color: var(--appwhite);
+    background-color: var(--appblue);
+    border: none;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+
+  .CartWrapper {
+    width: 100vw;
+    height: calc(100vh - 120px);
+    overflow: auto;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top */
+    padding: 0 20px; /* Add equal left and right padding */
+}
+
+.cartContainer {
+    width: 100%;
+    height: auto;
+    background-color: var(--appwhite);
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping to next row */
+    gap: 50px;
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.cart {
+    width: 250px;
+    min-width: 250px;
+    height: 500px;
+    background-color: var(--appwhite);
+    /* border: 3px solid var(--appblue); */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Added proper value */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+}
+
+.cart img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    /* mix-blend-mode: multiply; */
+    /* filter: brightness(0) invert(1); */
+}
+
+.description {
+    width: 100%;
+    height: 80px;
+    background-color: var(--appblue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--appwhite);
+    font-weight: bold;
+    text-align: center;
+}
+
+  

@@ -1,0 +1,24 @@
+:root{
+    --appblue:#003D52;
+    --appwhite:#FFFFFF;
+    --appgray:#D9D9D9;
+    --appredgray:#ABA0A0;
+    --appFont: 'MyCustomFont';
+}
+
+@font-face {
+    font-family: 'MyCustomFont'; /* Name of the font */
+    src: url('fonts/MyFont.woff2') format('woff2'), /* Specify file formats */
+         url('fonts/MyFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    overflow: hidden;
+}
+.MainWrappre{
+    width:100vw; 
+    height:100vh;
+
+}
