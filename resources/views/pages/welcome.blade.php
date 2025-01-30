@@ -44,23 +44,24 @@
     <button id="scrollLeft"><</button>
     <div class="quickSearch">
 
-    <?php
-        use App\Models\Brand;
-        $brands = Brand::all(); 
-    ?>
-        @foreach ($brands as $brand)
-            <div class="TextContent">
-                <p>{{ $brand->brandName }}</p>
+    <!-- <?php
+        // use App\Models\Brand;
+        // $brands = Brand::all(); 
+    ?> -->
+       @for ($i=0;$i<20;$i++)
+       <div class="TextContent">
+                <p>hello</p>
             </div>
-        @endforeach
-    </div>
+        @endfor
+       
+    </div> 
     <button id="scrollRight">></button>
 </div>
 
 <!-- =============================content with cart======================= -->
 <div class="CartWrapper">
 <div class="cartContainer">
-    @for ($i=0;$i<20;$i++)
+    @for ($i=0;$i<16;$i++)
     <div class="cart">
         <img src="laptop.png" alt="laptop image" />
         <div class="description">
