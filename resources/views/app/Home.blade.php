@@ -11,7 +11,7 @@
             <div class="homeBodyTopBottom">
                 <h2>New Products</h2>
                 <div class="homeBodyTopBottomitemContainer">
-
+                    <x-cart></x-cart>
                 </div>
             </div>
         </div>
