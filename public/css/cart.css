@@ -1,0 +1,5 @@
+.cartContainer{
+    width: calc(100% / 7);
+    height: 100%;
+    background-color: aliceblue;
+}

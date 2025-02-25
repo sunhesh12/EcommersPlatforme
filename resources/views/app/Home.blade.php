@@ -11,7 +11,11 @@
             <div class="homeBodyTopBottom">
                 <h2>New Products</h2>
                 <div class="homeBodyTopBottomitemContainer">
-                    <x-cart></x-cart>
+                    <div class="leftbutton"></div>
+                    <div class="cartComponentContainer">
+                        <x-cart></x-cart>
+                    </div>
+                    <div class="leftbutton"></div>
                 </div>
             </div>
         </div>

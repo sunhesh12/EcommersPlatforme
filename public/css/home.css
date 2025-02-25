@@ -29,4 +29,15 @@
     height: 450px;
     background-color: red;
     margin-bottom: 50px;
+    display: flex;
+}
+.cartComponentContainer{
+    width: calc(100% - 100px);
+    height: 100%;
+    background-color: var(--white);
+}
+.leftbutton{
+    width: calc(50px);
+    height: 100%;
+    background-color: var(--black);
 }
