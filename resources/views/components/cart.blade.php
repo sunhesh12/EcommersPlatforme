@@ -1,6 +1,10 @@
 <div class="cartContainer">
     <p><img src="{{ asset('icon/greenTik.png') }}"> in stock</p>
-    <img src="{{ asset('images/laptop.png') }}">
+    <div class="cartImage">
+        <img src="{{ asset('images/msiLaptop.png') }}">
+    <!-- <img src="{{ asset('images/msiLaptop.png') }}"> -->
+    </div>
+    
     <div class="cartReview">
         <div class="review-panel">
             <i class="fas fa-star"></i>

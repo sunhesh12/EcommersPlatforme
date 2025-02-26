@@ -13,20 +13,11 @@
                 <div class="homeBodyTopBottomitemContainer">
                     <div class="leftbutton"></div>
                     <div class="cartComponentContainer">
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
-                        <x-cart></x-cart>
+                        @foreach(range(1, 12) as $index)
+                            <x-cart></x-cart>
+                        @endforeach
                     </div>
-                    <div class="leftbutton"></div>
+                    <div class="Rightbutton"></div>
                 </div>
             </div>
         </div>

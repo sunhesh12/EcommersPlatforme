@@ -22,21 +22,27 @@
     /* border-radius: 10px; */
 }
 
-.cartContainer img{
-    width: 300px;
-    height: auto;
-    margin-top: -60px;
+.cartImage{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 0px;
     /* background-color: red; */
-    /* object-fit: cover; */
-    /* border-radius: 10px; */
+    margin-top: -10px;
+}
+
+.cartContainer img{
+    width: 100%;
+    height: auto;
 }
 
 .cartReview{
+    width: 280px;
     display: flex;
     align-items: center;
     justify-content: start;
     padding-bottom: 0px;
-    margin-top: -40px;
+    margin-top: -20px;
 }
 
 .cartReview p{
