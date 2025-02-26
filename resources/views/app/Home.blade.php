@@ -11,7 +11,13 @@
             <div class="homeBodyTopBottom">
                 <h2>New Products</h2>
                 <div class="homeBodyTopBottomitemContainer">
-
+                    <div class="leftbutton"></div>
+                    <div class="cartComponentContainer">
+                        @foreach(range(1, 12) as $index)
+                            <x-cart></x-cart>
+                        @endforeach
+                    </div>
+                    <div class="Rightbutton"></div>
                 </div>
             </div>
         </div>
