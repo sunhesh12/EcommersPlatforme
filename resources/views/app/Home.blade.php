@@ -14,6 +14,17 @@
                     <div class="leftbutton"></div>
                     <div class="cartComponentContainer">
                         <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
+                        <x-cart></x-cart>
                     </div>
                     <div class="leftbutton"></div>
                 </div>

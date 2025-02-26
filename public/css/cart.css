@@ -1,5 +1,78 @@
 .cartContainer{
-    width: calc(100% / 7);
-    height: 100%;
+    /* width: calc(100% / 7); */
+    width: 300px;
+    height: 98%;
     background-color: aliceblue;
+    padding-top: 10px;
+}
+
+.cartContainer p{
+    color: var(--lightgreen);
+    font-weight: bold;
+    margin-left: 30px;
+    /* display: flex; */
+}
+
+.cartContainer p img{
+    width: 15px;
+    height: 15px;
+    /* margin-top: 0px; */
+    /* background-color: red; */
+    /* object-fit: cover; */
+    /* border-radius: 10px; */
+}
+
+.cartContainer img{
+    width: 300px;
+    height: auto;
+    margin-top: -60px;
+    /* background-color: red; */
+    /* object-fit: cover; */
+    /* border-radius: 10px; */
+}
+
+.cartReview{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-bottom: 0px;
+    margin-top: -40px;
+}
+
+.cartReview p{
+    color: var(--gray);
+    margin-left: 15px;
+    font-size: 18px;
+}
+.review-panel {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    gap: 5px;
+    font-size: 18px;
+    color: #FFD700; /* Gold color for stars */
+}
+.review-panel .empty-star {
+    color: var(--gray); /* Grey color for empty star */
+}
+
+.cartContainer p span{
+    color: var(--black);
+    font-weight: normal;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:-10px;
+}
+
+.cartContainer p span del{
+    color: var(--gray);
+    font-weight: normal;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:-10px;
+}
+
+.cartContainer h2{
+    margin-left: 30px;
+    margin-top: -10px;
 }
