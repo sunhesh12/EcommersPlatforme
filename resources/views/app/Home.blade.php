@@ -21,6 +21,10 @@
                 </div>
             </div>
         </div>
+        <div class="homeBodyMiddle">
+            
+        </div>
+        <div class="homeBodyBottom"></div>
     </div>
 </div>
 @stop

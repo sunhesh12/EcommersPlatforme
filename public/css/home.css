@@ -27,7 +27,7 @@
 
 .homeBodyTopBottomitemContainer{
     width: 100%;
-    height: 560px;
+    height: 500px;
     /* background-color: red; */
     margin-bottom: 50px;
     display: flex;
@@ -43,6 +43,7 @@
     overflow-x: auto;
     overflow-y: hidden;
 }
+
 .leftbutton{
     width: calc(50px);
     height: 100%;
@@ -64,3 +65,9 @@
     height: 0px;
   }
   
+  .homeBodyMiddle{
+    width: 100%;
+    height: 80px;
+    background-color: red;
+    margin-bottom: 50px;
+}
