@@ -116,6 +116,33 @@
     margin-top: -10px;
 }
 
+.cartButton{
+    width: 100%;
+    height: max-content;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartButton button{
+    width: 60%;
+    height: 40px;
+    border-radius: 100px;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    font-weight: bold;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartButton img{
+    height: 25px;
+    width: 25px;
+    aspect-ratio: 1;
+}
 
 
 

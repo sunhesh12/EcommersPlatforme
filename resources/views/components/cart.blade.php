@@ -21,6 +21,9 @@
         </div>
         <p><span><del>$499.00</del></span></p>
         <h2>$400.00</h2>
+        <div class="cartButton">
+            <button><img src="{{ asset('icon/cart.png') }}"/>ADD TO CART</button>
+        </div>
 
     </div>
 
