@@ -14,12 +14,61 @@
                     <div class="leftbutton"></div>
                     <div class="cartComponentContainer">
                         @foreach(range(1, 12) as $index)
-                            <x-cart></x-cart>
+                        <x-cart></x-cart>
                         @endforeach
                     </div>
                     <div class="Rightbutton"></div>
                 </div>
             </div>
+        </div>
+        <div class="homeBodyMiddle">
+            <div class="homeBodyMiddleTop">
+                <div class="HomeBodyMiddleTopLeft">
+                    <img src={{ asset('images/msiLogo.jpg') }}>
+                </div>
+                <div class="HomeBodyMiddleTopRight">
+                    <div class="leftbutton"></div>
+                    <div class="cartComponentContainer">
+                        @foreach(range(1, 12) as $index)
+                        <x-cart></x-cart>
+                        @endforeach
+                    </div>
+                    <div class="Rightbutton"></div>
+                </div>
+            </div>
+
+            <div class="homeBodyMiddleTop">
+                <div class="HomeBodyMiddleTopLeft">
+                    <img src={{ asset('images/msiLogo.jpg') }}>
+                </div>
+                <div class="HomeBodyMiddleTopRight">
+                    <div class="leftbutton"></div>
+                    <div class="cartComponentContainer">
+                        @foreach(range(1, 12) as $index)
+                        <x-cart></x-cart>
+                        @endforeach
+                    </div>
+                    <div class="Rightbutton"></div>
+                </div>
+            </div>
+
+            <div class="homeBodyMiddleTop">
+                <div class="HomeBodyMiddleTopLeft">
+                    <img src={{ asset('images/msiLogo.jpg') }}>
+                </div>
+                <div class="HomeBodyMiddleTopRight">
+                    <div class="leftbutton"></div>
+                    <div class="cartComponentContainer">
+                        @foreach(range(1, 12) as $index)
+                        <x-cart></x-cart>
+                        @endforeach
+                    </div>
+                    <div class="Rightbutton"></div>
+                </div>
+            </div>
+        </div>
+        <div class="homeBodyBottom">
+            
         </div>
     </div>
 </div>
