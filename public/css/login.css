@@ -1,0 +1,144 @@
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 60px;
+    height: 500px;
+    margin-bottom: 30px;
+    gap: 40px;
+}
+/* Navigation */
+nav {
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav span {
+    color: grey;
+}
+.navigation {
+    margin-top: 30px;
+    margin-left: 70px;
+}
+
+/* Login & Signup Box */
+.body-left,
+.body-right {
+    width: 400px;
+    height: 380px;
+    background: linear-gradient(
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.8)
+        ),
+        url("/images/login_background.jpg") center/cover;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Checkbox & Forgot Password */
+.options {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.options a {
+    text-decoration: none;
+    color: #0156ff;
+    margin-left: auto;
+}
+
+.options a:hover {
+    text-decoration: none;
+}
+
+#staySignedIn {
+    width: 20px;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0156ff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Google Login Button */
+.btn.google {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn.google img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Separator */
+.separator {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #888;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
