@@ -1,5 +1,11 @@
 @extends('app.layouts.main')
 @section('content')
+<div class="navigation">
+<nav>
+    <a href="#">Home</a> › <span>Register</span>
+ </nav>
+</div>
+
 <div class="container">
         <!-- Login Section -->
         <div class="body-left">

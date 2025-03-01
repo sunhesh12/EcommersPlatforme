@@ -3,9 +3,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
+    margin: 0 60px;
     height: 500px;
+    margin-bottom: 30px;
     gap: 40px;
+}
+/* Navigation */
+nav {
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav span {
+    color: grey;
+}
+.navigation {
+    margin-top: 30px;
+    margin-left: 70px;
 }
 
 /* Login & Signup Box */
