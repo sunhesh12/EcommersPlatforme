@@ -1,5 +1,5 @@
 /* Container */
-.container {
+.loginContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,18 +9,18 @@
     gap: 40px;
 }
 /* Navigation */
-nav {
+.navigation nav {
     text-align: left;
     font-size: 14px;
     margin-bottom: 20px;
 }
 
-nav a {
+.navigation nav a {
     text-decoration: none;
     color: black;
 }
 
-nav span {
+.navigation nav .registernav {
     color: grey;
 }
 .navigation {
@@ -32,7 +32,7 @@ nav span {
 .body-left,
 .body-right {
     width: 400px;
-    height: 380px;
+    height: 400px;
     background: linear-gradient(
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.9)
@@ -46,28 +46,32 @@ nav span {
     justify-content: center;
 }
 
-h2 {
+.registertext {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-p {
+.loginpara {
     font-size: 14px;
     margin-bottom: 15px;
 }
 
-label {
+.loginlabel {
     font-size: 14px;
     margin-bottom: 5px;
     display: block;
 }
 
-input {
+.logininput input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.logininput {
+    width: 95%;
 }
 
 /* Checkbox & Forgot Password */
@@ -77,22 +81,26 @@ input {
     font-size: 12px;
 }
 
-.options a {
+.options .fogotpassword {
     text-decoration: none;
     color: #0156ff;
     margin-left: auto;
+    font-size: 13px;
+    font-weight: 500;
 }
 
-.options a:hover {
+.options .fogotpassword:hover {
     text-decoration: none;
 }
 
 #staySignedIn {
     width: 20px;
+    margin-right: 10px;
+    margin-bottom: 7px;
 }
 
 /* Buttons */
-.btn {
+.loginbtn {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -104,12 +112,12 @@ input {
     font-size: 16px;
 }
 
-.btn:hover {
+.loginbtn:hover {
     background-color: #0056b3;
 }
 
 /* Google Login Button */
-.btn.google {
+.loginbtn.google {
     background-color: white;
     color: black;
     border: 1px solid #ccc;
@@ -119,7 +127,7 @@ input {
     gap: 10px;
 }
 
-.btn.google img {
+.loginbtn.google img {
     width: 20px;
     height: 20px;
 }
@@ -134,11 +142,11 @@ input {
 }
 
 /* List Styles */
-ul {
+.loginlist {
     list-style-type: none;
 }
 
-ul li {
+.loginlist li {
     font-size: 14px;
     margin-bottom: 5px;
 }
