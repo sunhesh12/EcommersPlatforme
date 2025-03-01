@@ -68,7 +68,32 @@
             </div>
         </div>
         <div class="homeBodyBottom">
-            
+            <div class="homeBodyBottomTop">
+                <hr />
+                <div class="homeBodyBottomTopContainer">
+                    <img src="{{ asset('images/msiLogo.png') }}">
+                    <img src="{{ asset('images/msiLogo.png') }}">
+                    <img src="{{ asset('images/msiLogo.png') }}">
+                    <img src="{{ asset('images/msiLogo.png') }}">
+                    <img src="{{ asset('images/msiLogo.png') }}">
+                </div>
+                <hr />
+            </div>
+
+            <div class="homeBodyBottomMiddle">
+                <div class="homeBodyBottomMiddleTop">
+                    <div class="homeBodyBottomMiddleTopLeft">
+                        <img src="{{ asset('icon/quationMark.png') }}">
+                    </div>
+                    <div class="homeBodyBottomMiddleTopRight"></div>
+                </div>
+                <div class="homeBodyBottomMiddleMiddle"></div>
+                <div class="homeBodyBottomMiddleBottom"></div>
+            </div>
+
+            <div class="homeBodyBottomBottom">
+
+            </div>
         </div>
     </div>
 </div>
