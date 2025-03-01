@@ -79,7 +79,7 @@ button {
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: var(--darkblue);
 }
 
 /* Login Link */
