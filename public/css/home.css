@@ -27,7 +27,7 @@
 
 .homeBodyTopBottomitemContainer{
     width: 100%;
-    height: 560px;
+    height: 500px;
     /* background-color: red; */
     margin-bottom: 50px;
     display: flex;
@@ -43,6 +43,7 @@
     overflow-x: auto;
     overflow-y: hidden;
 }
+
 .leftbutton{
     width: calc(50px);
     height: 100%;
@@ -64,3 +65,84 @@
     height: 0px;
   }
   
+.homeBodyMiddle{
+    width: 100%;
+    height: max-content;
+    /* background-color: red; */
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+.homeBodyMiddleTop{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    gap: 10px;
+}
+
+.HomeBodyMiddleTopLeft{
+    width: 300px;
+    height: 500px;
+    /* background-color: aliceblue; */
+}
+.HomeBodyMiddleTopLeft img{
+    width: 100%;
+    height: 100%;
+    /* background-color: black; */
+    object-fit: cover;
+    border-radius: 0px;
+}
+
+.HomeBodyMiddleTopRight{
+    width: calc(100% - 300px);
+    height: 500px;
+    /* background-color: rgb(107, 209, 178); */
+    display: flex;
+}
+
+.homeBodyBottom{
+    width: 100%;
+    height: max-content;
+    /* background-color: red; */
+}
+.homeBodyBottomTop{
+    margin-bottom: 50px;
+}
+.homeBodyBottomTop img{
+    filter: grayscale(100%);
+    height: 50px;
+    width: auto;
+}
+
+.homeBodyBottomTop hr{
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+    border: none;
+}
+
+.homeBodyBottomTopContainer{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    /* background: #000; */
+}
+
+.homeBodyBottomMiddleTop{
+    width: 100%;
+    /* height: 500px; */
+    display: flex;
+    gap: 10px;
+    background-color: red;
+
+}
+.homeBodyBottomMiddleTopLeft img{
+    width: 70px;
+    height: auto;
+}   

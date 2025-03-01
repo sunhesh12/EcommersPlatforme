@@ -34,10 +34,10 @@
     width: 400px;
     height: 400px;
     background: linear-gradient(
-            rgba(255, 255, 255, 0.9),
-            rgba(255, 255, 255, 0.9)
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.8)
         ),
-        url("login_background.jpg") center/cover;
+        url("/images/login_background.jpg") center/cover;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@
 }
 
 .logininput input {
-    width: 100%;
+    width: 98%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
