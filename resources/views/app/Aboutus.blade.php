@@ -28,4 +28,24 @@
             </div>
         </div>
     </section>
+    <section class="about-midsection2">
+        <div class="about-midcontainer2">
+        <div class="about-midimage2">
+            <img src={{ asset('images/keyboard.png') }}>
+            </div>
+            <div class="about-midicon2">
+            <img src={{ asset('icon/deliver.png') }}>
+            </div>
+            <div class="about-midcontent2">
+                <h2>We Deliver to Any Regions</h2>
+                <p>
+                    We deliver our goods all across World. No matter where you live, your order will be shipped in time 
+                    and delivered right to your door or any location you have stated. The packages are handled with utmost care, 
+                    so the ordered products will be handed to you safe and sound, just like you expect them to be.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
 @stop

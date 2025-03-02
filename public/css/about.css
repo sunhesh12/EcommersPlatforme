@@ -63,3 +63,55 @@
     max-width: 350px;
     border-radius: 8px;
 }
+
+/* ............................................mid Section 2 ...........................................................*/
+.about-midsection2 {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about-midcontainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.about-midicon2 {
+    font-size: 40px;
+    color: #007bff;
+    margin-right: 15px;
+    margin-bottom: 120px;
+}
+
+.about-midcontent2 {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.about-midcontent2 h2 {
+    font-size: 28px;
+    margin-right: 40%;
+    /* text-align: left; */
+    margin-bottom: 40px;
+}
+
+.about-midcontent2 p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.about-midimage2 {
+    flex: 1;
+    text-align: left;
+}
+
+.about-midimage2 img {
+    width: 80%;
+    max-width: 450px;
+    border-radius: 8px;
+    margin-left: 50px;
+}
