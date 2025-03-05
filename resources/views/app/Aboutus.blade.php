@@ -43,9 +43,45 @@
                     and delivered right to your door or any location you have stated. The packages are handled with utmost care, 
                     so the ordered products will be handed to you safe and sound, just like you expect them to be.
                 </p>
-            </div>
-            
+            </div> 
         </div>
     </section>
+    <section class="about-midsection3">
+        <div class="about-midcontainer3">
+        <div class="about-midicon3">
+            <img src={{ asset('icon/safe.png') }}>
+            </div>
+            <div class="about-midtext3">
+            
+                <h2 class>Now You're In Safe Hands</h2>
+                <p>
+                Experience a 40% boost in computing from last generation. MSI Desktop equips the 10th Gen. Intel® Core™ i7 processor with the upmost computing power to bring you an unparalleled gaming experience.
+                </p>
+                <p> 
+                *Performance compared to i7-9700. Specs varies by model.
+                </p>
+            </div>
+            <div class="about-midimage3">
+            <img src={{ asset('images/laptop-aboutus.webp') }}>
+            </div>
+        </div>
+    </section>
+    <section class="about-midsection4">
+        <div class="about-midcontainer4">
+        <div class="about-midimage4">
+            <img src={{ asset('images/laptop2-aboutus.jpg') }}>
+            </div>
+            <div class="about-midicon4">
+            <img src={{ asset('icon/Quality.png') }}>
+            </div>
+            <div class="about-midcontent4">
+                <h2>The Highest Quality of Products</h2>
+                <p>
+                We guarantee the highest quality of the products we sell. Several decades of successful operation and millions of happy customers let us feel certain about that. Besides, all items we sell pass thorough quality control, so no characteristics mismatch can escape the eye of our professionals.
+                </p>
+            </div> 
+        </div>
+    </section>
+    
 
 @stop
