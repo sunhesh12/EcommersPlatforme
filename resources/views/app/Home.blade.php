@@ -79,7 +79,6 @@
                 </div>
                 <hr />
             </div>
-            <!-- //middle section -->
             <div class="homeBodyBottomMiddle">
                 <div class="homeBodyBottomMiddleTop">
                     <div class="homeBodyBottomMiddleTopLeft">
