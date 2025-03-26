@@ -2,35 +2,46 @@
 @section('content')
 <div class="navigation">
 <nav>
-    <a href="#">Home</a> › <span>Register</span>
+    <a href="#">Home</a> › <span class = "registernav">Register</span>
  </nav>
 </div>
 
-<div class="container">
+<div class="loginContainer">
         <!-- Login Section -->
         <div class="body-left">
-            <h2>Registered Customers</h2>
-            <p>If you have an account, sign in with your email address.</p>
+            <h2 class= "registertext">Registered Customers</h2>
+            <p class = "loginpara">If you have an account, sign in with your email address.</p>
             <form>
-                <label for="email">Email *</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-
-                <label for="password">Password *</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-
-                <div class="options">
-                    <input type="checkbox" id="staySignedIn">
-                    <label for="staySignedIn">Stay signed in</label>
-                    <a href="#" >Forgot Your Password?</a>
-                    
-                   
+                <div class="loginlabel">
+                   <label for="email">Email *</label>
+                </div>
+                <div class="logininput">
+                    <input type="email" id="email" placeholder="Enter your email" required>
                 </div>
 
-                <button type="submit" class="btn">Sign In</button>
+                <div class="loginlabel">
+                    <label for="password">Password *</label>
+                </div>
+                <div class="logininput">
+                     <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+               
+
+                <div class="options">
+                    <div>
+                           <input type="checkbox" id="staySignedIn">
+                    </div>
+                    <div class="loginlabel">
+                            <label for="staySignedIn">Stay signed in</label>
+                    </div>
+                    <a href="#" class="fogotpassword">Forgot Your Password?</a>
+                </div>
+
+                <button type="submit" class="loginbtn">Sign In</button>
 
                 <div class="separator">OR</div>
 
-                <button type="button" class="btn google">
+                <button type="button" class="loginbtn google">
                 <img src={{ asset('images/google.png') }}> Login with Google
                 </button>
             </form>
@@ -38,14 +49,14 @@
 
         <!-- Signup Section -->
         <div class="body-right">
-            <h2>New Customer?</h2>
-            <p>Creating an account has many benefits:</p>
-            <ul>
+            <h2 class ="registertext">New Customer?</h2>
+            <p class= "loginpara" >Creating an account has many benefits:</p>
+            <ul class = "loginlist">
                 <li>Check out faster</li>
                 <li>Keep more than one address</li>
                 <li>Track orders and more</li>
             </ul>
-            <button class="btn">Create An Account</button>
+            <button class="loginbtn">Create An Account</button>
         </div>
     </div>
 
