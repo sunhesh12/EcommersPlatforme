@@ -14,6 +14,10 @@ Route::get('/loginn', function () {
     return view('app/login');
 });
 
+Route::get('/faq', function () {
+    return view('app/faq');
+});
+
 Route::get('/cart', function () {
     return view('app/ShoppingCart');
 });
