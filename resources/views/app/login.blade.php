@@ -6,7 +6,7 @@
  </nav>
 </div>
 
-<div class="container">
+<div class="loginContainer">
         <!-- Login Section -->
         <div class="body-left">
             <h2>Registered Customers</h2>
