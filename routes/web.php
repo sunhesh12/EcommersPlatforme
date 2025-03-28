@@ -27,6 +27,10 @@ Route::get('/cart', function () {
     return view('app/ShoppingCart');
 });
 
+Route::get('/my-profile', function () {
+    return view('app/MyProfile');
+});
+
 
 
 // Route::get('/dashboard', function () {
