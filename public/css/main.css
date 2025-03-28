@@ -4,13 +4,13 @@
     --gray: #9d9a9a;
     --blue: rgb(31, 79, 224);
     --lightblue: #79afdb;
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
     --lightgreen:rgb(16, 183, 16);
 
-=======
+/* ======= */
     --lightgreen: rgb(16, 183, 16);
     --darkblue: rgb(0, 0, 139); /*for button hovering ----> registerpage*/
->>>>>>> origin/registerPageDevelopment
+/* >>>>>>> origin/registerPageDevelopment */
 }
 
 body {
