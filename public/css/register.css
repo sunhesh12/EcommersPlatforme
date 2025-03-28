@@ -1,0 +1,99 @@
+/* Container */
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+/* Navigation */
+nav {
+    font-size: 14px;
+    margin-bottom: 10px;
+    width: 250px;
+    margin-left: 70px;
+    margin-top: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+nav span {
+    color: var(--gray);
+}
+
+/* Register Box */
+.register-box {
+    position: relative;
+    max-width: 400px;
+    left: 500px;
+    margin-top: -18px;
+    margin-bottom: 60px;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.register-box h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.highlighttext {
+    color: var(--blue);
+}
+
+/* Form Inputs */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Terms and Conditions */
+.terms {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+#terms {
+    width: 15px;
+    margin-right: 10px;
+}
+
+/* Sign Up Button */
+button {
+    width: 430px;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: var(--darkblue);
+}
+
+/* Login Link */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
