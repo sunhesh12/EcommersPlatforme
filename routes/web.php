@@ -14,6 +14,11 @@ Route::get('/loginn', function () {
     return view('app/login');
 });
 
+Route::get('/aboutuss', function () {
+    return view('app/Aboutus');
+});
+
+
 Route::get('/faq', function () {
     return view('app/faq');
 });

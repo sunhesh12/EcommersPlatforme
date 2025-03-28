@@ -16,9 +16,13 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <!-- <<<<<<< HEAD -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<<<<<<< HEAD
 <!-- ======= -->
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 <!-- >>>>>>> origin/registerPageDevelopment -->
+=======
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+>>>>>>> origin/aboutpagedevelopment
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 
