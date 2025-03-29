@@ -2,18 +2,30 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
 Route::get('/', function () {
     return view('app/Home');
 });
 
-Route::get('/registerr', function () {
-    return view('app/Register');
-});
+Route::get('/home', function () {
+    return view('app/Home');
+})->name('home');
+
+// ======================register routes=========================
+// Route::get('/registerr', function () {
+//     return view('app/Register');
+// });
+
+Route::get('/registerr', [RegisterController::class, 'showRegisterForm'])->name('user.registerr');
+
+Route::post('/registerr', [RegisterController::class, 'register'])->name('register.post');
+
+// ============================rigster route end ======================
 
 Route::get('/loginn', function () {
     return view('app/login');
-});
+}) ->name('user.loginn');
 
 Route::get('/aboutuss', function () {
     return view('app/Aboutus');

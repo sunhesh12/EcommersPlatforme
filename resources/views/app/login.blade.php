@@ -45,7 +45,8 @@
                 <li>Keep more than one address</li>
                 <li>Track orders and more</li>
             </ul>
-            <button class="btn">Create An Account</button>
+            
+            <a href="{{ route('user.registerr') }}"><button class="btn">Create An Account</button></a>
         </div>
     </div>
 
