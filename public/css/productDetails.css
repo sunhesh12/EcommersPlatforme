@@ -29,9 +29,14 @@
     color: black;
 }
 
+.product{
+    color: black;
+}
+
 .navigation {
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 0px;
 }
 
 .productName{

@@ -9,7 +9,7 @@
 
                 <div class="navigation">
                 <nav>
-                  <a href="/">Home</a> > <span>Laptops</span>
+                  <a href="/">Home</a> > <span class="product">Laptops</span>
                 </nav>
                 </div>
                 <h1 class="productName">MSI Cyborg 15 Gaming A13UCX i5</h1>
