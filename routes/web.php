@@ -20,5 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/product/{id}', function ($id) {
+    return view('app.ProductDetails', ['id' => $id]);
+})->name('product.details');
 
 require __DIR__.'/auth.php';

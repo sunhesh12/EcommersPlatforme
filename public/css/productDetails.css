@@ -1,0 +1,119 @@
+
+.productDetailsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:150px;
+    margin-top: 20px;
+}
+
+.productBody-left,
+.productBody-right{
+    width: 45%;
+    height: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navigation nav {
+    text-align: left;
+    font-size: 14px;  
+    font-weight:bold; 
+}
+
+.navigation nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.navigation {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.productName{
+    font-size:x-large;
+    font-weight: bolder;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.pd_tag{
+    color: #2169f9;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.featurelist li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.productPrice{
+    margin-top:20px ;
+    margin-bottom:20px ;
+    font-size:x-large;
+    font-weight: bold;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.cart-Container{
+    display:flex;
+    gap: 10px;
+    
+}
+.addCartbtn {
+    width: 100%;
+    padding: 18px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 50px;
+    background-color:  #0156ff;
+    color: white;
+    cursor: pointer; 
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.quantity-container {
+    display: flex;
+    width: 10%;
+    background-color:#f4f3f3;
+    align-items: center;
+    gap: 2px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.quantity-btn {
+    text-align: center;
+    background-color: #f4f3f3;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.quantity-input {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    background-color:#f4f3f3;
+    border: 1px solid#f4f3f3;
+}
+ 
+
+
+
+.carousel-inner img {
+    width: 470px;  
+    height: 350px; 
+    object-fit: contain; 
+    margin: auto; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgb(149, 146, 146); border-radius: 50%; 
+    padding: 30px;
+}

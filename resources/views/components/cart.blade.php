@@ -4,6 +4,7 @@
             <p><img src="{{ asset('icon/greenTik.png') }}"> in stock</p>
         </div>
         <div class="cartImage">
+        <a href="{{ route('product.details', ['id' => 1]) }}">
             <img src="{{ asset('images/msiLaptop.png') }}">
         </div>
         <div class="cartReview">
@@ -24,6 +25,8 @@
         <div class="cartButton">
             <button><img src="{{ asset('icon/cart.png') }}"/>ADD TO CART</button>
         </div>
+       
+        
 
     </div>
 
