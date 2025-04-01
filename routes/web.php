@@ -29,20 +29,20 @@ Route::get('/loginn', function () {
 
 Route::get('/aboutuss', function () {
     return view('app/Aboutus');
-});
+})->name('user.aboutuss');
 
 
 Route::get('/faq', function () {
     return view('app/faq');
-});
+})->name('user.faq');
 
 Route::get('/cart', function () {
     return view('app/ShoppingCart');
-});
+})->name('user.cart');
 
 Route::get('/my-profile', function () {
     return view('app/MyProfile');
-});
+})->name('user.my-profile');
 
 
 
