@@ -39,15 +39,15 @@
     </div>
 
     <div class="contact-info">
-        <div class="info-box">
-            <p><strong>Address:</strong><br>1234 Street Address City Address, 1234</p>
-            <p><strong>Phone:</strong><br>(00) 1234 5678</p>
-            <p><strong>We are open:</strong><br>
+    <div class="info-box">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i> </span><p> <strong> Address:</strong><br>1234 Street Address City Address, 1234</p>
+            <p><span class="icon"><i class="fas fa-phone"></i></span> <strong> Phone:</strong><br>(00) 1234 5678</p>
+            <p><span class="icon"><i class="fas fa-clock"></i> </span><strong> We are open:</strong><br>
                 Monday - Thursday: 9:00 AM - 5:30 PM<br>
                 Friday: 9:00 AM - 6:00 PM<br>
                 Saturday: 11:00 AM - 5:00 PM
             </p>
-            <p><strong>E-mail:</strong><br><a href="mailto:shop@email.com">shop@email.com</a></p>
+            <p><span class="icon"><i class="fas fa-envelope"></i> </span><strong> E-mail:</strong><br><a href="mailto:shop@email.com">shop@email.com</a></p>
         </div>
     </div>
 </div>
@@ -100,6 +100,17 @@
         background: #f8f8f8;
         padding: 1.5rem;
         border-radius: 5px;
+        margin: 2rem;
     }
+
+    .icon{
+        padding: 1rem;
+        font-size: large;
+    }
+
+.info-box{
+    padding: 1rem;
+}
+
 </style>
 @stop
