@@ -11,15 +11,15 @@
         <div class="body-left">
             <h2>Registered Customers</h2>
             <p>If you have an account, sign in with your email address.</p>
-            <form>
+            <form action="{{ route('loginn.post') }}" method="POST">
                 <label for="email">Email *</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="password">Password *</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
                 <div class="options">
-                    <input type="checkbox" id="staySignedIn">
+                    <input type="checkbox" id="staySignedIn" name="remember">
                     <label for="staySignedIn">Stay signed in</label>
                     <a href="#" >Forgot Your Password?</a>
                     
@@ -46,7 +46,9 @@
                 <li>Track orders and more</li>
             </ul>
             
-            <a href="{{ route('user.registerr') }}"><button class="btn">Create An Account</button></a>
+            <a href="{{ route('user.registerr') }}">
+                <button class="btn">Create An Account</button>
+            </a>
         </div>
     </div>
 

@@ -27,6 +27,10 @@ Route::get('/loginn', function () {
     return view('app/login');
 }) ->name('user.loginn');
 
+Route::post('/loginn', function () {
+    return view('app/login');
+}) ->name('loginn.post');
+
 Route::get('/aboutuss', function () {
     return view('app/Aboutus');
 })->name('user.aboutuss');
