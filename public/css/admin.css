@@ -1,0 +1,45 @@
+/* public/css/admin.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3f4f6; /* Tailwind's gray-100 */
+    min-height: 100vh;
+    display: flex;
+}
+
+/* resources/sass/admin.scss */
+
+.sidebarAdmin {
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    nav {
+        a {
+            display: block;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
+                color: #2563eb;
+            }
+        }
+    }
+}
+
+
+/* Content area */
+.main-content-admin {
+    flex: 1;
+    padding: 1.5rem;
+}

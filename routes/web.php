@@ -49,6 +49,13 @@ Route::get('/my-profile', function () {
 })->name('user.my-profile');
 
 
+// =============admin===============
+
+Route::get('/dashboardd', function () {
+    return view('admin/dashboard');
+});
+// })->name('admin.dashboard');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -61,3 +68,9 @@ Route::get('/my-profile', function () {
 // });
 
 // require __DIR__.'/auth.php';
+
+
+
+
+
+

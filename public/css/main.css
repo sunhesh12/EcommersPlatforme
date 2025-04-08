@@ -79,33 +79,7 @@ body {
     text-decoration: none;
     color: var(--black);
 }
-/* .navigationsBottom ul li a:hover {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:active {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:visited {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus-visible {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus-within {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus-within-visible {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus-visible-within {
-    color: var(--blue);
-}
-.navigationsBottom ul li a:focus-visible-within-visible {
-    color: var(--blue);
-} */
+
 
 .footerContainer {
     width: 100%;
