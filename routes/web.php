@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController; 
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
 Route::get('/', function () {
@@ -53,8 +54,20 @@ Route::get('/my-profile', function () {
 
 Route::get('/dashboardd', function () {
     return view('admin/dashboard');
+})->name('admin.dashboard');
+// Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
+
+Route::prefix('/dashboardd')->name('admin.users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/create', [UserController::class, 'create'])->name('create');
+    Route::post('/', [UserController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [UserController::class, 'update'])->name('update');
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
+    Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
+    Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
 });
-// })->name('admin.dashboard');
+
 
 
 // Route::get('/dashboard', function () {
