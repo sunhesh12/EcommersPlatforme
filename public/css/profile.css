@@ -1,0 +1,145 @@
+.breadcrumb {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.breadcrumb .text-black {
+  color: #212529;
+}
+
+.profile-body{
+  margin: 100px 150px 50px 150px;
+  
+}
+
+.profile-container {
+  display: flex;
+  max-width: 1080px;
+  padding: 0 20px;
+}
+
+/* Profile image section */
+.left-section {
+  flex: 0 0 300px;
+  margin-right: 30px;
+  text-align: center;
+}
+
+.profile-container .left-section h1{
+  margin-bottom: 50px;
+}
+
+.profile-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Information section */
+.right-section {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.profile-container .right-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.account-info, .address-book {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-label, .address-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+.contact-name {
+  margin: 15px 0 5px 0;
+  color: #6c757d;
+}
+
+.contact-email {
+  color: #6c757d;
+  margin: 5px 0 15px;
+}
+
+.address-info {
+  color: #6c757d;
+  margin: 15px 0 15px;
+}
+
+.profile-actions {
+  margin-top: 35px;
+}
+
+.profile-actions a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.profile-actions a:hover {
+  text-decoration: underline;
+}
+
+/* Orders button */
+.orders-container {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.orders-btn {
+  display: inline-block;
+  background-color: #fff;
+  color: var(--blue);
+  border: 3px solid var(--blue);
+  border-radius: 20px;
+  padding: 7px 22px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  top: -490px;
+}
+
+.orders-btn:hover {
+  background-color: #f1f8ff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  
+  .left-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .orders-container {
+    justify-content: center;
+  }
+  
+  .orders-btn {
+    top: 0;
+    margin-bottom: 20px;
+  }
+}
