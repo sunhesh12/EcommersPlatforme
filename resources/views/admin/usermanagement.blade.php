@@ -12,6 +12,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
+            <td>{{ $user->is_admin == 1 ? 'Admin' : 'user'}}</td>
             <td>
                 @if ($user->is_blocked)
                 <span class="status-blocked">Blocked</span>

@@ -56,9 +56,16 @@ Route::get('/dashboardd', function () {
     return view('admin/dashboard');
 })->name('admin.dashboard');
 
-Route::get('/dashboardd/usermanagement', function () {
-    return view('admin/usermanagement');
-})->name('admin.dashboard.usermanagement');
+// Route::get('/dashboardd/usermanagement', function () {
+//     return view('admin/usermanagement');
+// })->name('admin.dashboard.usermanagement');
+
+// Route::get('/dashboardd/usermanagement/create', function () {
+//     return view('admin/addUser');
+// })->name('admin.users.create');
+
+// Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+// Route::post('/admin/users/store', [UserController::class, 'store'])->name('admin.users.store');
 
 //usermanagement
 // Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
@@ -69,7 +76,7 @@ Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(functio
     Route::post('/', [UserController::class, 'store'])->name('store');
     Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
     Route::put('/{id}', [UserController::class, 'update'])->name('update');
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
+    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
     Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
     Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
 });
