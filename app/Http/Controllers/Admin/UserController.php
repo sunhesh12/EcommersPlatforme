@@ -9,13 +9,12 @@ use App\Models\EUserUser;
 
 class UserController extends Controller
 {
+    private $urlForUserManagement = 'admin.usermanagement';
 
     public function index()
     {
         $users = EUser::all(); // or paginate if needed
-    
-        // return view('admin/dashboard', compact('users'));
-        return view('admin.dashboard', compact('users'));
+        return view($this->urlForUserManagement, compact('users'));
     }
 
 public function create()

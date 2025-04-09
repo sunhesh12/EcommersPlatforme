@@ -55,9 +55,15 @@ Route::get('/my-profile', function () {
 Route::get('/dashboardd', function () {
     return view('admin/dashboard');
 })->name('admin.dashboard');
+
+Route::get('/dashboardd/usermanagement', function () {
+    return view('admin/usermanagement');
+})->name('admin.dashboard.usermanagement');
+
+//usermanagement
 // Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
 
-Route::prefix('/dashboardd')->name('admin.users.')->group(function () {
+Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
