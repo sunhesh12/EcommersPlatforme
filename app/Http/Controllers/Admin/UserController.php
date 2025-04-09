@@ -95,7 +95,7 @@ public function edit($id)
 
 public function update(Request $request, $id)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'name' => 'required|string|max:255',
         'is_admin' => 'required|in:0,1',
         'email' => 'required|email|unique:users,email,' . $id,
@@ -106,7 +106,26 @@ public function update(Request $request, $id)
         'state' => 'nullable|string',
         'country' => 'nullable|string',
         'postal_code' => 'nullable|string',
+    ],[
+        'name.regex' => 'Name can only contain letters, spaces, and periods.',
+        'phone.regex' => 'Phone number format is invalid.',
+        'email.required' => 'Email is required.',
+        'email.email' => 'Enter a valid email address.',
+        'profile_picture.image' => 'Profile picture must be an image file.',
+        'profile_picture.max' => 'Profile picture size cannot exceed 2MB.',
     ]);
+
+    // Redirect back with validation errors
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Manually check for duplicate email
+    if (EUser::where('email', $request->email)->exists()) {
+        return redirect()->back()
+            ->withErrors(['email' => 'This email is already registered. Please use another.'])
+            ->withInput();
+    }
 
     $user = EUser::findOrFail($id);
     $user->name = $request->name;
