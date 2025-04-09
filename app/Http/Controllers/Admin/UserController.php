@@ -24,13 +24,81 @@ public function create()
     return view('admin.addUser');
 }
 
+
 public function store(Request $request)
 {
-    // Basic validation rules
+    // Validate input securely
     $validator = Validator::make($request->all(), [
+        'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s\.]+$/'],
+        'email' => ['required', 'email', 'max:255'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+        'phone' => ['nullable', 'regex:/^\+?[0-9\-]{7,15}$/'],
+        'address' => ['nullable', 'string', 'max:255'],
+        'city' => ['nullable', 'string', 'max:100'],
+        'state' => ['nullable', 'string', 'max:100'],
+        'country' => ['nullable', 'string', 'max:100'],
+        'postal_code' => ['nullable', 'string', 'max:20'],
+    ], [
+        'name.regex' => 'Name can only contain letters, spaces, and periods.',
+        'phone.regex' => 'Phone number format is invalid.',
+        'email.required' => 'Email is required.',
+        'email.email' => 'Enter a valid email address.',
+        'password.confirmed' => 'Password confirmation does not match.',
+        'profile_picture.image' => 'Profile picture must be an image file.',
+        'profile_picture.max' => 'Profile picture size cannot exceed 2MB.',
+    ]);
+
+    // Redirect back with validation errors
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Manually check for duplicate email
+    if (EUser::where('email', $request->email)->exists()) {
+        return redirect()->back()
+            ->withErrors(['email' => 'This email is already registered. Please use another.'])
+            ->withInput();
+    }
+
+    // Securely create new user
+    $user = new EUser();
+    $user->name = strip_tags($request->name);
+    $user->email = strip_tags($request->email);
+    $user->password = Hash::make($request->password); // secure hashing
+    $user->phone = strip_tags($request->phone);
+    $user->address = strip_tags($request->address);
+    $user->city = strip_tags($request->city);
+    $user->state = strip_tags($request->state);
+    $user->country = strip_tags($request->country);
+    $user->postal_code = strip_tags($request->postal_code);
+
+    // Handle profile picture securely
+    if ($request->hasFile('profile_picture')) {
+        $filename = time() . '.' . $request->profile_picture->extension();
+        $request->profile_picture->move(public_path('uploads'), $filename);
+        $user->profile_picture = 'uploads/' . $filename;
+    }
+
+    $user->save();
+
+    return redirect()->route('admin.users.index')->with('success', 'User added successfully.');
+}
+
+
+public function edit($id)
+{
+    $user = EUser::findOrFail($id);
+    return view('admin.editUserDetils', compact('user'));
+}
+
+
+public function update(Request $request, $id)
+{
+    $request->validate([
         'name' => 'required|string|max:255',
-        'email' => 'required|email',
-        'password' => 'required|string|min:6|confirmed',
+        'is_admin' => 'required|in:0,1',
+        'email' => 'required|email|unique:users,email,' . $id,
         'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         'phone' => 'nullable|string',
         'address' => 'nullable|string',
@@ -40,23 +108,10 @@ public function store(Request $request)
         'postal_code' => 'nullable|string',
     ]);
 
-    // If validation fails, redirect back with errors
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
-
-    // Manually check if the email already exists in EUser table
-    if (EUser::where('email', $request->email)->exists()) {
-        return redirect()->back()
-            ->withErrors(['email' => 'This email is already registered. Please use a different one.'])
-            ->withInput();
-    }
-
-    // Create new user
-    $user = new EUser();
+    $user = EUser::findOrFail($id);
     $user->name = $request->name;
+    $user->is_admin = $request->is_admin;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
     $user->phone = $request->phone;
     $user->address = $request->address;
     $user->city = $request->city;
@@ -64,7 +119,6 @@ public function store(Request $request)
     $user->country = $request->country;
     $user->postal_code = $request->postal_code;
 
-    // Profile picture upload
     if ($request->hasFile('profile_picture')) {
         $filename = time() . '.' . $request->profile_picture->extension();
         $request->profile_picture->move(public_path('uploads'), $filename);
@@ -73,81 +127,10 @@ public function store(Request $request)
 
     $user->save();
 
-    // Redirect to index page with success
-    return redirect()->route('admin.users.index')->with('success', 'User added successfully.');
+    return  $this->index()->with('success', 'User updated successfully.');
 }
 
-// public function store(Request $request)
-// {
-//     $request->validate([
-//         'name' => 'required|string|max:255',
-//         'email' => 'required|email|unique:users,email',
-//         'password' => 'required|string|min:6|confirmed',
-//         'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-//         'phone' => 'nullable|string',
-//         'address' => 'nullable|string',
-//         'city' => 'nullable|string',
-//         'state' => 'nullable|string',
-//         'country' => 'nullable|string',
-//         'postal_code' => 'nullable|string',
-//     ], [
-//         'email.unique' => 'This email is already registered. Please use a different one.',
-//         // 'password.confirmed' => 'The password confirmation does not match.',
-//     ]);
-
-//     $user = new EUser();
-//     $user->name = $request->name;
-//     $user->email = $request->email;
-//     $user->password = Hash::make($request->password);
-//     $user->phone = $request->phone;
-//     $user->address = $request->address;
-//     $user->city = $request->city;
-//     $user->state = $request->state;
-//     $user->country = $request->country;
-//     $user->postal_code = $request->postal_code;
-
-//     if ($request->hasFile('profile_picture')) {
-//         $filename = time() . '.' . $request->profile_picture->extension();
-//         $request->profile_picture->move(public_path('uploads'), $filename);
-//         $user->profile_picture = 'uploads/' . $filename;
-//     }
-
-//     $user->save();
-
-//     return redirect()->route('admin.users.create')->with('success', 'User added successfully.');
-// }
-
-// public function store(Request $request)
-// {
-//     $request->validate([
-//         'name' => 'required',
-//         'email' => 'required|email|unique:users',
-//         'password' => 'required|min:6'
-//     ]);
-
-//     EUser::create([
-//         'name' => $request->name,
-//         'email' => $request->email,
-//         'password' => bcrypt($request->password),
-//     ]);
-
-//     return redirect()->route('admin.users')->with('success', 'User created.');
-// }
-
-public function edit($id)
-{
-    $user = EUser::findOrFail($id);
-    return view('admin.users.edit', compact('user'));
-}
-
-public function update(Request $request, $id)
-{
-    $user = EUser::findOrFail($id);
-
-    $user->update($request->only(['name', 'email']));
-
-    return redirect()->route('admin.users')->with('success', 'User updated.');
-}
+//editUserDetils
 
 public function destroy($id)
 {

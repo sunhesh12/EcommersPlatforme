@@ -69,7 +69,7 @@ Route::get('/dashboardd', function () {
 
 //usermanagement
 // Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
-
+//editUserDetils
 Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');

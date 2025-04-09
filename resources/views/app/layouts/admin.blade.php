@@ -12,9 +12,12 @@
     <aside class="sidebarAdmin">
         <h2>Admin</h2>
         <nav>
-            <a href="#">Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             <a href="{{ route('admin.users.index') }}">Users Management</a>
-            <a href="#">Orders</a>
+            <a href="{{ route('admin.users.index') }}">Brand Management</a>
+            <a href="{{ route('admin.users.index') }}">Product Management</a>
+            <a href="{{ route('admin.users.index') }}">Order Management</a>
+            <!-- <a href="#">Orders</a> -->
             <a href="#">Settings</a>
         </nav>
     </aside>
