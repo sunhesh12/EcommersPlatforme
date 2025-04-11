@@ -24,7 +24,13 @@
             <tr>
                 <td class="brand-td">{{ $brand->name }}</td>
                 <td class="brand-td">{{ $brand->slug }}</td>
-                <td class="brand-td"><img src="{{ $brand->logo }}"/></td>
+                <td class="brand-td">
+                    @if($brand->logo)
+                    <img src="{{ asset('storage/' . $brand->logo) }}" alt="{{ $brand->name }} Logo" width="80" height="40">
+                    @else
+                    No Logo
+                    @endif
+                </td>
                 <td class="brand-td">
                     <a href="{{ route('admin.brands.edit', $brand) }}" class="brand-action-edit">Edit</a>
                     <form method="POST" action="{{ route('admin.brands.destroy', $brand) }}" class="brand-form-inline" onsubmit="return confirm('Are you sure?');">

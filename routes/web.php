@@ -102,8 +102,8 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
     Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
     Route::put('/{id}', [BrandController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
-    Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
-    Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
+    // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
+    // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
 
 
