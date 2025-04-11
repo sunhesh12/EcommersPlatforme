@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController; 
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
 Route::get('/', function () {
@@ -53,8 +55,56 @@ Route::get('/my-profile', function () {
 
 Route::get('/dashboardd', function () {
     return view('admin/dashboard');
+})->name('admin.dashboard');
+
+// Route::get('/dashboardd/usermanagement', function () {
+//     return view('admin/usermanagement');
+// })->name('admin.dashboard.usermanagement');
+
+// Route::get('/dashboardd/usermanagement/create', function () {
+//     return view('admin/addUser');
+// })->name('admin.users.create');
+
+// Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+// Route::post('/admin/users/store', [UserController::class, 'store'])->name('admin.users.store');
+
+//usermanagement
+// Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
+//editUserDetils
+Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/create', [UserController::class, 'create'])->name('create');
+    Route::post('/', [UserController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [UserController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
+    Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
+    Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
 });
-// })->name('admin.dashboard');
+
+
+
+Route::get('/dashboardd/brandmanagement', function () {
+    return view('admin/brandDetils');
+})->name('admin.dashboard');
+//brandDetils
+
+//->middleware(['auth'])
+
+// Route::prefix('/dashboardd/brandmanagement')->group(function () {
+//     Route::resource('brands', BrandController::class);
+// });
+
+Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+    Route::get('/', [BrandController::class, 'index'])->name('index');
+    Route::get('/create', [BrandController::class, 'create'])->name('create');
+    Route::post('/', [BrandController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [BrandController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
+    // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
+    // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
+});
 
 
 // Route::get('/dashboard', function () {

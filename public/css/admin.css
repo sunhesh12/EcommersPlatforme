@@ -43,3 +43,97 @@ body {
     flex: 1;
     padding: 1.5rem;
 }
+
+
+/* ===========user management=========== */
+
+/* admin.css */
+
+/* Table Styles */
+table.admin-user-table {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+table.admin-user-table th,
+table.admin-user-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+table.admin-user-table thead {
+    background-color: #f3f4f6; /* Tailwind's gray-100 */
+    color: #374151; /* Tailwind's gray-700 */
+}
+
+table.admin-user-table tr {
+    border-bottom: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+}
+
+table.admin-user-table tr:hover {
+    background-color: #f9fafb; /* Tailwind's gray-50 */
+}
+
+/* Status colors */
+.status-active {
+    color: #16a34a; /* green-600 */
+    font-weight: 500;
+}
+
+.status-blocked {
+    color: #dc2626; /* red-600 */
+    font-weight: 500;
+}
+
+/* Action Links */
+.action-link {
+    margin-right: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.action-link.edit {
+    color: #2563eb; /* blue-600 */
+}
+
+.action-link.delete {
+    color: #dc2626; /* red-600 */
+}
+
+.action-link.block {
+    color: #ca8a04; /* yellow-600 */
+}
+
+.action-link.unblock {
+    color: #16a34a; /* green-600 */
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+/* Add button */
+.add-button {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: #fff;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.add-button:hover {
+    background-color: #1e40af;
+}
+
+
+/* 
+============user management end=========== */ 
