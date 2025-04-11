@@ -106,20 +106,30 @@ class BrandController extends Controller
         return redirect()->route('brands.index')->with('success', 'Brand updated successfully!');
     }
 
-    public function destroy(Brand $brand)
-    {
-        // Optionally delete logo file from storage
+    // public function destroy(Brand $brand)
+    // {
+    //     // Optionally delete logo file from storage
 
-        if ($brand->logo && Storage::disk('public')->exists($brand->logo)) {
-            Storage::disk('public')->delete($brand->logo);
-        } else {
-            Log::warning("Logo not found: " . $brand->logo);
-        }
+    //     if ($brand->logo && Storage::disk('public')->exists($brand->logo)) {
+    //         Storage::disk('public')->delete($brand->logo);
+    //     } else {
+    //         Log::warning("Logo not found: " . $brand->logo);
+    //     }
         
     
-        $brand->delete();
+    //     $brand->delete();
     
-        return redirect()->route('admin.brands.index')->with('success', 'Brand deleted successfully!');
-    }
+    //     return redirect()->route('admin.brands.index')->with('success', 'Brand deleted successfully!');
+    // }
+
+public function destroy(Brand $id)
+{
+
+    // $brand = Brand::findOrFail($id);
+    $id->delete();
+
+    return $this->index()->with('success', 'Brand deleted successfully!');
+}
+
     
 }
