@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\EUser;
 use Illuminate\Http\Request;
-use App\Models\EUserUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    private $urlForUserManagement = 'admin.usermanagement';
+    private $urlForUserManagement = 'admin.users.usermanagement';
 
     public function index()
     {
@@ -21,7 +20,7 @@ class UserController extends Controller
 
 public function create()
 {
-    return view('admin.addUser');
+    return view('admin.users.addUser');
 }
 
 
@@ -89,7 +88,7 @@ public function store(Request $request)
 public function edit($id)
 {
     $user = EUser::findOrFail($id);
-    return view('admin.editUserDetils', compact('user'));
+    return view('admin.users.editUserDetils', compact('user'));
 }
 
 
