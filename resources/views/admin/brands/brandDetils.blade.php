@@ -13,6 +13,7 @@
     <table class="brand-table">
         <thead>
             <tr>
+                <th class="brand-th">Brand ID</th>
                 <th class="brand-th">Name</th>
                 <th class="brand-th">Slug</th>
                 <th class="brand-th">logo</th>
@@ -22,6 +23,7 @@
         <tbody>
             @foreach($brands as $brand)
             <tr>
+                <td class="brand-td">{{ $brand->id }}</td>
                 <td class="brand-td">{{ $brand->name }}</td>
                 <td class="brand-td">{{ $brand->slug }}</td>
                 <td class="brand-td">
@@ -32,8 +34,13 @@
                     @endif
                 </td>
                 <td class="brand-td">
-                    <a href="{{ route('admin.brands.edit', $brand) }}" class="brand-action-edit">Edit</a>
-                    <form method="POST" action="{{ route('admin.brands.destroy', $brand) }}" class="brand-form-inline" onsubmit="return confirm('Are you sure?');">
+                    <!-- <form method="POST" action="{{ route('admin.brands.update', $brand->id) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="brand-action-edit">Edit</button> -->
+                        <a href="{{ route('admin.brands.edit', $brand->id) }}" class="brand-action-edit">Edit</a>
+                    <!-- </form> -->
+                    <form method="POST" action="{{ route('admin.brands.destroy', $brand->id) }}" class="brand-form-inline" onsubmit="return confirm('Are you sure?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="brand-action-delete">Delete</button>
