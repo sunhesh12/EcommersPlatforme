@@ -6,13 +6,13 @@
     <h2 class="brand-title">Edit Brand</h2>
 
     @if ($errors->any())
-        <div class="brand-error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="brand-error">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
     <form method="POST" action="{{ route('admin.brands.update', $brand->id) }}" class="brand-form" enctype="multipart/form-data">
@@ -32,9 +32,9 @@
         <div class="brand-form-group">
             <label class="brand-label">Current Logo</label><br>
             @if($brand->logo)
-                <img src="{{ asset('storage/' . $brand->logo) }}" class="brand-logo-preview" />
+            <img src="{{ asset('storage/' . $brand->logo) }}" class="brand-logo-preview" />
             @else
-                <p>No logo uploaded</p>
+            <p>No logo uploaded</p>
             @endif
         </div>
 
@@ -42,6 +42,22 @@
             <label for="logo" class="brand-label">Change Logo (optional)</label>
             <input type="file" id="logo" name="logo" class="brand-input-file" accept="image/*">
         </div>
+
+        <div class="brand-form-group">
+            <label class="brand-label">Current Wallpaper</label><br>
+            @if($brand->wallpaper)
+            <img src="{{ asset('storage/' . $brand->wallpaper) }}" class="brand-logo-preview" />
+            @else
+            <p>No wallpaper uploaded</p>
+            @endif
+        </div>
+
+
+        <div class="brand-form-group">
+            <label for="wallpaper" class="brand-label">Change Wallpaper (optional)</label>
+            <input type="file" id="wallpaper" name="wallpaper" class="brand-input-file" accept="image/*">
+        </div>
+
 
         <div class="brand-form-actions">
             <button type="submit" class="brand-button-update">Update Brand</button>

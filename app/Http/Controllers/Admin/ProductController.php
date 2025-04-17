@@ -13,6 +13,7 @@ class ProductController extends Controller
     {
         $products = Product::with('brand')->get();
         return view('admin.products.index', compact('products'));
+        // return view('components.cart', compact('products'));
     }
 
     public function create()

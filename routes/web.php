@@ -7,9 +7,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
-Route::get('/', function () {
-    return view('app/Home');
-});
+use App\Http\Controllers\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/home', function () {
     return view('app/Home');
@@ -118,6 +119,14 @@ Route::prefix('dashboardd/products')->name('admin.products.')->group(function ()
     Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
 });
+
+
+use App\Http\Controllers\CartController;
+
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+// Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+// Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 
 // Route::get('/dashboard', function () {

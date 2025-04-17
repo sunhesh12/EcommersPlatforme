@@ -1,13 +1,13 @@
-
-@foreach(range(1, 12) as $index)
 <div class="cartContainer">
     <div class="cartInsideContainer">
         <div class="CartStock">
             <p><img src="{{ asset('icon/greenTik.png') }}"> in stock</p>
         </div>
+
         <div class="cartImage">
-            <img src="{{ asset('images/msiLaptop.png') }}">
+            <img src="{{ asset('storage/' . $product->logo) }}" alt="{{ $product->product_name }}">
         </div>
+
         <div class="cartReview">
             <div class="review-panel">
                 <i class="fas fa-star"></i>
@@ -18,15 +18,22 @@
             </div>
             <p>Reviews (4)</p>
         </div>
+
         <div class="cartDescription">
-            <p><span>EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...</span></p>
-        </div>
-        <p><span><del>$499.00</del></span></p>
-        <h2>$400.00</h2>
-        <div class="cartButton">
-            <button><img src="{{ asset('icon/cart.png') }}"/>ADD TO CART</button>
+            <p><span>{{ $product->product_name }}</span></p>
+            <p><span>{{ $product->processor }}</span></p>
         </div>
 
+        <p><span><del>${{ $product->price + 99 }}</del></span></p>
+        <h2>${{ $product->price }}</h2>
+
+        <div class="cartButton">
+            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                @csrf
+                <button type="submit">
+                    <img src="{{ asset('icon/cart.png') }}" /> ADD TO CART
+                </button>
+            </form>
+        </div>
     </div>
 </div>
-@endforeach
