@@ -218,3 +218,234 @@
 }
 
 
+
+/* =============producut admin style================= */
+
+.product-admin-wrapper {
+    margin: 40px auto;
+    padding: 30px;
+    /* max-width: 1100px; */
+    background-color: #fdfdfd;
+    font-family: 'Arial', sans-serif;
+}
+
+.product-dashboard-card {
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-heading {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.product-success-alert {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+}
+
+.product-action-row {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.product-button-add {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.product-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-data-table th,
+.product-data-table td {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.product-thumbnail {
+    max-height: 50px;
+    border-radius: 4px;
+}
+
+.product-button-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.product-button-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-delete-form {
+    display: inline;
+}
+
+
+/* =====product edit======== */
+
+.product-edit-wrapper {
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 800px;
+    background-color: #f9fafb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.product-edit-card {
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product-edit-card h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.product-edit-card label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-edit-card input[type="text"],
+.product-edit-card input[type="file"],
+.product-edit-card input[type="number"],
+.product-edit-card select,
+.product-edit-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fefefe;
+}
+
+.product-edit-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.product-edit-card img {
+    margin-top: 10px;
+    max-height: 50px;
+    border-radius: 4px;
+}
+
+.product-edit-card .btn-primary {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.product-edit-card .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+    .product-edit-wrapper {
+        padding: 15px;
+    }
+    .product-edit-card {
+        padding: 20px;
+    }
+}
+
+
+/* ==============product add================= */
+.product-add-wrapper {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-add-card {
+    padding: 20px;
+}
+
+.product-add-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.product-add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-add-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.product-add-input,
+.product-add-select,
+.product-add-textarea,
+.product-add-file {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.product-add-button {
+    background-color: #1d72b8;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    align-self: center;
+    transition: background-color 0.3s ease;
+}
+
+.product-add-button:hover {
+    background-color: #155d8b;
+}
+
+
+
