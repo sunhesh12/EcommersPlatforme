@@ -15,7 +15,7 @@
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             <a href="{{ route('admin.users.index') }}">Users Management</a>
             <a href="{{ route('admin.brands.index') }}">Brand Management</a>
-            <a href="{{ route('admin.users.index') }}">Product Management</a>
+            <a href="{{ route('admin.products.index') }}">Product Management</a>
             <a href="{{ route('admin.users.index') }}">Order Management</a>
             <!-- <a href="#">Orders</a> -->
             <a href="#">Settings</a>

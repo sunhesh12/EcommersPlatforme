@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController; 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
 Route::get('/', function () {
@@ -104,6 +105,18 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
     Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
     // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
+});
+
+
+
+
+Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/create', [ProductController::class, 'create'])->name('create');
+    Route::post('/store', [ProductController::class, 'store'])->name('store');
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
+    Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
+    Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
 });
 
 
