@@ -29,8 +29,21 @@ class ProductController extends Controller
             'logo' => 'image|nullable',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
+            'old_price' => 'nullable|numeric',
             'quantity' => 'required|integer',
             'status' => 'boolean',
+
+            // New fields
+            'model' => 'required|string|max:255',
+            'processor' => 'required|string|max:255',
+            'graphics' => 'required|string|max:255',
+            'memory' => 'required|string|max:255',
+            'display' => 'required|string',
+            'storage' => 'required|string|max:255',
+            'io_ports' => 'required|string',
+            'os' => 'required|string|max:255',
+            'color' => 'required|string|max:255',
+            'warranty' => 'required|string|max:255',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -55,8 +68,21 @@ class ProductController extends Controller
             'logo' => 'image|nullable',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
+            'old_price' => 'nullable|numeric',
             'quantity' => 'required|integer',
             'status' => 'boolean',
+
+            // New fields
+            'model' => 'required|string|max:255',
+            'processor' => 'required|string|max:255',
+            'graphics' => 'required|string|max:255',
+            'memory' => 'required|string|max:255',
+            'display' => 'required|string',
+            'storage' => 'required|string|max:255',
+            'io_ports' => 'required|string',
+            'os' => 'required|string|max:255',
+            'color' => 'required|string|max:255',
+            'warranty' => 'required|string|max:255',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -73,4 +99,3 @@ class ProductController extends Controller
         return back()->with('success', 'Product deleted.');
     }
 }
-

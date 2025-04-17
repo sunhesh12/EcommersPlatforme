@@ -110,7 +110,7 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
 
 
 
-Route::prefix('admin/products')->name('admin.products.')->group(function () {
+Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');

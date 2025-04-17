@@ -20,6 +20,19 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('quantity')->default(0);
             $table->boolean('status')->default(1); // 1 = active, 0 = inactive
+
+            $table->string('model');
+            $table->string('processor');
+            $table->string('graphics');
+            $table->string('memory');
+            $table->text('display');
+            $table->string('storage');
+            $table->text('io_ports');
+            $table->string('os');
+            $table->string('color');
+            $table->string('warranty');
+            $table->decimal('old_price', 10, 2)->nullable();
+
             $table->timestamps();
         });
     }
