@@ -13,15 +13,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
-// Route::get('/home', function () {
-//     return view('app/Home');
-// })->name('home');
-
 // ======================register routes=========================
-// Route::get('/registerr', function () {
-//     return view('app/Register');
-// });
 
 Route::get('/registerr', [RegisterController::class, 'showRegisterForm'])->name('user.registerr');
 
@@ -37,10 +29,11 @@ Route::post('/loginn', function () {
     return view('app/login');
 }) ->name('loginn.post');
 
+
+
 Route::get('/aboutuss', function () {
     return view('app/Aboutus');
 })->name('user.aboutuss');
-
 
 Route::get('/faq', function () {
     return view('app/faq');
@@ -61,20 +54,7 @@ Route::get('/dashboardd', function () {
     return view('admin/dashboard');
 })->name('admin.dashboard');
 
-// Route::get('/dashboardd/usermanagement', function () {
-//     return view('admin/usermanagement');
-// })->name('admin.dashboard.usermanagement');
 
-// Route::get('/dashboardd/usermanagement/create', function () {
-//     return view('admin/addUser');
-// })->name('admin.users.create');
-
-// Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
-// Route::post('/admin/users/store', [UserController::class, 'store'])->name('admin.users.store');
-
-//usermanagement
-// Route::get('/dashboardd', [UserController::class, 'index'])->name('admin.users.index');
-//editUserDetils
 Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
@@ -92,12 +72,6 @@ Route::get('/dashboardd/brandmanagement', function () {
     return view('admin/brandDetils');
 })->name('admin.dashboard');
 //brandDetils
-
-//->middleware(['auth'])
-
-// Route::prefix('/dashboardd/brandmanagement')->group(function () {
-//     Route::resource('brands', BrandController::class);
-// });
 
 Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
