@@ -11,10 +11,12 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', function () {
-    return view('app/Home');
-})->name('home');
+
+// Route::get('/home', function () {
+//     return view('app/Home');
+// })->name('home');
 
 // ======================register routes=========================
 // Route::get('/registerr', function () {

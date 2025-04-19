@@ -49,67 +49,14 @@
             </div>
             @endforeach
 
-
-            <!-- <div class="homeBodyMiddleTop">
-                <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
-                </div>
-                <div class="HomeBodyMiddleTopRight">
-                    <div class="leftbutton"></div>
-                    <div class="cartComponentContainer">
-
-                        @foreach($products->where('brand_id', '1') as $product)
-                        @include('components.product-card', ['product' => $product])
-                        @endforeach
-
-                    </div>
-                    <div class="Rightbutton"></div>
-                </div>
-            </div> -->
-
-            <!-- <div class="homeBodyMiddleTop">
-                <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
-                </div>
-                <div class="HomeBodyMiddleTopRight">
-                    <div class="leftbutton"></div>
-                    <div class="cartComponentContainer">
-
-                        @foreach($products->where('brand_id', '2') as $product)
-                        @include('components.product-card', ['product' => $product])
-                        @endforeach
-
-                    </div>
-                    <div class="Rightbutton"></div>
-                </div>
-            </div> -->
-
-            <!-- <div class="homeBodyMiddleTop">
-                <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
-                </div>
-                <div class="HomeBodyMiddleTopRight">
-                    <div class="leftbutton"></div>
-                    <div class="cartComponentContainer">
-
-                        @foreach($products->where('brand_id', '3') as $product)
-                        @include('components.product-card', ['product' => $product])
-                        @endforeach
-
-                    </div>
-                    <div class="Rightbutton"></div>
-                </div>
-            </div> -->
         </div>
         <div class="homeBodyBottom">
             <div class="homeBodyBottomTop">
                 <hr />
                 <div class="homeBodyBottomTopContainer">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
+                @foreach($products->groupBy('brand_id')->take(5) as $brandId => $brandProducts)
+                    <img src="{{ asset('storage/' . strtolower($brandProducts->first()->brand->logo)) }}">
+                    @endforeach
                 </div>
                 <hr />
             </div>
