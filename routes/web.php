@@ -83,6 +83,9 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
     // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
+Route::get('/product/{id}', function ($id) {
+    return view('app.ProductDetails', ['id' => $id]);
+})->name('product.details');
 
 
 
