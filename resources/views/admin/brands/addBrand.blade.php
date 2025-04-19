@@ -6,13 +6,13 @@
     <h2 class="brand-title">Add New Brand</h2>
 
     @if ($errors->any())
-        <div class="brand-error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="brand-error">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
     <form method="POST" action="{{ route('admin.brands.store') }}" class="brand-form" enctype="multipart/form-data">
@@ -32,6 +32,12 @@
             <label for="logo" class="brand-label">Brand Logo</label>
             <input type="file" id="logo" name="logo" class="brand-input-file" accept="image/*">
         </div>
+
+        <div class="brand-form-group">
+            <label for="wallpaper" class="brand-label">Brand Wallpaper</label>
+            <input type="file" id="wallpaper" name="wallpaper" class="brand-input-file" accept="image/*">
+        </div>
+
 
         <div class="brand-form-actions">
             <button type="submit" class="brand-button-update">Create Brand</button>

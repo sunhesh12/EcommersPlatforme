@@ -13,7 +13,7 @@
 .cartInsideContainer{
     width: 95%;
     height: 98%;
-    padding-left: 30px;  
+    padding-left: 20px;  
     /* background-color: red; */
 }
 
@@ -32,11 +32,11 @@
     font-weight: bold;
 }
 
-.cartImage{
-    width: 250px;
-    aspect-ratio: 250px;
+/* .cartImage{
+    width: 100%;
+    aspect-ratio: 1;
     object-fit: cover;
-    /* background-color: red; */
+    background-color: red;
     display: flex;
     justify-content: center;
     align-items: top;
@@ -46,7 +46,24 @@
 .cartContainer img{
     width: 80%;
     height: auto;
+} */
+
+.cartImage {
+    width: 100%;
+    height: 200px; /* Fixed height */
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* changed from 'top' to center */
+    margin-top: -10px;
 }
+
+.cartContainer img {
+    width: 100%;  /* Fixed width */
+    height: 150px; /* Fixed height */
+    object-fit: contain; /* Keeps image inside the box without stretching */
+}
+
 
 .cartContainer p img{
     width: 15px;
@@ -125,6 +142,14 @@
     align-items: center;
 }
 
+.cartButton form{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
 .cartButton button{
     width: 60%;
     height: 40px;

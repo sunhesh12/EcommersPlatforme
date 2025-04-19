@@ -13,69 +13,50 @@
                 <div class="homeBodyTopBottomitemContainer">
                     <div class="leftbutton"></div>
                     <div class="cartComponentContainer">
-                        @foreach(range(1, 12) as $index)
-                        <x-cart></x-cart>
+
+                        <!-- <x-cart></x-cart> -->
+                        @foreach($products as $product)
+                        @include('components.product-card', ['product' => $product])
                         @endforeach
+
+                        <!-- <============f=del=ete============> -->
+
                     </div>
                     <div class="Rightbutton"></div>
                 </div>
             </div>
         </div>
         <div class="homeBodyMiddle">
-            <div class="homeBodyMiddleTop">
-                <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
-                </div>
-                <div class="HomeBodyMiddleTopRight">
-                    <div class="leftbutton"></div>
-                    <div class="cartComponentContainer">
-                        @foreach(range(1, 12) as $index)
-                        <x-cart></x-cart>
-                        @endforeach
-                    </div>
-                    <div class="Rightbutton"></div>
-                </div>
-            </div>
 
+            @foreach($products->groupBy('brand_id')->take(4) as $brandId => $brandProducts)
             <div class="homeBodyMiddleTop">
                 <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
+                    {{-- Example brand logo — adjust based on real brand --}}
+                    <img src="{{ asset('storage/' . strtolower($brandProducts->first()->brand->wallpaper)) }}" alt="{{ $brandProducts->first()->brand->name }}">
                 </div>
-                <div class="HomeBodyMiddleTopRight">
-                    <div class="leftbutton"></div>
-                    <div class="cartComponentContainer">
-                        @foreach(range(1, 12) as $index)
-                        <x-cart></x-cart>
-                        @endforeach
-                    </div>
-                    <div class="Rightbutton"></div>
-                </div>
-            </div>
 
-            <div class="homeBodyMiddleTop">
-                <div class="HomeBodyMiddleTopLeft">
-                    <img src={{ asset('images/msiLogo.jpg') }}>
-                </div>
                 <div class="HomeBodyMiddleTopRight">
                     <div class="leftbutton"></div>
                     <div class="cartComponentContainer">
-                        @foreach(range(1, 12) as $index)
-                        <x-cart></x-cart>
+
+                        @foreach($brandProducts->take(6) as $product) {{-- Show max 6 products per brand --}}
+                        @include('components.product-card', ['product' => $product])
                         @endforeach
+
                     </div>
                     <div class="Rightbutton"></div>
                 </div>
             </div>
+            @endforeach
+
         </div>
         <div class="homeBodyBottom">
             <div class="homeBodyBottomTop">
                 <hr />
                 <div class="homeBodyBottomTopContainer">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
-                    <img src="{{ asset('images/msiLogo.png') }}">
+                @foreach($products->groupBy('brand_id')->take(5) as $brandId => $brandProducts)
+                    <img src="{{ asset('storage/' . strtolower($brandProducts->first()->brand->logo)) }}">
+                    @endforeach
                 </div>
                 <hr />
             </div>
