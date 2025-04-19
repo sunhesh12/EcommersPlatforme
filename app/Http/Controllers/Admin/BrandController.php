@@ -27,24 +27,33 @@ class BrandController extends Controller
             'name' => 'required|unique:brands,name',
             'slug' => 'required|unique:brands,slug',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'wallpaper' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
-
+    
         $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->slug),
         ];
-
+    
         if ($request->hasFile('logo')) {
             $image = $request->file('logo');
-            $imageName = Str::slug($request->name) . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $imageName = Str::slug($request->name) . '_logo_' . time() . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('brands', $imageName, 'public');
             $data['logo'] = $imagePath;
         }
-
+    
+        if ($request->hasFile('wallpaper')) {
+            $image = $request->file('wallpaper');
+            $imageName = Str::slug($request->name) . '_wallpaper_' . time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('brands', $imageName, 'public');
+            $data['wallpaper'] = $imagePath;
+        }
+    
         Brand::create($data);
-
+    
         return $this->index()->with('success', 'Brand created successfully!');
     }
+    
 
     public function edit($id)
 {
@@ -59,6 +68,7 @@ public function update(Request $request, $id)
         'name' => 'required|string|max:255|unique:brands,name,' . $id,
         'slug' => 'nullable|string|max:255',
         'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'wallpaper' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
     ]);
 
     if ($validator->fails()) {
@@ -73,6 +83,12 @@ public function update(Request $request, $id)
         $filename = time() . '_' . Str::slug($request->name) . '.' . $request->logo->extension();
         $path = $request->logo->storeAs('brands', $filename, 'public');
         $brand->logo = $path;
+    }
+
+    if ($request->hasFile('wallpaper')) {
+        $filename = time() . '_' . Str::slug($request->name) . '_wallpaper.' . $request->wallpaper->extension();
+        $path = $request->wallpaper->storeAs('brands', $filename, 'public');
+        $brand->wallpaper = $path;
     }
 
     $brand->save();
