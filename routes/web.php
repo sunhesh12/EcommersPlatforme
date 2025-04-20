@@ -50,54 +50,98 @@ Route::get('/my-profile', function () {
 
 // =============admin===============
 
-Route::get('/dashboardd', function () {
-    return view('admin/dashboard');
-})->name('admin.dashboard');
+// Route::get('/dashboardd', function () {
+//     return view('admin/dashboard');
+// })->name('admin.dashboard');
 
 
-Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::get('/create', [UserController::class, 'create'])->name('create');
-    Route::post('/', [UserController::class, 'store'])->name('store');
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [UserController::class, 'update'])->name('update');
-    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
-    Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
-    Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
+// Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+//     Route::get('/', [UserController::class, 'index'])->name('index');
+//     Route::get('/create', [UserController::class, 'create'])->name('create');
+//     Route::post('/', [UserController::class, 'store'])->name('store');
+//     Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+//     Route::put('/{id}', [UserController::class, 'update'])->name('update');
+//     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
+//     Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
+//     Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
+// });
+
+
+
+// Route::get('/dashboardd/brandmanagement', function () {
+//     return view('admin/brandDetils');
+// })->name('admin.dashboard');
+// //brandDetils
+
+// Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+//     Route::get('/', [BrandController::class, 'index'])->name('index');
+//     Route::get('/create', [BrandController::class, 'create'])->name('create');
+//     Route::post('/', [BrandController::class, 'store'])->name('store');
+//     Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
+//     Route::put('/{id}', [BrandController::class, 'update'])->name('update');
+//     Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
+//     // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
+//     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
+// });
+// Route::get('/product/{id}', function ($id) {
+//     return view('app.ProductDetails', ['id' => $id]);
+// })->name('product.details');
+
+
+
+
+// Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
+//     Route::get('/', [ProductController::class, 'index'])->name('index');
+//     Route::get('/create', [ProductController::class, 'create'])->name('create');
+//     Route::post('/store', [ProductController::class, 'store'])->name('store');
+//     Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
+//     Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
+//     Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
+// });
+Route::middleware(['auth'])->group(function () {
+    
+    // Dashboard
+    Route::get('/dashboardd', function () {
+        return view('admin/dashboard');
+    })->name('admin.dashboard');
+
+    // User Management
+    Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/', [UserController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [UserController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
+        Route::post('/{id}/block', [UserController::class, 'block'])->name('block');
+        Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
+    });
+
+    // Brand Management
+    Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+        Route::get('/', [BrandController::class, 'index'])->name('index');
+        Route::get('/create', [BrandController::class, 'create'])->name('create');
+        Route::post('/', [BrandController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [BrandController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
+    });
+
+    // Product Management
+    Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('index');
+        Route::get('/create', [ProductController::class, 'create'])->name('create');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
+        Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
+        Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
+    });
+
 });
 
 
 
-Route::get('/dashboardd/brandmanagement', function () {
-    return view('admin/brandDetils');
-})->name('admin.dashboard');
-//brandDetils
-
-Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
-    Route::get('/', [BrandController::class, 'index'])->name('index');
-    Route::get('/create', [BrandController::class, 'create'])->name('create');
-    Route::post('/', [BrandController::class, 'store'])->name('store');
-    Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [BrandController::class, 'update'])->name('update');
-    Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
-    // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
-    // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
-});
-Route::get('/product/{id}', function ($id) {
-    return view('app.ProductDetails', ['id' => $id]);
-})->name('product.details');
-
-
-
-
-Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('index');
-    Route::get('/create', [ProductController::class, 'create'])->name('create');
-    Route::post('/store', [ProductController::class, 'store'])->name('store');
-    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
-    Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
-    Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
-});
+// ===============admin end here===================
 
 
 use App\Http\Controllers\CartController;
