@@ -21,4 +21,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/checkout1', function() {
+    return view('app/checkout1'); 
+});
+Route::get('/checkout2', function() {
+    return view('app/checkout2'); 
+});
+Route::get('/checkout3', function() {
+    return view('app/checkout3'); 
+});
+
 require __DIR__.'/auth.php';
