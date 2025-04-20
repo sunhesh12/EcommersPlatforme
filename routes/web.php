@@ -85,7 +85,9 @@ Route::prefix('/dashboardd/brandmanagement')->middleware('checkLogin')->name('ad
 });
 Route::get('/product/{id}', function ($id) {
     return view('app.ProductDetails', ['id' => $id]);
-})->middleware('checkLogin')->name('product.details');
+})
+// ->middleware('checkLogin')
+->name('product.details');
 
 
 

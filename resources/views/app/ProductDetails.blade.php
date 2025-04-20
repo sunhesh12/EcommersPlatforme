@@ -65,7 +65,8 @@
                 <div class="carousel-item active">
                     <img src="{{ asset('images/product1img1.jpg') }}" class="d-block w-100" alt="Product Image 1">
                 </div>
-                <div class="carousel-item">
+                <!-- temparary remove multiple images -->
+                <!-- <div class="carousel-item">
                     <img src="{{ asset('images/product1img3.webp') }}" class="d-block w-100" alt="Product Image 2">
                 </div>
                 <div class="carousel-item">
@@ -73,7 +74,7 @@
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('images/product1img4.webp') }}" class="d-block w-100" alt="Product Image 3">
-                </div>
+                </div> -->
             </div>
 
             <!-- Controls -->
