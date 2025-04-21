@@ -54,11 +54,11 @@
         <div class="productBody-right">
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators -->
-            <div class="carousel-indicators">
+            <!-- <div class="carousel-indicators">
                 <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+            </div> -->
 
             <!-- Carousel Items -->
             <div class="carousel-inner">
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="{{ asset('js/productQuantity.js') }}"></script>
 
     
