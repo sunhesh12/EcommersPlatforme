@@ -12,18 +12,23 @@
                   <a href="/">Home</a> > <span class="product">Laptops</span>
                 </nav>
                 </div>
-                <h1 class="productName">MSI Cyborg 15 Gaming A13UCX i5</h1>
+                <h1 class="productName">{{ $product->product_name }}</h1>
+                <a href="#" class="productBrand">{{$product->brand->name}}</a>
+                <!-- productsView -->
+
+                <!-- <h1 class="productName"></h1> -->
+                
 
                 <small><div class="pd_tag">Be the first to review this product</div></small>
 
                 <ul class="featurelist">
-                    <li> Intel Core i513420H Processor</li>
-                    <li>512GB NVMe PCIe SSD</li>
-                    <li>16GB DDR5 5200MHz RAM</li>
-                    <li>15.6″, FHD (1920×1080), 144Hz, IPS Display</li>
-                    <li>4GB NVIDIA GeForce RTX 2050 Graphics</li>
-                    <li> Single Backlit Keyboard </li>
-                    <li>Free Dos</li>
+                    <li>{{ $product->processor }}</li>
+                    <li>{{ $product->storage }}</li>
+                    <li>{{ $product->memory }}</li>
+                    <li>{{ $product->display }}</li>
+                    <li>{{ $product->graphics }}</li>
+                    <li>{{ $product->io_ports }}</li>
+                    <li>{{ $product->os }}</li>
                 </ul>
 
                 <br>
@@ -32,7 +37,7 @@
                 <small><strong>Have a Question?</strong> <a href="#">Contact us</a></small>
                 </span>
 
-                <div class="productPrice">$3,299.00</div>
+                <div class="productPrice">Rs.{{ $product->price }}</div>
 
                 <div class="cart-Container">
                     <div><button class="addCartbtn">Add to cart</button></div>
@@ -63,7 +68,7 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/product1img1.jpg') }}" class="d-block w-100" alt="Product Image 1">
+                    <img src="{{ asset('storage/'.$product->logo) }}" class="d-block w-100" alt="Product Image 1">
                 </div>
                 <!-- temparary remove multiple images -->
                 <!-- <div class="carousel-item">

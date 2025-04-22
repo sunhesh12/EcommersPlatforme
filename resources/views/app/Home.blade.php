@@ -16,7 +16,9 @@
 
                         <!-- <x-cart></x-cart> -->
                         @foreach($products as $product)
-                        @include('components.product-card', ['product' => $product])
+                        <a href="{{ route('product.details', $product->id) }}" class="brand-action-edit">
+                            @include('components.product-card', ['product' => $product])
+                        </a>
                         @endforeach
 
                         <!-- <============f=del=ete============> -->
@@ -54,7 +56,7 @@
             <div class="homeBodyBottomTop">
                 <hr />
                 <div class="homeBodyBottomTopContainer">
-                @foreach($products->groupBy('brand_id')->take(5) as $brandId => $brandProducts)
+                    @foreach($products->groupBy('brand_id')->take(5) as $brandId => $brandProducts)
                     <img src="{{ asset('storage/' . strtolower($brandProducts->first()->brand->logo)) }}">
                     @endforeach
                 </div>

@@ -83,16 +83,31 @@ Route::prefix('/dashboardd/brandmanagement')->middleware('checkLogin')->name('ad
     // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
+
+// Route::get('/product/{id}', function ($id) {
+//     return view('app.ProductDetails', ['id' => $id]);
+// })
+// // ->middleware('checkLogin')
+// ->name('product.details');
+
+use App\Models\Product;
+
 Route::get('/product/{id}', function ($id) {
-    return view('app.ProductDetails', ['id' => $id]);
-})
+    $product = Product::findOrFail($id); // fetch the product or return 404
+    return view('app.ProductDetails', ['product' => $product]);
+})->name('product.details');
+
+
+
+//need to make product view controller to product and complete the base code need to connet conly =routes
+
+
+
+
+Route::prefix('dashboardd/products')->name('admin.products.')
 // ->middleware('checkLogin')
-->name('product.details');
-
-
-
-
-Route::prefix('dashboardd/products')->name('admin.products.')->middleware('checkLogin')->group(function () {
+->group(function () 
+{
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');
