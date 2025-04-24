@@ -1,7 +1,14 @@
 <div class="cartContainer">
     <div class="cartInsideContainer">
         <div class="CartStock">
+            @if ($product->quantity > 0)
             <p><img src="{{ asset('icon/greenTik.png') }}"> in stock</p>
+            @else
+            <p style="color: red;">
+                <!-- <img src="{{ asset('icon/redX.png') }}">  -->
+                out of stock</p>
+            @endif
+            
         </div>
 
         <div class="cartImage">
@@ -34,6 +41,12 @@
                 <span>ADDED</span>
             </div>
         </button>
+            @elseif ($product->quantity <= 0)
+            <button class="add-to-cart-btn" disabled>
+                <div class="cartButton">
+                    <span>OUT OF STOCK</span>
+                </div>
+            </button>
             @else
             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                 @csrf
