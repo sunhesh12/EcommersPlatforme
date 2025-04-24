@@ -25,9 +25,14 @@ Route::get('/loginn', function () {
     return view('app/login');
 }) ->name('user.loginn');
 
-Route::post('/loginn', function () {
-    return view('app/login');
-}) ->name('loginn.post');
+// Route::post('/loginn', function () {
+//     return view('app/login');
+// }) ->name('loginn.post');
+use App\Http\Controllers\AuthController;
+
+Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
@@ -52,10 +57,12 @@ Route::get('/my-profile', function () {
 
 Route::get('/dashboardd', function () {
     return view('admin/dashboard');
-})->name('admin.dashboard');
+})->middleware('checkLogin')->name('admin.dashboard');
 
 
-Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+Route::prefix('/dashboardd/usermanagement')
+// ->middleware('checkLogin')
+->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
@@ -70,10 +77,10 @@ Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(functio
 
 Route::get('/dashboardd/brandmanagement', function () {
     return view('admin/brandDetils');
-})->name('admin.dashboard');
+})->middleware('checkLogin')->name('admin.dashboard');
 //brandDetils
 
-Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+Route::prefix('/dashboardd/brandmanagement')->middleware('checkLogin')->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');
@@ -84,10 +91,30 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
 
+// Route::get('/product/{id}', function ($id) {
+//     return view('app.ProductDetails', ['id' => $id]);
+// })
+// // ->middleware('checkLogin')
+// ->name('product.details');
+
+use App\Models\Product;
+
+Route::get('/product/{id}', function ($id) {
+    $product = Product::findOrFail($id); // fetch the product or return 404
+    return view('app.ProductDetails', ['product' => $product]);
+})->name('product.details');
 
 
 
-Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
+//need to make product view controller to product and complete the base code need to connet conly =routes
+
+
+
+
+Route::prefix('dashboardd/products')->name('admin.products.')
+// ->middleware('checkLogin')
+->group(function () 
+{
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');
@@ -100,7 +127,7 @@ Route::prefix('dashboardd/products')->name('admin.products.')->group(function ()
 use App\Http\Controllers\CartController;
 
 // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+// Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 // Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 // Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
@@ -119,6 +146,9 @@ Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 
 
+use App\Http\Controllers\AddtoCartControlle;
+
+Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add');
 
 
 

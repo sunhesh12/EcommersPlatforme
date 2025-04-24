@@ -12,6 +12,7 @@
             <h2>Registered Customers</h2>
             <p>If you have an account, sign in with your email address.</p>
             <form action="{{ route('loginn.post') }}" method="POST">
+                @csrf
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 

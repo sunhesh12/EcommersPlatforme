@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <!-- <<<<<<< HEAD -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 <!-- <<<<<<< HEAD -->
 <!-- ======= -->
     <!-- <link rel="stylesheet" href="{{ asset('css/register.css') }}"> -->
@@ -23,6 +24,13 @@
 <!-- ======= -->
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 <!-- >>>>>>> origin/aboutpagedevelopment -->
+
+    <link rel="stylesheet" href="{{ asset('css/productDetails.css') }}">
+
+    <!-- temmpary comment css file as homepage css is not working properly -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+   
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 
