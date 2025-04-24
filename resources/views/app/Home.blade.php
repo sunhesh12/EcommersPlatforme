@@ -46,7 +46,9 @@
                     <div class="cartComponentContainer">
 
                         @foreach($brandProducts->take(6) as $product) {{-- Show max 6 products per brand --}}
-                        @include('components.product-card', ['product' => $product])
+                        <a href="{{ route('product.details', $product->id) }}" class="brand-action-edit">
+                            @include('components.product-card', ['product' => $product,'isInCart' => in_array($product->id, $cartProductIds)])
+                        </a>
                         @endforeach
 
                     </div>
