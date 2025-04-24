@@ -28,13 +28,26 @@
         <h2>${{ $product->price }}</h2>
 
         <div class="cartButton">
+            @if ('isInCart')
+            <button class="add-to-cart-btn" disabled>
+            <div class="cartButton">
+                <span>ADDED</span>
+            </div>
+        </button>
+            @else
             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <button type="submit">
-                    <img src="{{ asset('icon/cart.png') }}" /> ADD TO CART
+                <button type="submit" class="add-to-cart-btn"
+                    data-product-id="{{ $product->id }}">
+                    <div class="cartButton">
+                        <!-- <img src="{{ asset('icon/cart.png') }}" alt="Cart Icon" /> -->
+                        <span>ADD TO CART</span>
+                    </div>
                 </button>
             </form>
+            @endif
         </div>
+        
     </div>
 </div>

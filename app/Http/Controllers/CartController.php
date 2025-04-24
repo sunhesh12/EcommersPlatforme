@@ -8,22 +8,41 @@ use App\Models\Product;
 class CartController extends Controller
 {
     // Show cart items
+    // public function index()
+    // {
+    //     $cart = session()->get('cart', []);
+    //     $products = [];
+
+    //     // Fetch full product details for each item
+    //     foreach ($cart as $id => $item) {
+    //         $product = Product::find($id);
+    //         if ($product) {
+    //             $product->cart_quantity = $item['quantity'];
+    //             $products[] = $product;
+    //         }
+    //     }
+
+    //     return view('app.Home', compact('products'));
+    // }
+
     public function index()
-    {
-        $cart = session()->get('cart', []);
-        $products = [];
+{
+    $cart = session()->get('cart', []);
+    $products = [];
 
-        // Fetch full product details for each item
-        foreach ($cart as $id => $item) {
-            $product = Product::find($id);
-            if ($product) {
-                $product->cart_quantity = $item['quantity'];
-                $products[] = $product;
-            }
+    foreach ($cart as $id => $item) {
+        $product = Product::find($id);
+        if ($product) {
+            $product->cart_quantity = $item['quantity'];
+            $products[] = $product;
         }
-
-        return view('app.Home', compact('products'));
     }
+
+    $cartProductIds = array_keys($cart); // ✅ Important line
+
+    return view('app.Home', compact('products', 'cartProductIds'));
+}
+
 
     // Add product to cart
     public function add(Request $request, $id)

@@ -17,9 +17,13 @@
                         <!-- <x-cart></x-cart> -->
                         @foreach($products as $product)
                         <a href="{{ route('product.details', $product->id) }}" class="brand-action-edit">
-                            @include('components.product-card', ['product' => $product])
+                            @include('components.product-card', ['product' => $product,'isInCart' => in_array($product->id, $cartProductIds)])
                         </a>
                         @endforeach
+
+
+
+
 
                         <!-- <============f=del=ete============> -->
 
@@ -80,4 +84,5 @@
         </div>
     </div>
 </div>
+
 @stop
