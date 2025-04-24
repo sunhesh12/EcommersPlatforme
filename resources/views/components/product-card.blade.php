@@ -30,6 +30,7 @@
         <div class="cartButton">
             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                 @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <button type="submit">
                     <img src="{{ asset('icon/cart.png') }}" /> ADD TO CART
                 </button>

@@ -25,9 +25,14 @@ Route::get('/loginn', function () {
     return view('app/login');
 }) ->name('user.loginn');
 
-Route::post('/loginn', function () {
-    return view('app/login');
-}) ->name('loginn.post');
+// Route::post('/loginn', function () {
+//     return view('app/login');
+// }) ->name('loginn.post');
+use App\Http\Controllers\AuthController;
+
+Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
@@ -55,7 +60,9 @@ Route::get('/dashboardd', function () {
 })->middleware('checkLogin')->name('admin.dashboard');
 
 
-Route::prefix('/dashboardd/usermanagement')->middleware('checkLogin')->name('admin.users.')->group(function () {
+Route::prefix('/dashboardd/usermanagement')
+// ->middleware('checkLogin')
+->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
@@ -120,7 +127,7 @@ Route::prefix('dashboardd/products')->name('admin.products.')
 use App\Http\Controllers\CartController;
 
 // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+// Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 // Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 // Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
@@ -139,6 +146,9 @@ Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 
 
+use App\Http\Controllers\AddtoCartControlle;
+
+Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add');
 
 
 
