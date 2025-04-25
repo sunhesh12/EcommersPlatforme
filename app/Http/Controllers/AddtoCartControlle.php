@@ -49,11 +49,13 @@ class AddtoCartControlle extends Controller
         'product_id' => $request->product_id,
         'quantity' => $request->quantity ?? 1,
     ]);
+    return redirect()->back()->with('success', 'Product added to cart!');
+    // return response()->json([
+    //     'success' => true,
+    //     'message' => 'Product added to cart!'
+    // ]);
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Product added to cart!'
-    ]);
+    
 }
 
     

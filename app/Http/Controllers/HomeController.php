@@ -18,8 +18,13 @@ class HomeController extends Controller
     $products = Product::latest()->take(12)->get(); // Fetch latest 12 products
 
     $userId = Auth::id();
-    $cartProductIds = AddToCart::where('user_id', $userId)->pluck('product_id')->toArray();
+    // $cartProductIds = AddToCart::where('user_id', $userId)->pluck('product_id')->toArray();
+    $cartProductIds = [];
 
+    if (Auth::check()) {
+        $cartProductIds = AddToCart::where('user_id', Auth::id())->pluck('product_id')->toArray();
+    }
+    
     return view('app.home', compact('products', 'cartProductIds'));
     // return view('app.home', compact('products'));
 }

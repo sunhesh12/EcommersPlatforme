@@ -35,7 +35,7 @@
         <h2>${{ $product->price }}</h2>
 
         <div class="cartButton">
-            @if ('isInCart')
+            @if ($isInCart)
             <button class="add-to-cart-btn" disabled>
             <div class="cartButton">
                 <span>ADDED</span>

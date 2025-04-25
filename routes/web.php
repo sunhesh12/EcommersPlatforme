@@ -80,7 +80,9 @@ Route::get('/dashboardd/brandmanagement', function () {
 })->middleware('checkLogin')->name('admin.dashboard');
 //brandDetils
 
-Route::prefix('/dashboardd/brandmanagement')->middleware('checkLogin')->name('admin.brands.')->group(function () {
+Route::prefix('/dashboardd/brandmanagement')
+// ->middleware('checkLogin')
+->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');

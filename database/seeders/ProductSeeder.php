@@ -105,7 +105,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'brand_id' => 6,
+            'brand_id' => 10,
             'product_name' => 'Apple MacBook Air M2',
             'price' => 250000,
             'old_price' => 265000,

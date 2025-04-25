@@ -10,14 +10,14 @@ class BrandSeeder extends Seeder
     public function run()
     {
         Brand::create([
-            'name' => 'ASUS',
-            'slug' => 'asus',
+            'name' => 'ASUS1',
+            'slug' => 'asus1',
             'logo' => 'brand_logos/asus.png', // make sure this image exists in storage/public/brand_logos
         ]);
 
         Brand::create([
-            'name' => 'HP',
-            'slug' => 'hp',
+            'name' => 'HP1',
+            'slug' => 'hp1',
             'logo' => 'brand_logos/hp.png', // make sure this image exists in storage/public/brand_logos
         ]);
 
