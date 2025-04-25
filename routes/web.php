@@ -23,7 +23,7 @@ Route::post('/registerr', [RegisterController::class, 'register'])->name('regist
 
 Route::get('/loginn', function () {
     return view('app/login');
-});
+}) ->name('user.loginn');
 
 // Route::post('/loginn', function () {
 //     return view('app/login');
@@ -73,6 +73,14 @@ Route::prefix('/dashboardd/usermanagement')
     Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
 });
 
+
+Route::get('/contactUs', function () {
+    return view('app/contactUs');
+})->name('user.contactUs');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::get('/dashboardd/brandmanagement', function () {
