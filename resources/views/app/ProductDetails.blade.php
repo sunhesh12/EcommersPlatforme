@@ -72,6 +72,16 @@
                 </div>
             </div>
 
+            <!-- <div class="quantity-container"> -->
+            @if ('isInCart')
+            <!-- <div class="quantity-container"> -->
+            <!-- <div><input type="text" id="quantity" value="1" class="quantity-input" readonly disabled></div>
+                <div>
+                    <button id="increaseQty" class="quantity-btn" disabled> ▲</button>
+                    <button id="decreaseQty" class="quantity-btn" disabled> ▼ </button>
+                </div> -->
+            <!-- </div> -->
+            @else
             <div class="quantity-container">
                 <div><input type="text" id="quantity" value="1" class="quantity-input" readonly></div>
                 <div>
@@ -79,6 +89,8 @@
                     <button id="decreaseQty" class="quantity-btn"> ▼ </button>
                 </div>
             </div>
+            @endif
+            <!-- </div> -->
 
         </div>
 
