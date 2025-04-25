@@ -23,7 +23,7 @@ Route::post('/registerr', [RegisterController::class, 'register'])->name('regist
 
 Route::get('/loginn', function () {
     return view('app/login');
-}) ->name('user.loginn');
+});
 
 // Route::post('/loginn', function () {
 //     return view('app/login');
