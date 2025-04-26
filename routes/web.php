@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController; 
+
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
@@ -29,6 +31,7 @@ Route::get('/loginn', function () {
 //     return view('app/login');
 // }) ->name('loginn.post');
 use App\Http\Controllers\AuthController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
 
@@ -48,9 +51,7 @@ Route::get('/cart', function () {
     return view('app/ShoppingCart');
 })->name('user.cart');
 
-Route::get('/my-profile', function () {
-    return view('app/MyProfile');
-})->name('user.my-profile');
+Route::get('/my-profile', [UserProfileController::class, 'Profile'] )->name('user.my-profile');
 
 
 // =============admin===============

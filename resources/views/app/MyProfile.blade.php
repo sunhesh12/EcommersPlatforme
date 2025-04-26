@@ -11,7 +11,7 @@
                     Home &gt; <span class="text-black">My Dashboard</span>
                 </div>
                 <h1>My Profile</h1>
-                <img src="{{ asset('images/profile.jpg') }}" alt="Profile Picture" class="profile-img">
+                <img src="{{ asset($user->profile_picture) }}" alt="Profile Picture" class="profile-img" width="150" height="150">
             </div>
             
             <!-- Account Information Section -->
@@ -19,8 +19,8 @@
                 <div class="account-info">
                     <h2>Account Information</h2>
                     <p class="contact-label">Contact Information</p>
-                    <p class="contact-name">Alex Driver</p>
-                    <p class="contact-email">ExampleAdress@gmail.com</p>
+                    <p class="contact-name">{{ $user->name }}</p>
+                    <p class="contact-email">{{ $user->email }}</p>
                     <div class="profile-actions">
                         <a href="#">Edit</a> |
                         <a href="#">Change Password</a>

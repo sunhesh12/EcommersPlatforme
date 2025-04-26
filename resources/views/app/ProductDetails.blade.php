@@ -13,7 +13,10 @@
             </nav>
         </div>
         <h1 class="productName">{{ $product->product_name }}</h1>
-        <a href="#" class="productBrand">{{$product->brand->name}}</a>
+        <a href="https://www.google.com/search?q={{ urlencode($product->brand->name) }}" target="_blank" class="productBrand">
+    {{ $product->brand->name }}
+</a>
+        <!-- <a href="www.{{$product->brand->name}}" class="productBrand">{{$product->brand->name}}</a> -->
         <!-- productsView -->
 
         <!-- <h1 class="productName"></h1> -->
@@ -36,7 +39,7 @@
         <br>
 
         <span>
-            <small><strong>Have a Question?</strong> <a href="#">Contact us</a></small>
+            <small><strong>Have a Question?</strong> <a href="{{ route('user.contactUs') }}">Contact us</a></small>
         </span>
 
         <div class="productPrice">Rs.{{ $product->price }}</div>

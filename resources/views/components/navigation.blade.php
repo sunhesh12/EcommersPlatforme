@@ -12,7 +12,7 @@
         <ul>
             <li><a href="{{ route('home') }}">home</a></li>
             <li><a href="#">Laptop Parts</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="{{ route('user.contactUs') }}">Contact Us</a></li>
             <li><a href="{{ route('user.aboutuss') }}">About Us</a></li>
             <li><a href="#">Repairs</a></li>
             <li><a href="{{ route('user.faq') }}">faq</a></li>

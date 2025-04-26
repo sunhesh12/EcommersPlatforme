@@ -120,11 +120,11 @@ public function update(Request $request, $id)
     }
 
     // Manually check for duplicate email
-    if (EUser::where('email', $request->email)->exists()) {
-        return redirect()->back()
-            ->withErrors(['email' => 'This email is already registered. Please use another.'])
-            ->withInput();
-    }
+    // if (EUser::where('email', $request->email)->exists()) {
+    //     return redirect()->back()
+    //         ->withErrors(['email' => 'This email is already registered. Please use another.'])
+    //         ->withInput();
+    // }
 
     $user = EUser::findOrFail($id);
     $user->name = $request->name;
