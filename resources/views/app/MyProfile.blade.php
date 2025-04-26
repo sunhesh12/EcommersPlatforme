@@ -22,7 +22,7 @@
                     <p class="contact-name">{{ $user->name }}</p>
                     <p class="contact-email">{{ $user->email }}</p>
                     <div class="profile-actions">
-                        <a href="#">Edit</a> |
+                        <a href="{{ route('user.my-profile.edit', $user->id) }}">Edit</a> |
                         <a href="#">Change Password</a>
                     </div>
                 </div>
