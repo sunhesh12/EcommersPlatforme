@@ -12,29 +12,31 @@
             <h2>Registered Customers</h2>
             <p>If you have an account, sign in with your email address.</p>
             <form action="{{ route('loginn.post') }}" method="POST">
-                @csrf
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    @csrf
+    <input type="hidden" name="from" value="{{ request('from', 'home') }}">
+    <input type="hidden" name="product_id" value="{{ request('product_id') }}">
 
-                <label for="password">Password *</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-                <div class="options">
-                    <input type="checkbox" id="staySignedIn" name="remember">
-                    <label for="staySignedIn">Stay signed in</label>
-                    <a href="#" >Forgot Your Password?</a>
-                    
-                   
-                </div>
+    <label for="password">Password *</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-                <button type="submit" class="btn">Sign In</button>
+    <div class="options">
+        <input type="checkbox" id="staySignedIn" name="remember">
+        <label for="staySignedIn">Stay signed in</label>
+        <a href="#">Forgot Your Password?</a>
+    </div>
 
-                <div class="separator">OR</div>
+    <button type="submit" class="btn">Sign In</button>
 
-                <button type="button" class="btn google">
-                <img src={{ asset('images/google.png') }}> Login with Google
-                </button>
-            </form>
+    <div class="separator">OR</div>
+
+    <button type="button" class="btn google">
+        <img src="{{ asset('images/google.png') }}"> Login with Google
+    </button>
+</form>
+
         </div>
 
         <!-- Signup Section -->

@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController; 
+
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
 
@@ -21,15 +23,16 @@ Route::post('/registerr', [RegisterController::class, 'register'])->name('regist
 
 // ============================rigster route end ======================
 
-Route::get('/loginn', function () {
-    return view('app/login');
-}) ->name('user.loginn');
+// Route::get('/loginn', function () {
+//     return view('app/login');
+// }) ->name('user.loginn');
 
 // Route::post('/loginn', function () {
 //     return view('app/login');
 // }) ->name('loginn.post');
 use App\Http\Controllers\AuthController;
-
+use Symfony\Component\HttpKernel\Profiler\Profile;
+Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
 Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -48,9 +51,10 @@ Route::get('/cart', function () {
     return view('app/ShoppingCart');
 })->name('user.cart');
 
-Route::get('/my-profile', function () {
-    return view('app/MyProfile');
-})->name('user.my-profile');
+Route::get('/my-profile', [UserProfileController::class, 'Profile'] )->name('user.my-profile');
+Route::get('/my-profile/{id}/edit', [UserProfileController::class, 'edit'] )->name('user.my-profile.edit');
+Route::put('/my-profile/{id}', [UserProfileController::class, 'update'] )->name('user.my-profile.update');
+Route::post('/update-profile-picture', [UserProfileController::class, 'updateProfilePicture'])->name('user.update-profile-picture');
 
 
 // =============admin===============
@@ -74,13 +78,23 @@ Route::prefix('/dashboardd/usermanagement')
 });
 
 
+Route::get('/contactUs', function () {
+    return view('app/contactUs');
+})->name('user.contactUs');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::get('/dashboardd/brandmanagement', function () {
     return view('admin/brandDetils');
 })->middleware('checkLogin')->name('admin.dashboard');
 //brandDetils
 
-Route::prefix('/dashboardd/brandmanagement')->middleware('checkLogin')->name('admin.brands.')->group(function () {
+Route::prefix('/dashboardd/brandmanagement')
+// ->middleware('checkLogin')
+->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');

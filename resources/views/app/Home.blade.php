@@ -17,7 +17,7 @@
                         <!-- <x-cart></x-cart> -->
                         @foreach($products as $product)
                         <a href="{{ route('product.details', $product->id) }}" class="brand-action-edit">
-                            @include('components.product-card', ['product' => $product])
+                            @include('components.product-card', ['product' => $product,'isInCart' => in_array($product->id, $cartProductIds)])
                         </a>
                         @endforeach
 
@@ -42,7 +42,9 @@
                     <div class="cartComponentContainer">
 
                         @foreach($brandProducts->take(6) as $product) {{-- Show max 6 products per brand --}}
-                        @include('components.product-card', ['product' => $product])
+                        <a href="{{ route('product.details', $product->id) }}" class="brand-action-edit">
+                            @include('components.product-card', ['product' => $product,'isInCart' => in_array($product->id, $cartProductIds)])
+                        </a>
                         @endforeach
 
                     </div>
@@ -67,6 +69,14 @@
                 <div class="homeBodyBottomMiddleTop">
                     <div class="homeBodyBottomMiddleTopLeft">
                         <img src="{{ asset('icon/quationMark.png') }}">
+                        <div>
+                        <h1>My first order arrived today in perfect condition. From the time I sent a question about the
+                            item to making the purchase, to the shipping and now the delivery, your company, Tecs, has
+                            stayed in touch. Such great service. I look forward to shopping on your site in the future and
+                            would highly recommend it.</h1>
+                        <br>
+                        <br>
+                        </div>
                     </div>
                     <div class="homeBodyBottomMiddleTopRight"></div>
                 </div>
@@ -80,4 +90,5 @@
         </div>
     </div>
 </div>
+
 @stop
