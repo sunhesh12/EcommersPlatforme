@@ -54,6 +54,7 @@ Route::get('/cart', function () {
 Route::get('/my-profile', [UserProfileController::class, 'Profile'] )->name('user.my-profile');
 Route::get('/my-profile/{id}/edit', [UserProfileController::class, 'edit'] )->name('user.my-profile.edit');
 Route::put('/my-profile/{id}', [UserProfileController::class, 'update'] )->name('user.my-profile.update');
+Route::post('/update-profile-picture', [UserProfileController::class, 'updateProfilePicture'])->name('user.update-profile-picture');
 
 
 // =============admin===============
