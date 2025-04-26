@@ -55,7 +55,7 @@
 
         <!-- My Orders Button -->
         <div class="orders-container">
-            <a href="#" class="orders-btn">My Orders</a>
+            <a href="{{ route('user.cart') }}" class="orders-btn">My Orders</a>
         </div>
     </div>
 </div>

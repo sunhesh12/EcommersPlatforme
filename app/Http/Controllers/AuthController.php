@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+    public function index()
+    {
+        return view('app.login');
+    }
     public function login(Request $request)
     {
         $request->validate([
@@ -25,17 +30,25 @@ class AuthController extends Controller
     
         // Login user manually
         Auth::login($user);
-
+    
+        // Store user_id in session
+        session(['user_id' => $user->id]);
+    
+        // Conditional redirection
         if ($request->from === 'home') {
             return redirect()->route('home');
+        } elseif ($request->from === 'addtocart') {
+            return redirect()->route('home', ['id' => $request->product_id]);
+        } elseif ($request->from === '/') {
+            return redirect()->route('cart');
         } elseif ($request->from === 'profile') {
             return redirect()->route('user.my-profile');
         }
-        
     
-        // Redirect after login
-        // return redirect()->route('user.my-profile')->with('success', 'Login successful!');
+        // Default redirect
+        return redirect()->route('home')->with('success', 'Login successful!');
     }
+    
 
     public function logout()
     {

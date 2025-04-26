@@ -1,5 +1,71 @@
 @extends('app.layouts.main')
+<style>
+    .admin-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.admin-form-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.admin-form-group {
+    margin-bottom: 15px;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.admin-input-file {
+    background-color: #f9f9f9;
+}
+
+.admin-submit-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.admin-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.admin-alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.admin-alert-danger {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.admin-alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+</style>
 @section('content')
 <div class="admin-form-container">
     <h2 class="admin-form-title">Edit User</h2>

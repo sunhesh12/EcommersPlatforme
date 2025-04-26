@@ -23,16 +23,16 @@ Route::post('/registerr', [RegisterController::class, 'register'])->name('regist
 
 // ============================rigster route end ======================
 
-Route::get('/loginn', function () {
-    return view('app/login');
-}) ->name('user.loginn');
+// Route::get('/loginn', function () {
+//     return view('app/login');
+// }) ->name('user.loginn');
 
 // Route::post('/loginn', function () {
 //     return view('app/login');
 // }) ->name('loginn.post');
 use App\Http\Controllers\AuthController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
-
+Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
 Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
