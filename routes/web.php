@@ -22,8 +22,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/checkout1', function() {
-    return view('app/checkout1'); 
-});
+    return view('app/checkout1');
+})->name('checkout.process');
+    
 Route::get('/checkout2', function() {
     return view('app/checkout2'); 
 });
