@@ -30,6 +30,7 @@ body {
     width: 100vw;
     height: 120px;
     background-color: var(--white);
+    position: fixed;
 }
 .navigationsTop {
     width: 100vw;
@@ -40,7 +41,7 @@ body {
     justify-content: space-around;
 }
 
-.navigationsTop span {
+.navigationsTop span a{
     font-weight: bolder;
     color: var(--white);
 }
@@ -62,7 +63,8 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content:flex-start;
+    gap: 50px;
     align-items: center;
 }
 .navigationsBottom ul li {
@@ -79,6 +81,52 @@ body {
     text-decoration: none;
     color: var(--black);
 }
+
+
+/* ================navigation route css================ */
+
+.navigationsBottom{
+    /* width: 100%; */
+    /* height: max-content; */
+    display: flex;
+    /* justify-content: center; */
+    /* background-color: red; */
+    /* margin-bottom: 50px; */
+}
+
+.NavigationBar-logo{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    margin-top: 0;
+
+    justify-content: right;
+    align-items: center;
+    /* background-color: blueviolet; */
+}
+
+.NavigationBar-mainRoute-right{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    /* background-color: rgb(90, 69, 110); */
+}
+
+.NavigationBar-SecondryRoute-left{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    /* background-color: rgb(43, 198, 226); */
+}
+
+
+
+/* ================navigation route css================ */
 
 
 .footerContainer {
