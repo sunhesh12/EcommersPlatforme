@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController; 
-
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
@@ -47,9 +47,21 @@ Route::get('/faq', function () {
     return view('app/faq');
 })->name('user.faq');
 
-Route::get('/cart', function () {
-    return view('app/ShoppingCart');
-})->name('user.cart');
+// Route::get('/cart', function () {
+//     return view('app/ShoppingCart');
+// })->name('user.cart');
+
+
+
+Route::middleware('web')->group(function () {
+    Route::get('/cart', [ShoppingCartController::class, 'index'])->name('user.cart');
+    Route::post('/cart/update', [ShoppingCartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/remove', [ShoppingCartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/clear', [ShoppingCartController::class, 'clearCart'])->name('cart.clearAll');
+
+});
+
+
 
 Route::get('/my-profile', [UserProfileController::class, 'Profile'] )->name('user.my-profile');
 Route::get('/my-profile/{id}/edit', [UserProfileController::class, 'edit'] )->name('user.my-profile.edit');

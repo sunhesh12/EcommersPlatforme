@@ -5,11 +5,11 @@
 
 <div class="container">
     <div class="bodyTop">
-      <nav class="breadcrumb">
-          <a href="/">Home</a> > Login
-      </nav>
+        <nav class="breadcrumb">
+            <a href="/">Home</a> > Login
+        </nav>
 
-      <h1>Shopping Cart</h1>
+        <h1>Shopping Cart</h1>
     </div>
 
     <div class="cart-container">
@@ -25,81 +25,74 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($cartItems as $item)
                     <tr class="cart-item">
                         <td class="item-col">
                             <div class="item-wrapper">
                                 <div class="item-image">
-                                    <img src="{{ asset('images/msiLaptop.png') }}" alt="MSI MEG Trident X">
+                                    @if($item->product && $item->product->logo)
+                                    <img src="{{ asset('storage/' . $item->product->logo) }}" alt="{{ $item->product->product_name }}">
+                                    @else
+                                    <p>No Image Available</p>
+                                    @endif
                                 </div>
                                 <div class="item-details">
-                                    <p>MSI MEG Trident X 10SD-1012AU Intel i7 10700K, 2070 SUPER, 32GB RAM, 1TB SSD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty</p>
+                                    @if($item->product)
+                                    <p>{{ $item->product->product_name }}</p>
+                                    @else
+                                    <p>Product not found</p>
+                                    @endif
                                 </div>
                             </div>
                         </td>
-                        <td class="price-col">$4,349.00</td>
+                        <td class="price-col">Rs.{{ number_format($item->product->price, 2) }}</td>
                         <td class="qty-col">
-                        <div class="quantity-container">
-                            <input type="text" class="quantity-input" value="1" readonly>
-                            <div class="quantity-buttons">
-                                <button class="qty-btn increase">▲</button>
-                                <button class="qty-btn decrease">▼</button>
-                            </div>
-                        </div>
-
+                            <form action="{{ route('cart.update') }}" method="POST" class="quantity-form">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <div class="quantity-container">
+                                    <input type="text" name="quantity" class="quantity-input" value="{{ $item->quantity }}" readonly>
+                                    <div class="quantity-buttons">
+                                        <button type="submit" class="qty-btn save-btn" style="display:none;">💾</button>
+                                    </div>
+                                </div>
+                            </form>
                         </td>
-                        <td class="subtotal-col">$13,047.00</td>
+                        <td class="subtotal-col">
+                            Rs{{ number_format($item->product->price * $item->quantity, 2) }}
+                        </td>
                         <td class="actions-col">
                             <div class="action-buttons">
-                                <button class="action-btn remove-btn">
-                                    &#10006; <!-- Cross Icon -->
-                                </button>
-                                <button class="action-btn edit-btn">
-                                    ✎ <!-- Pencil Icon -->
-                                </button>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr class="cart-item">
-                        <td class="item-col">
-                            <div class="item-wrapper">
-                                <div class="item-image">
-                                    <img src="{{ asset('images/msiLaptop.png') }}" alt="MSI MEG Trident X">
-                                </div>
-                                <div class="item-details">
-                                    <p>MSI MEG Trident X 10SD-1012AU Intel i7 10700K, 2070 SUPER, 32GB RAM, 1TB SSD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="price-col">$4,349.00</td>
-                        <td class="qty-col">
-                        <div class="quantity-container">
-                            <input type="text" class="quantity-input" value="1" readonly>
-                            <div class="quantity-buttons">
-                                <button class="qty-btn increase">▲</button>
-                                <button class="qty-btn decrease">▼</button>
-                            </div>
-                        </div>
-                        </td>
-                        <td class="subtotal-col">$13,047.00</td>
-                        <td class="actions-col">
-                            <div class="action-buttons">
-                                <button class="action-btn remove-btn">
-                                    &#10006; <!-- Cross Icon -->
-                                </button>
-                                <button class="action-btn edit-btn">
-                                    ✎ <!-- Pencil Icon -->
-                                </button>
+                                <form action="{{ route('cart.remove') }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <button class="action-btn remove-btn" type="submit">&#10006;</button>
+                                </form>
+                                <button class="action-btn edit-btn" type="button">✎</button>
                             </div>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
+
             </table>
 
             <div class="cart-buttons">
+                @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+
                 <div class="action-buttons">
-                    <button class="btn continue-btn">Continue Shopping</button>
-                    <button class="btn clear-btn">Clear Shopping Cart</button>
+                <a href="{{ url('/') }}" class="btn continue-btn" style="text-decoration: none;">Continue Shopping</a>
+
+                    <form action="{{ route('cart.clearAll') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn clear-btn">Clear Shopping Cart</button>
+                        </form>
                 </div>
                 <button class="btn update-btn">Update Shopping Cart</button>
             </div>
@@ -107,12 +100,12 @@
 
         <div class="summary-section">
             <h2>Summary</h2>
-            
+
             <div class="discount-box">
                 <div class="discount-header">
                     <h3>Apply Discount Code</h3>
                 </div>
-                
+
                 <div class="discount-form">
                     <label>Enter discount code</label>
                     <input type="text" placeholder="Enter Discount code">
@@ -125,21 +118,21 @@
                     <span>Subtotal</span>
                     <span class="amount">$13,047.00</span>
                 </div>
-                
+
                 <div class="total-row">
                     <span>Shipping</span>
                     <span class="amount">$21.00</span>
                 </div>
-                
+
                 <div class="shipping-info">
                     <p>Standard rate - Price may vary depending on the item/destination. T&CS staff will contact you.</p>
                 </div>
-                
+
                 <div class="total-row">
                     <span>Tax</span>
                     <span class="amount">$1.91</span>
                 </div>
-                
+
                 <div class="total-row grand-total">
                     <span>Order Total</span>
                     <span class="amount">$13,068.00</span>
