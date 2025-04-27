@@ -96,13 +96,19 @@
 
             <div class="homeBodyBottomBottom">
                 <div class="homeBodyBottomBottom1">
-
+                    <img src="{{ asset('icon/mic.png') }}">
+                    <h2>Product Support</h2>
+                    <p>Up to 3 years on-site warranty available for your peace of mind.</p>
                 </div>
                 <div class="homeBodyBottomBottom1">
-
+                    <img src="{{ asset('icon/person.png') }}">
+                    <h2>Personal Account</h2>
+                    <p>With big discounts, free delivery and a dedicated support specialist.</p>
                 </div>
                 <div class="homeBodyBottomBottom1">
-
+                    <img src="{{ asset('icon/label.png') }}">
+                    <h2>Amazing Savings</h2>
+                    <p>Up to 70% off new Products, you can be sure of the best price.</p>
                 </div>
             </div>
         </div>
