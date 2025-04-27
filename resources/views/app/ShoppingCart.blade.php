@@ -87,12 +87,12 @@
                 @endif
 
                 <div class="action-buttons">
-                <a href="{{ url('/') }}" class="btn continue-btn" style="text-decoration: none;">Continue Shopping</a>
+                    <a href="{{ url('/') }}" class="btn continue-btn" style="text-decoration: none;">Continue Shopping</a>
 
                     <form action="{{ route('cart.clearAll') }}" method="POST" style="display:inline;">
                         @csrf
                         <button type="submit" class="btn clear-btn">Clear Shopping Cart</button>
-                        </form>
+                    </form>
                 </div>
                 <button class="btn update-btn">Update Shopping Cart</button>
             </div>
@@ -116,12 +116,24 @@
             <div class="totals-box">
                 <div class="total-row">
                     <span>Subtotal</span>
-                    <span class="amount">$13,047.00</span>
+
+                    @php
+                    $sum = 0;
+                    @endphp
+
+                    @foreach ($cartItems as $item)
+                    @php
+                    $sum += $item->product->price * $item->quantity;
+                    @endphp
+                    @endforeach
+
+                    <span class="amount">RS.{{ number_format($sum, 2) }}</span>
                 </div>
+
 
                 <div class="total-row">
                     <span>Shipping</span>
-                    <span class="amount">$21.00</span>
+                    <span class="amount">Rs.{{ number_format($sum/85 , 2) }} </span>
                 </div>
 
                 <div class="shipping-info">
@@ -130,12 +142,12 @@
 
                 <div class="total-row">
                     <span>Tax</span>
-                    <span class="amount">$1.91</span>
+                    <span class="amount">Rs.{{ number_format($sum/10 , 2) }}</span>
                 </div>
 
                 <div class="total-row grand-total">
                     <span>Order Total</span>
-                    <span class="amount">$13,068.00</span>
+                    <span class="amount">Rs.{{ number_format($sum/85 + $sum/10 + $sum, 2) }} </span>
                 </div>
             </div>
 
