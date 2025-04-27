@@ -8,8 +8,11 @@ use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
-
+use App\Http\Controllers\AuthController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AddtoCartControlle;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -30,12 +33,11 @@ Route::post('/registerr', [RegisterController::class, 'register'])->name('regist
 // Route::post('/loginn', function () {
 //     return view('app/login');
 // }) ->name('loginn.post');
-use App\Http\Controllers\AuthController;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+
 Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
 Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logoutt', [AuthController::class, 'logout'])->name('logoutt');
 
 
 
@@ -150,7 +152,7 @@ Route::prefix('dashboardd/products')->name('admin.products.')
 });
 
 
-use App\Http\Controllers\CartController;
+// use App\Http\Controllers\CartController;
 
 // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 // Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
@@ -172,7 +174,6 @@ use App\Http\Controllers\CartController;
 
 
 
-use App\Http\Controllers\AddtoCartControlle;
 
 Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add');
 
