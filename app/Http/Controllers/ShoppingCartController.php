@@ -42,4 +42,17 @@ class ShoppingCartController extends Controller
 
         return redirect()->route('user.cart')->with('success', 'Item removed successfully!');
     }
+
+    public function clearCart()
+    {
+        $userId = session('user_id'); // Assuming you store logged-in user id in session
+
+        if (!$userId) {
+            return redirect()->back()->with('error', 'User not logged in.');
+        }
+
+        AddToCart::where('user_id', $userId)->delete();
+
+        return redirect()->back()->with('success', 'Cart cleared successfully.');
+    }
 }

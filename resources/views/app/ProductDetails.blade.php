@@ -12,15 +12,12 @@
                 <a href="/">Home</a> > <span class="product">Laptops</span>
             </nav>
         </div>
+
         <h1 class="productName">{{ $product->product_name }}</h1>
+
         <a href="https://www.google.com/search?q={{ urlencode($product->brand->name) }}" target="_blank" class="productBrand">
-    {{ $product->brand->name }}
-</a>
-        <!-- <a href="www.{{$product->brand->name}}" class="productBrand">{{$product->brand->name}}</a> -->
-        <!-- productsView -->
-
-        <!-- <h1 class="productName"></h1> -->
-
+            {{ $product->brand->name }}
+        </a>
 
         <small>
             <div class="pd_tag">Be the first to review this product</div>
@@ -42,12 +39,29 @@
             <small><strong>Have a Question?</strong> <a href="{{ route('user.contactUs') }}">Contact us</a></small>
         </span>
 
-        <div class="productPrice">Rs.{{ $product->price }}</div>
+        <div class="productPrice">Rs. {{ number_format($product->price, 2) }}</div>
 
+        {{-- Add to Cart Section --}}
         <div class="cart-Container">
             <div class="Addtocart-items">
+                @php
+                use App\Models\AddToCart;
+                use App\Models\Product;
+                use Illuminate\Support\Facades\Auth;
+                $products = Product::latest()->take(12)->get(); // Fetch latest 12 products
+
+                $userId = Auth::id();
+                // $cartProductIds = AddToCart::where('user_id', $userId)->pluck('product_id')->toArray();
+                $cartProductIds = [];
+
+                if (Auth::check()) {
+                $cartProductIds = AddToCart::where('user_id', Auth::id())->pluck('product_id')->toArray();
+                }
+                $isInCart = in_array($product->id, $cartProductIds);
+                @endphp
+
                 <div class="addCartbtn">
-                    @if ('isInCart')
+                    @if ($isInCart)
                     <button class="add-to-cart-btn" disabled>
                         <div class="cartButton">
                             <span>ADDED</span>
@@ -63,84 +77,45 @@
                         <form action="{{ route('cart.add', $product->id) }}" method="POST">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="add-to-cart-btn"
-                                data-product-id="{{ $product->id }}">
+                            <input type="hidden" name="quantity" value="1" id="hiddnenQty">
+                            <button type="submit" class="add-to-cart-btn" data-product-id="{{ $product->id }}">
                                 <div class="cartButton">
-                                    <!-- <img src="{{ asset('icon/cart.png') }}" alt="Cart Icon" /> -->
                                     <span>ADD TO CART</span>
                                 </div>
                             </button>
                         </form>
                         @endif
                 </div>
-            </div>
 
-            <!-- <div class="quantity-container"> -->
-            @if ('isInCart')
-            <!-- <div class="quantity-container"> -->
-            <!-- <div><input type="text" id="quantity" value="1" class="quantity-input" readonly disabled></div>
-                <div>
-                    <button id="increaseQty" class="quantity-btn" disabled> ▲</button>
-                    <button id="decreaseQty" class="quantity-btn" disabled> ▼ </button>
-                </div> -->
-            <!-- </div> -->
-            @else
+            </div>
+            {{-- Quantity Container --}}
             <div class="quantity-container">
-                <div><input type="text" id="quantity" value="1" class="quantity-input" readonly></div>
                 <div>
-                    <button id="increaseQty" class="quantity-btn"> ▲</button>
-                    <button id="decreaseQty" class="quantity-btn"> ▼ </button>
+                    <input type="text" id="quantity" name="quantity" value="1" class="quantity-input" readonly {{ $isInCart || $product->quantity <= 0 ? 'disabled' : ''  }}>
+                </div>
+                <div>
+                    <button id="increaseQty" class="quantity-btn" {{ $isInCart || $product->quantity <= 0 ? 'disabled' : '' }}>▲</button>
+                    <button id="decreaseQty" class="quantity-btn" {{ $isInCart || $product->quantity <= 0 ? 'disabled' : '' }}>▼</button>
                 </div>
             </div>
-            @endif
-            <!-- </div> -->
-
         </div>
 
     </div>
 
-
-    {{-- Product Section --}}
+    {{-- Product Section (Image Carousel) --}}
     <div class="productBody-right">
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicators -->
-            <!-- <div class="carousel-indicators">
-                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div> -->
-
-            <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('storage/'.$product->logo) }}" class="d-block w-100" alt="Product Image 1">
+                    {{-- Correct storage image access --}}
+                    <img src="{{ asset('storage/'.$product->logo) }}" class="d-block w-100" alt="{{ $product->product_name }}">
                 </div>
-                <!-- temparary remove multiple images -->
-                <!-- <div class="carousel-item">
-                    <img src="{{ asset('images/product1img3.webp') }}" class="d-block w-100" alt="Product Image 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/product1img2.webp') }}" class="d-block w-100" alt="Product Image 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/product1img4.webp') }}" class="d-block w-100" alt="Product Image 3">
-                </div> -->
             </div>
-
-            <!-- Controls -->
-            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button> -->
         </div>
-
     </div>
+
 </div>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="{{ asset('js/productQuantity.js') }}"></script>
-
 
 @stop

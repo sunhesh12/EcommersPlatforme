@@ -57,6 +57,8 @@ Route::middleware('web')->group(function () {
     Route::get('/cart', [ShoppingCartController::class, 'index'])->name('user.cart');
     Route::post('/cart/update', [ShoppingCartController::class, 'update'])->name('cart.update');
     Route::post('/cart/remove', [ShoppingCartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/clear', [ShoppingCartController::class, 'clearCart'])->name('cart.clearAll');
+
 });
 
 
