@@ -3,9 +3,9 @@
 @section('content')
 <div class="checkout-container">
     <div class="breadcrumb">
-        <a href="{{ route('home') }}">Home</a>
+        <a href="#">Home</a>
         <span class="separator">·</span>
-        <a href="{{ route('shopping.cart') }}">Shopping Cart</a>
+        <a href="#">Shopping Cart</a>
         <span class="separator">·</span>
         <span class="current">Checkout Process</span>
     </div>
@@ -17,7 +17,7 @@
         <div class="checkout-form-container">
             <h2 class="section-title">Shipping Address</h2>
             
-            <form action="{{ route('checkout.process') }}" method="POST">
+            <form action="#" method="POST">
                 @csrf
                 
                 <div class="form-row">

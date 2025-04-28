@@ -9,12 +9,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- <link rel="preconnect" href="https://fonts.bunny.net"> -->
+    <!-- <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/checkout1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/checkout2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/checkout3.css') }}">
