@@ -22,14 +22,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/checkout1', function() {
-    return view('app/checkout1');
-})->name('checkout.process');
-    
+    return view('app/checkout1'); 
+});
 Route::get('/checkout2', function() {
     return view('app/checkout2'); 
 });
 Route::get('/checkout3', function() {
     return view('app/checkout3'); 
 });
-
+Route::get('/checkout4', function() {
+    return view('app/checkout4'); 
+});
 require __DIR__.'/auth.php';
