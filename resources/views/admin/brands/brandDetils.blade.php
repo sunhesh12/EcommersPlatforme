@@ -28,7 +28,7 @@
                 <td class="brand-td">{{ $brand->slug }}</td>
                 <td class="brand-td">
                     @if($brand->logo)
-                    <img src="{{ asset('storage/' . $brand->logo) }}" alt="{{ $brand->name }} Logo" width="80" height="40">
+                    <img src="{{ asset('storage/' . $brand->logo) }}" alt="{{ $brand->name }} Logo" width="80" height="auto">
                     @else
                     No Logo
                     @endif

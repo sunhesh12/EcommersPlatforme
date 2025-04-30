@@ -15,7 +15,7 @@
     </div>
     <div class="navigationsBottom">
         <div class="NavigationBar-logo">
-            <img src={{ asset('icon/logo.png') }} alt="logo" width="60px" height="70px">
+            <a href="{{ route('home') }}"><img src={{ asset('icon/logo.png') }} alt="logo" width="60px" height="70px"></a>
         </div>
         <div class="NavigationBar-mainRoute-right">
             <ul>
@@ -40,6 +40,7 @@
                         @csrf
                         <button type="submit" class="logout-btn">Logout</button>
                     </form>
+                    <a href="{{ route('user.my-profile') }}"><button type="submit" class="logout-btn">My Profile</button></a>
                 </div>
             </div>
             @else

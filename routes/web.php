@@ -119,7 +119,7 @@ Route::prefix('/dashboardd/brandmanagement')
     // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // Route::get('/product/{id}', function ($id) {
 //     return view('app.ProductDetails', ['id' => $id]);
 // })
@@ -180,7 +180,7 @@ Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add'
 
 
 
-=======
+// =======
 Route::get('/checkout1', function() {
     return view('app/checkout1'); 
 });
@@ -194,4 +194,4 @@ Route::get('/checkout4', function() {
     return view('app/checkout4'); 
 });
 require __DIR__.'/auth.php';
->>>>>>> origin/checkoutDevelopment
+// >>>>>>> origin/checkoutDevelopment
