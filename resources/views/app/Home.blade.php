@@ -4,7 +4,11 @@
     <div class="container">
         <div class="homeBodyTop">
             <div class="homeBodyTopTop">
-                <img src={{ asset('images/wallpaper.jpg') }}>
+                <img id="slideshow" src="{{ asset('images/wallpaper.jpg') }}">
+                <!-- Dots Container -->
+                <div id="dotsContainer">
+                    <!-- Dots will be here -->
+                </div>
             </div>
             <br>
             <br>
@@ -70,25 +74,87 @@
                     <div class="homeBodyBottomMiddleTopLeft">
                         <img src="{{ asset('icon/quationMark.png') }}">
                         <div>
-                        <h1>My first order arrived today in perfect condition. From the time I sent a question about the
-                            item to making the purchase, to the shipping and now the delivery, your company, Tecs, has
-                            stayed in touch. Such great service. I look forward to shopping on your site in the future and
-                            would highly recommend it.</h1>
-                        <br>
-                        <br>
+                            <h1>My first order arrived today in perfect condition. From the time I sent a question about the
+                                item to making the purchase, to the shipping and now the delivery, your company, Tecs, has
+                                stayed in touch. Such great service. I look forward to shopping on your site in the future and
+                                would highly recommend it.</h1>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="whosay">
+                            <button class="whosayButton">Leave Us A Review</button>
+                            <h3>-Tama Broen-</h3>
                         </div>
                     </div>
-                    <div class="homeBodyBottomMiddleTopRight"></div>
+                    <div class="homeBodyBottomMiddleTopRight">
+
+                    </div>
                 </div>
                 <div class="homeBodyBottomMiddleMiddle"></div>
                 <div class="homeBodyBottomMiddleBottom"></div>
             </div>
 
             <div class="homeBodyBottomBottom">
-
+                <div class="homeBodyBottomBottom1">
+                    <img src="{{ asset('icon/mic.png') }}">
+                    <h2>Product Support</h2>
+                    <p>Up to 3 years on-site warranty available for your peace of mind.</p>
+                </div>
+                <div class="homeBodyBottomBottom1">
+                    <img src="{{ asset('icon/person.png') }}">
+                    <h2>Personal Account</h2>
+                    <p>With big discounts, free delivery and a dedicated support specialist.</p>
+                </div>
+                <div class="homeBodyBottomBottom1">
+                    <img src="{{ asset('icon/label.png') }}">
+                    <h2>Amazing Savings</h2>
+                    <p>Up to 70% off new Products, you can be sure of the best price.</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    let images = [
+        "{{ asset('images/wallpaper.jpg') }}",
+        "{{ asset('images/wallpaper1.jpg') }}",
+        "{{ asset('images/wallpaper2.jpg') }}",
+        "{{ asset('images/wallpaper1.jpg') }}",
+        "{{ asset('images/wallpaper.jpg') }}"
+    ];
+
+    let index = 0;
+    let slideshow = document.getElementById('slideshow');
+    let dotsContainer = document.getElementById('dotsContainer');
+
+    function createDots() {
+        images.forEach((img, i) => {
+            let dot = document.createElement('span');
+            dot.setAttribute('data-index', i);
+
+            dot.addEventListener('click', function() {
+                index = parseInt(this.getAttribute('data-index'));
+                updateImageAndDots();
+            });
+
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    function updateImageAndDots() {
+        slideshow.src = images[index];
+        let allDots = dotsContainer.querySelectorAll('span');
+        allDots.forEach((dot, i) => {
+            dot.style.backgroundColor = (i === index) ? '#007bff' : '#ccc';
+        });
+    }
+
+    createDots();
+
+    setInterval(function() {
+        index = (index + 1) % images.length;
+        updateImageAndDots();
+    }, 2000);
+</script>
 
 @stop

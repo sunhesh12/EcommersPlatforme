@@ -31,8 +31,8 @@
             <p><span>{{ $product->processor }}</span></p>
         </div>
 
-        <p><span><del>${{ $product->price + 99 }}</del></span></p>
-        <h2>${{ $product->price }}</h2>
+        <p><span><del>Rs.{{ $product->price + 99 }}</del></span></p>
+        <h2>Rs.{{ $product->price }}</h2>
 
         <div class="cartButton">
             @if ($isInCart)

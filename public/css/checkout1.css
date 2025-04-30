@@ -1,0 +1,277 @@
+/* public/css/checkout.css */
+
+/* Main layout */
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    font-size: 14px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #0066cc;
+}
+
+.breadcrumb .separator {
+    margin: 0 8px;
+    color: #999;
+}
+
+.breadcrumb .current {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Page title */
+.checkout-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Two-column layout */
+.checkout-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.checkout-form-container {
+    flex: 1 1 60%;
+    min-width: 300px;
+}
+
+.order-summary-container {
+    flex: 1 1 30%;
+    min-width: 300px;
+}
+
+/* Section titles */
+.section-title, 
+.summary-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-row .required {
+    color: #ff0000;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 1px rgba(49, 130, 206, 0.2);
+}
+
+.address-line2 {
+    margin-top: -10px;
+}
+
+.form-actions {
+    margin-top: 30px;
+}
+
+.next-button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-button:hover {
+    background-color: #0047b3;
+}
+
+/* Order summary styling */
+.order-summary {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.cart-items {
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.item-count {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.collapse-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.item-image {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.item-qty {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.item-price {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Checkout progress */
+.checkout-progress {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    position: relative;
+    padding: 0 20px;
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: #e2e8f0;
+    border-radius: 2px;
+    position: relative;
+}
+
+.progress-completed {
+    position: absolute;
+    height: 4px;
+    width: 50%;
+    background-color: #3182ce;
+    border-radius: 2px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -10px;
+    width: 100%;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-indicator {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.step.active .step-indicator {
+    background-color: #3182ce;
+    border-color: #3182ce;
+    color: white;
+}
+
+.step-label {
+    font-size: 14px;
+    color: #718096;
+}
+
+.step.active .step-label {
+    color: #3182ce;
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .checkout-layout {
+        flex-direction: column;
+    }
+    
+    .checkout-form-container,
+    .order-summary-container {
+        width: 100%;
+    }
+}

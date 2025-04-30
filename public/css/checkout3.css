@@ -1,0 +1,247 @@
+/* checkout3.css */
+
+/* Main container styles */
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.checkout-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.payment-section, 
+.summary-section {
+    flex: 1;
+    min-width: 320px;
+}
+
+/* Payment section styles */
+.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.pin-instruction {
+    margin-bottom: 20px;
+}
+
+.pin-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.pin-input {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.pin-input:focus {
+    border-color: #0066cc;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.25);
+}
+
+.confirm-button {
+    width: 100%;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.confirm-button:hover {
+    background-color: #0052a3;
+}
+
+.privacy-note {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* Progress indicator styles */
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+.step-circle.completed {
+    background-color: #e9ecef;
+    color: #666;
+}
+
+.step-circle.active {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+.step-label {
+    font-size: 12px;
+    color: #555;
+}
+
+.progress-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #ccc;
+    margin: 0 15px;
+    position: relative;
+    top: -15px;
+}
+
+.progress-line.completed {
+    background-color: #0066cc;
+}
+
+/* Order summary card styles */
+.order-summary-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f9fafb;
+}
+
+.card-header {
+    padding: 15px 20px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 15px 20px;
+}
+
+.items-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.collapse-icon {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-item {
+    display: flex;
+    gap: 15px;
+}
+
+.item-image {
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: auto;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+}
+
+.item-price-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-qty {
+    font-size: 13px;
+    color: #666;
+}
+
+.item-price {
+    font-weight: 500;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.total-amount {
+    font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .checkout-content {
+        flex-direction: column;
+    }
+    
+    .progress-indicator {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

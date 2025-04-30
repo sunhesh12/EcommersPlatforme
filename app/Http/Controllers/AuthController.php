@@ -52,7 +52,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        session()->forget('user_id');
+        Auth::logout(); // Properly log out the user
         return redirect('/')->with('success', 'Logged out successfully');
     }
+    
 }
