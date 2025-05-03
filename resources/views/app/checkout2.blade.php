@@ -60,7 +60,7 @@
             <div class="cart-count">2 Items in Cart</div>
             
             <div class="cart-items">
-                <div class="cart-item">
+                <div class="cart-item1">
                     <div class="item-image">
                         <img src="{{ asset('images/laptop.jpg') }}" alt="MSI MEG Trident">
                     </div>
@@ -71,7 +71,7 @@
                     <div class="item-price">$3,798.00</div>
                 </div>
                 
-                <div class="cart-item">
+                <div class="cart-item1">
                     <div class="item-image">
                         <img src="{{ asset('images/laptop.jpg') }}" alt="MSI MEG Trident">
                     </div>

@@ -17,7 +17,7 @@
             <h2>Order #123RGR231567Y Confirmed</h2>
         </div>
         
-        <div class="action-buttons">
+        <div class="action-buttons-checkout">
             <button class="track-order-btn">Track Order</button>
             <a href="#" class="generate-receipt">Generate Receipt</a>
         </div>

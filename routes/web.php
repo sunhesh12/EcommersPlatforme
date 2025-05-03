@@ -183,7 +183,7 @@ Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add'
 // =======
 Route::get('/checkout1', function() {
     return view('app/checkout1'); 
-});
+})->name('user.checkout1');
 Route::get('/checkout2', function() {
     return view('app/checkout2'); 
 });

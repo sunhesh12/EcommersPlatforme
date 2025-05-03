@@ -46,7 +46,7 @@
     margin: 25px 0;
 }
 
-.action-buttons {
+.action-buttons-checkout {
     display: flex;
     flex-direction: column;
     gap: 15px;

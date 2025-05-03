@@ -93,8 +93,10 @@
                         @csrf
                         <button type="submit" class="btn clear-btn">Clear Shopping Cart</button>
                     </form>
+                    
                 </div>
                 <button class="btn update-btn">Update Shopping Cart</button>
+                
             </div>
         </div>
 
@@ -150,8 +152,10 @@
                     <span class="amount">Rs.{{ number_format($sum/85 + $sum/10 + $sum, 2) }} </span>
                 </div>
             </div>
+            <a href="{{ route('user.checkout1') }}" class="btn checkout-btn">
+                <button class="btn checkout-btn">Proceed to Checkout</button>
+            </a>
 
-            <button class="btn checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
 </div>
