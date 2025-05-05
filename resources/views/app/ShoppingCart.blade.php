@@ -78,13 +78,6 @@
             </table>
 
             <div class="cart-buttons">
-                @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
-                @endif
 
                 <div class="action-buttons">
                     <a href="{{ url('/') }}" class="btn continue-btn" style="text-decoration: none;">Continue Shopping</a>
@@ -93,11 +86,18 @@
                         @csrf
                         <button type="submit" class="btn clear-btn">Clear Shopping Cart</button>
                     </form>
-                    
+
                 </div>
                 <button class="btn update-btn">Update Shopping Cart</button>
-                
+
             </div>
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
         </div>
 
         <div class="summary-section">
