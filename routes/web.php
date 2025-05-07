@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AddtoCartControlle;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\checkout1;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -181,17 +182,19 @@ Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add'
 
 
 // =======
-Route::get('/checkout1', function() {
-    return view('app/checkout1'); 
-})->name('user.checkout1');
+Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
+// function() {
+//     return view('app/checkout1'); 
+// }
+// )->name('user.checkout1');
 Route::get('/checkout2', function() {
     return view('app/checkout2'); 
-});
+})->name('user.checkout2');
 Route::get('/checkout3', function() {
     return view('app/checkout3'); 
-});
+})->name('user.checkout3');
 Route::get('/checkout4', function() {
     return view('app/checkout4'); 
-});
+})->name('user.checkout4');
 require __DIR__.'/auth.php';
 // >>>>>>> origin/checkoutDevelopment
