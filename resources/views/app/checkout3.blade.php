@@ -1,6 +1,15 @@
 @extends('app.layouts.main')
 
 @section('content')
+@php
+$sum = 0;
+@endphp
+
+@foreach ($cartItems as $item)
+@php
+$sum += $item->product->price * $item->quantity;
+@endphp
+@endforeach
 <div class="checkout-container">
     <div class="checkout-content">
         <!-- Left Section - Payment Form -->
@@ -27,10 +36,10 @@
                 </p>
             </div>
         </div> -->
+        <div class="payment-section">
+            <form method="POST" action="{{ route('verify.payment.otp.submit') }}">
+                @csrf
 
-        <form method="POST" action="{{ route('verify.payment.otp.submit') }}">
-            @csrf
-            <div class="payment-section">
                 <h2 class="section-title">Payment</h2>
                 <div class="divider"></div>
 
@@ -38,11 +47,18 @@
                     <p class="pin-instruction">Enter your 4-digit card pin to confirm this payment</p>
 
                     <div class="pin-inputs">
-                        <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 0)">
+                        <input type="password" maxlength="1" class="pin-input" autocomplete="new-password" oninput="moveNext(this, 0)">
                         <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 1)">
                         <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 2)">
                         <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 3)">
                     </div>
+                    <p id="otp-timer" style="color: red; font-weight: bold;"></p>
+
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
 
                     <!-- Hidden input to hold full OTP -->
                     <input type="hidden" name="otp" id="otp" required>
@@ -55,93 +71,83 @@
                         in our privacy policy.
                     </p>
                 </div>
-            </div>
-        </form>
 
-        <script>
-            function moveNext(el, index) {
-                const inputs = document.querySelectorAll('.pin-input');
-                if (el.value.length === 1 && index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
+            </form>
 
-                // Combine digits
-                let otp = '';
-                inputs.forEach(input => otp += input.value);
-                document.getElementById('otp').value = otp;
-            }
-        </script>
+        </div>
+
 
 
         <!-- Right Section - Order Summary -->
         <div class="summary-section">
-            <!-- Progress Indicator -->
-            <div class="progress-indicator">
-                <div class="progress-step">
-                    <div class="step-circle completed">1</div>
-                    <span class="step-label">Shipping</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step">
-                    <div class="step-circle active">2</div>
-                    <span class="step-label">Review & Payments</span>
-                </div>
-            </div>
+
 
             <!-- Order Summary Card -->
-            <div class="order-summary-card">
-                <div class="card-header">
-                    <h3>Order Summary</h3>
-                </div>
+            <div class="order-summary-container">
+                <div class="order-summary">
+                    <h2 class="summary-title">Order Summary</h2>
 
-                <div class="card-body">
-                    <div class="items-header">
-                        <span>2 items in Cart</span>
-                        <span class="collapse-icon">-</span>
-                    </div>
+                    <div class="cart-items">
+                        <div class="item-count">
+                            @php
+                            $count = count($cartItems);
+                            @endphp
 
-                    <div class="order-items">
-                        <!-- Item 1 -->
-                        <div class="order-item">
+                            <span>{{ $count }} items in Cart</span>
+                            <button class="collapse-button">-</button>
+                        </div>
+                        @foreach ($cartItems as $item)
+                        <div class="item">
                             <div class="item-image">
-                                <img src="{{ asset('images/laptop.png') }}" alt="MSI MEG Trident">
+                                <img src="{{ asset('storage/' . $item->product->logo) }}" alt="{{ $item->product->product_name }}">
                             </div>
                             <div class="item-details">
-                                <p class="item-name">MSI MEG Trident X 10SD-1074AU Intel i7 10700K, 32GB SUPER...</p>
-                                <div class="item-price-row">
-                                    <span class="item-qty">Qty: 1</span>
-                                    <span class="item-price">$3,799.00</span>
-                                </div>
+                                <div class="item-name">{{$item->product->product_name}}</div>
+                                <div class="item-qty">quantity {{$item->quantity}}</div>
+                                <div class="item-qty">unit price Rs.{{$item->product->price}}</div>
+                                <div class="item-price">Rs {{ number_format($item->product->price * $item->quantity, 2) }}</div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <!-- Item 2 -->
-                        <div class="order-item">
-                            <div class="item-image">
-                                <img src="{{ asset('images/laptop.png') }}" alt="MSI MEG Trident">
-                            </div>
-                            <div class="item-details">
-                                <p class="item-name">MSI MEG Trident X 10SD-1074AU Intel i7 10700K, 32GB SUPER...</p>
-                                <div class="item-price-row">
-                                    <span class="item-qty">Qty: 1</span>
-                                    <span class="item-price">$3,799.00</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
 
-                <div class="card-footer">
-                    <div class="total-row">
-                        <span class="total-label">Order Total</span>
-                        <span class="total-amount">$13,068.00</span>
+                    <div class="order-total">
+                        <div class="total-label">Order Total</div>
+                        <div class="total-price">Rs {{ number_format($sum, 2) }}</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-step">
+            <div class="step-circle completed">1</div>
+            <span class="step-label">Shipping</span>
+        </div>
+        <div class="progress-line completed"></div>
+        <div class="progress-step">
+            <div class="step-circle active">2</div>
+            <span class="step-label">Review & Payments</span>
+        </div>
+    </div>
 </div>
 
+
+<script>
+    function moveNext(el, index) {
+        const inputs = document.querySelectorAll('.pin-input');
+        if (el.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+        }
+
+        // Combine digits
+        let otp = '';
+        inputs.forEach(input => otp += input.value);
+        document.getElementById('otp').value = otp;
+    }
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Auto-focus to first PIN input on page load
@@ -169,19 +175,46 @@
         });
 
         // Confirm payment button click handler
-        const confirmButton = document.querySelector('.confirm-button');
-        confirmButton.addEventListener('click', function() {
-            let pin = '';
-            pinInputs.forEach(input => {
-                pin += input.value;
-            });
+        // const confirmButton = document.querySelector('.confirm-button');
+        // confirmButton.addEventListener('click', function() {
+        //     let pin = '';
+        //     pinInputs.forEach(input => {
+        //         pin += input.value;
+        //     });
 
-            if (pin.length === 4) {
-                alert('Payment processing... This is just a mock frontend.');
-            } else {
-                alert('Please enter your complete 4-digit PIN');
-            }
-        });
+        // if (pin.length === 4) {
+        //     // alert('Payment processing... This is just a mock frontend.');
+        // } else {
+        //     alert('Please enter your complete 4-digit PIN');
+        // }
+        // });
     });
 </script>
+
+<script>
+    function startOtpTimer() {
+        let timerDisplay = document.getElementById("otp-timer");
+        let confirmButton = document.querySelector(".confirm-button");
+        let seconds = 60;
+
+        let countdown = setInterval(function () {
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                timerDisplay.textContent = "OTP expired.";
+                confirmButton.disabled = true;
+            } else {
+                let mins = Math.floor(seconds / 60);
+                let secs = seconds % 60;
+                timerDisplay.textContent = `OTP expires in ${mins}:${secs < 10 ? '0' + secs : secs}`;
+                seconds--;
+            }
+        }, 1000);
+    }
+
+    // Start the timer when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        startOtpTimer();
+    });
+</script>
+
 @endsection

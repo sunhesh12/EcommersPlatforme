@@ -8,6 +8,7 @@ use App\Models\UserPayment; // Ensure this model exists in the specified namespa
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use App\Models\AddToCart; // Ensure this model exists in the specified namespace
 
 class PaymentController extends Controller
 {
@@ -47,19 +48,55 @@ class PaymentController extends Controller
 
     public function showOtpForm()
     {
-        return view('app.checkout3');
+        $userId = session('user_id'); // session we created during login
+        $cartItems = AddToCart::with('product')->where('user_id', $userId)->get();
+        return view('app/checkout3', compact('cartItems'));
     }
 
+    // public function verifyOtp(Request $request)
+    // {
+        
+    //     $request->validate(['otp' => 'required|digits:4']);
+    
+    //     if (Session::get('payment_otp') == $request->otp) {
+    //         Session::forget('payment_otp');
+    //         return view('app.checkout4')->with('success', 'Payment confirmed.');
+    //     }
+    
+    //     return back()->with('error', 'Invalid OTP. Please try again.');
+    //     // return view('app.checkout4')->with('success', 'Payment confirmed.');
+    // }
+
     public function verifyOtp(Request $request)
-    {
-        $request->validate(['otp' => 'required|digits:4']);
-    
-        if (Session::get('payment_otp') == $request->otp) {
-            Session::forget('payment_otp');
-            return back()->with('success', 'Payment confirmed.');
-        }
-    
-        return back()->with('error', 'Invalid OTP. Please try again.');
+{
+    // Validate input
+    $request->validate([
+        'otp' => 'required|digits:4|numeric',
+    ], [
+        'otp.required' => 'OTP is required.',
+        'otp.digits'   => 'OTP must be exactly 4 digits.',
+        'otp.numeric'  => 'OTP must be a number.',
+    ]);
+
+    // Explicit null check (in case field is present but empty or malformed)
+    if (is_null($request->otp)) {
+        return back()->with('error', 'OTP cannot be null. Please try again.');
     }
+
+    // Check if OTP session exists
+    if (!Session::has('payment_otp')) {
+        return back()->with('error', 'OTP session has expired. Please try again.');
+    }
+
+    // Check if OTP matches
+    if (Session::get('payment_otp') == $request->otp) {
+        Session::forget('payment_otp');
+        return view('app.checkout4')->with('success', 'Payment confirmed.');
+    }
+
+    // Invalid OTP
+    return back()->with('error', 'Invalid OTP. Please try again.');
+}
+
     
 }
