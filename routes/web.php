@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\catalogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -27,6 +28,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::view('/aboutuss', 'app/Aboutus')->name('user.aboutuss');
 Route::view('/faq', 'app/faq')->name('user.faq');
 Route::view('/contactUs', 'app/contactUs')->name('user.contactUs');
+// ========================
+// catalog Routes
+// ========================
+
+Route::get('/catalog', [catalogController::class, 'index'])->name('user.catalog');
 
 // ========================
 // Authentication Routes

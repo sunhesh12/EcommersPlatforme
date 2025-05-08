@@ -1,0 +1,48 @@
+.catalogAll{
+    padding-top: 120px;
+}
+.catalogHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    /* background-color: red; */
+}
+.catalogContainer{
+    display: flex;
+    /* justify-content: space-between; */
+    /* margin-top: 20px; */
+    padding-top: 20px;
+}
+.left-side-catalog{
+    width: 20%;
+    background-color: red;
+    /* height: 100px; */
+}
+
+.right-side-catalog{
+    width: 80%;
+    /* background-color: rgb(115, 115, 182); */
+    /* height: 100px; */
+}
+
+.HomeBodyMiddleTopRight{
+    /* background-color: red; */
+    width: 100%;
+}
+
+.wallpapwerContainerCatalog{
+    width: 100%;
+    height: 100px;
+    /* background-color: aqua; */
+    /* border-radius: 1px; */
+}
+
+.wallpapwerContainerCatalog img{    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 1px; */
+    
+}
