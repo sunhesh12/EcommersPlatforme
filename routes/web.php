@@ -34,8 +34,10 @@ Route::view('/contactUs', 'app/contactUs')->name('user.contactUs');
 Route::get('/registerr', [RegisterController::class, 'showRegisterForm'])->name('user.registerr');
 Route::post('/registerr', [RegisterController::class, 'register'])->name('register.post');
 
-Route::post('/loginn', [AuthController::class, 'login'])->name('login.post');
-Route::get('/logoutt', [AuthController::class, 'logout'])->name('logout');
+Route::post('/loginn', [AuthController::class, 'login'])->name('user.loginn');
+Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
+Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
+Route::get('/logoutt', [AuthController::class, 'logout'])->name('logoutt');
 
 // ========================
 // User Profile Routes
