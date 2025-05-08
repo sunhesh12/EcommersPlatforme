@@ -36,10 +36,10 @@
 
 <!-- ======= -->
     <!-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ asset('css/checkout1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/checkout1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/checkout2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/checkout3.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/checkout4.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('css/checkout4.css') }}">
 <!-- >>>>>>> origin/checkoutDevelopment -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>

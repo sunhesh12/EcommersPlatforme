@@ -7,9 +7,9 @@
         <div class="profile-container">
             <!-- Profile Image Section -->
             <div class="left-section">
-                <div class="breadcrumb text-sm text-gray-500 mb-4">
+                <!-- <div class="breadcrumb text-sm text-gray-500 mb-4">
                     Home &gt; <span class="text-black">My Dashboard</span>
-                </div>
+                </div> -->
                 <h1>My Profile</h1>
                 <img src="{{ asset($user->profile_picture) }}" alt="Profile Picture" class="profile-img" width="150" height="150">
             </div>

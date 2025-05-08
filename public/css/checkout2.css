@@ -4,7 +4,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 30px 20px;
+    padding-top: 100px;
     font-family: 'Figtree', sans-serif;
+    /* display: flex; */
 }
 
 /* Progress bar styling */
@@ -188,7 +190,7 @@
     margin-bottom: 20px;
 }
 
-.cart-item {
+.cart-item1 {
     display: flex;
     margin-bottom: 15px;
     padding-bottom: 15px;

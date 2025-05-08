@@ -1,11 +1,12 @@
 @extends('app.layouts.main')
 @section('content')
+
 <div class="abouttop">
-    <div class="about-top-top">
+    <!-- <div class="about-top-top">
         <nav>
             <a href="#">Home</a> › <span>About US</span>
         </nav>
-    </div>
+    </div> -->
     <div class="about-top-bottom">
         <h1>About Us</h1>
     </div>

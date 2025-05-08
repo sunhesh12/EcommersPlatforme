@@ -5,6 +5,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
+    padding-top: 150px;
 }
 
 .checkout-content {
@@ -233,6 +234,14 @@
     font-size: 16px;
 }
 
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .checkout-content {
@@ -245,3 +254,4 @@
         margin-right: auto;
     }
 }
+

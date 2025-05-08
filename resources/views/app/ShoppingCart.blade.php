@@ -5,9 +5,9 @@
 
 <div class="container">
     <div class="bodyTop">
-        <nav class="breadcrumb">
+        <!-- <nav class="breadcrumb">
             <a href="/">Home</a> > Login
-        </nav>
+        </nav> -->
 
         <h1>Shopping Cart</h1>
     </div>
@@ -78,13 +78,6 @@
             </table>
 
             <div class="cart-buttons">
-                @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
-                @endif
 
                 <div class="action-buttons">
                     <a href="{{ url('/') }}" class="btn continue-btn" style="text-decoration: none;">Continue Shopping</a>
@@ -93,9 +86,18 @@
                         @csrf
                         <button type="submit" class="btn clear-btn">Clear Shopping Cart</button>
                     </form>
+
                 </div>
                 <button class="btn update-btn">Update Shopping Cart</button>
+
             </div>
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
         </div>
 
         <div class="summary-section">
@@ -150,8 +152,10 @@
                     <span class="amount">Rs.{{ number_format($sum/85 + $sum/10 + $sum, 2) }} </span>
                 </div>
             </div>
+            <a href="{{ route('user.checkout1') }}" class="btn checkout-btn">
+                <button class="btn checkout-btn">Proceed to Checkout</button>
+            </a>
 
-            <button class="btn checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
 </div>
