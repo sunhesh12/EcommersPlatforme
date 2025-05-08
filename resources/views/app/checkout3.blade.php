@@ -4,7 +4,7 @@
 <div class="checkout-container">
     <div class="checkout-content">
         <!-- Left Section - Payment Form -->
-        <div class="payment-section">
+        <!-- <div class="payment-section">
             <h2 class="section-title">Payment</h2>
             <div class="divider"></div>
             
@@ -26,8 +26,53 @@
                     in our privacy policy.
                 </p>
             </div>
-        </div>
-        
+        </div> -->
+
+        <form method="POST" action="{{ route('verify.payment.otp.submit') }}">
+            @csrf
+            <div class="payment-section">
+                <h2 class="section-title">Payment</h2>
+                <div class="divider"></div>
+
+                <div class="pin-section">
+                    <p class="pin-instruction">Enter your 4-digit card pin to confirm this payment</p>
+
+                    <div class="pin-inputs">
+                        <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 0)">
+                        <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 1)">
+                        <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 2)">
+                        <input type="password" maxlength="1" class="pin-input" oninput="moveNext(this, 3)">
+                    </div>
+
+                    <!-- Hidden input to hold full OTP -->
+                    <input type="hidden" name="otp" id="otp" required>
+
+                    <button type="submit" class="confirm-button">Confirm Payment</button>
+
+                    <p class="privacy-note">
+                        Your personal data will be used to process your order, support your
+                        experience throughout this website, and for other purposes described
+                        in our privacy policy.
+                    </p>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            function moveNext(el, index) {
+                const inputs = document.querySelectorAll('.pin-input');
+                if (el.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+
+                // Combine digits
+                let otp = '';
+                inputs.forEach(input => otp += input.value);
+                document.getElementById('otp').value = otp;
+            }
+        </script>
+
+
         <!-- Right Section - Order Summary -->
         <div class="summary-section">
             <!-- Progress Indicator -->
@@ -42,19 +87,19 @@
                     <span class="step-label">Review & Payments</span>
                 </div>
             </div>
-            
+
             <!-- Order Summary Card -->
             <div class="order-summary-card">
                 <div class="card-header">
                     <h3>Order Summary</h3>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="items-header">
                         <span>2 items in Cart</span>
                         <span class="collapse-icon">-</span>
                     </div>
-                    
+
                     <div class="order-items">
                         <!-- Item 1 -->
                         <div class="order-item">
@@ -69,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Item 2 -->
                         <div class="order-item">
                             <div class="item-image">
@@ -85,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card-footer">
                     <div class="total-row">
                         <span class="total-label">Order Total</span>
@@ -101,7 +146,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Auto-focus to first PIN input on page load
         document.querySelector('.pin-input').focus();
-        
+
         // Auto-advance to next PIN input field
         const pinInputs = document.querySelectorAll('.pin-input');
         pinInputs.forEach((input, index) => {
@@ -112,7 +157,7 @@
                     }
                 }
             });
-            
+
             // Handle backspace to go to previous field
             input.addEventListener('keydown', function(e) {
                 if (e.key === 'Backspace' && this.value.length === 0) {
@@ -122,7 +167,7 @@
                 }
             });
         });
-        
+
         // Confirm payment button click handler
         const confirmButton = document.querySelector('.confirm-button');
         confirmButton.addEventListener('click', function() {
@@ -130,7 +175,7 @@
             pinInputs.forEach(input => {
                 pin += input.value;
             });
-            
+
             if (pin.length === 4) {
                 alert('Payment processing... This is just a mock frontend.');
             } else {

@@ -14,6 +14,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AddtoCartControlle;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\checkout1;
+use App\Http\Controllers\checkout2Controller;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -183,13 +185,14 @@ Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add'
 
 // =======
 Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
+Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
 // function() {
 //     return view('app/checkout1'); 
 // }
 // )->name('user.checkout1');
-Route::get('/checkout2', function() {
-    return view('app/checkout2'); 
-})->name('user.checkout2');
+// Route::get('/checkout2', function() {
+//     return view('app/checkout2'); 
+// })->name('user.checkout2');
 Route::get('/checkout3', function() {
     return view('app/checkout3'); 
 })->name('user.checkout3');
@@ -198,3 +201,23 @@ Route::get('/checkout4', function() {
 })->name('user.checkout4');
 require __DIR__.'/auth.php';
 // >>>>>>> origin/checkoutDevelopment
+
+
+Route::post('/payment/save', [PaymentController::class, 'store'])->middleware('auth')->name('save.payment');
+Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
+Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
+
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/test-email', function () {
+    Mail::raw('This is a test email from Laravel!', function ($message) {
+        $message->to('hsdbandaranayake@gmail.com')
+                ->subject('Test Email from Laravel');
+    });
+
+    return 'Email sent!';
+});
+
+
+

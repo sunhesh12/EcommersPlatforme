@@ -1,4 +1,4 @@
-.about-top-top nav {
+/* .about-top-top nav {
     text-align: left;
     font-size: 14px;
     margin-bottom: 20px;
@@ -11,13 +11,15 @@
 
 .about-top-top nav span {
     color: grey;
-}
-.about-top-top {
+} */
+/* .about-top-top {
     margin-top: 30px;
     margin-left: 70px;
-}
+} */
+ 
 
 .about-top-bottom {
+    padding-top: 100px;
     margin-left: 70px;
 }
 

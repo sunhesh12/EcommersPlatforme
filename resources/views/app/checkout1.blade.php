@@ -35,9 +35,9 @@
                     <input type="text" id="street_address" name="street_address" required>
                 </div>
 
-                <div class="form-row address-line2">
+                <!-- <div class="form-row address-line2">
                     <input type="text" id="street_address_2" name="street_address_2">
-                </div>
+                </div> -->
 
                 <div class="form-row">
                     <label for="email">Email <span class="required">*</span></label>
@@ -47,6 +47,16 @@
                 <div class="form-row">
                     <label for="city">City <span class="required">*</span></label>
                     <input type="text" id="city" name="city" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="country">Country <span class="required"> *</span></label>
+                    <select id="country" name="country" required>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="UK">United Kingdom</option>
+                        <!-- More countries would go here -->
+                    </select>
                 </div>
 
                 <div class="form-row">
@@ -61,15 +71,7 @@
                     </select>
                 </div>
 
-                <div class="form-row">
-                    <label for="country">Country <span class="required">*</span></label>
-                    <select id="country" name="country" required>
-                        <option value="United States">United States</option>
-                        <option value="Canada">Canada</option>
-                        <option value="UK">United Kingdom</option>
-                        <!-- More countries would go here -->
-                    </select>
-                </div>
+
 
                 <div class="form-row">
                     <label for="phone">Phone Number <span class="required">*</span></label>
@@ -105,7 +107,8 @@
                         </div>
                         <div class="item-details">
                             <div class="item-name">{{$item->product->product_name}}</div>
-                            <div class="item-qty">{{$item->quantity}}</div>
+                            <div class="item-qty">quantity {{$item->quantity}}</div>
+                            <div class="item-qty">unit price Rs.{{$item->product->price}}</div>
                             <div class="item-price">Rs {{ number_format($item->product->price * $item->quantity, 2) }}</div>
                         </div>
                     </div>
