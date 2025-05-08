@@ -25,7 +25,7 @@
     <div class="options">
         <input type="checkbox" id="staySignedIn" name="remember">
         <label for="staySignedIn">Stay signed in</label>
-        <a href="#">Forgot Your Password?</a>
+        <a href="{{ route('password.request') }}">Forgot Your Password?</a>
     </div>
 
     <button type="submit" class="btn">Sign In</button>

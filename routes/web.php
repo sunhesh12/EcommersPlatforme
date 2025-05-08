@@ -39,6 +39,11 @@ Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
 Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
 Route::get('/logoutt', [AuthController::class, 'logout'])->name('logoutt');
 
+use App\Http\Controllers\ForgotPasswordController;
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
 // ========================
 // User Profile Routes
 // ========================
