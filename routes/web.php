@@ -1,91 +1,103 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\UserController; 
-use App\Http\Controllers\ShoppingCartController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\RegisterController; // Ensure this class exists in the specified namespace
-use App\Http\Controllers\AuthController;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\AddtoCartControlle;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\checkout1;
 use App\Http\Controllers\checkout2Controller;
+use App\Http\Controllers\Checkout3Controller;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\Checkout3Controller; // Ensure this class exists in the specified namespace
-use App\Http\Controllers\OrderController; // Ensure this class exists in the specified namespace
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Models\Product;
 
+// ========================
+// General Routes
+// ========================
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// ======================register routes=========================
+Route::view('/aboutuss', 'app/Aboutus')->name('user.aboutuss');
+Route::view('/faq', 'app/faq')->name('user.faq');
+Route::view('/contactUs', 'app/contactUs')->name('user.contactUs');
 
+// ========================
+// Authentication Routes
+// ========================
 Route::get('/registerr', [RegisterController::class, 'showRegisterForm'])->name('user.registerr');
-
 Route::post('/registerr', [RegisterController::class, 'register'])->name('register.post');
 
-// ============================rigster route end ======================
+Route::post('/loginn', [AuthController::class, 'login'])->name('login.post');
+Route::get('/logoutt', [AuthController::class, 'logout'])->name('logout');
 
-// Route::get('/loginn', function () {
-//     return view('app/login');
-// }) ->name('user.loginn');
+// ========================
+// User Profile Routes
+// ========================
+Route::get('/my-profile', [UserProfileController::class, 'Profile'])->name('user.my-profile');
+Route::get('/my-profile/{id}/edit', [UserProfileController::class, 'edit'])->name('user.my-profile.edit');
+Route::put('/my-profile/{id}', [UserProfileController::class, 'update'])->name('user.my-profile.update');
+Route::post('/update-profile-picture', [UserProfileController::class, 'updateProfilePicture'])->name('user.update-profile-picture');
 
-// Route::post('/loginn', function () {
-//     return view('app/login');
-// }) ->name('loginn.post');
-
-Route::get('/loginn', [AuthController::class, 'index'])->name('user.loginn');
-Route::post('/loginn1', [AuthController::class, 'login'])->name('loginn.post');
-
-Route::get('/logoutt', [AuthController::class, 'logout'])->name('logoutt');
-
-
-
-Route::get('/aboutuss', function () {
-    return view('app/Aboutus');
-})->name('user.aboutuss');
-
-Route::get('/faq', function () {
-    return view('app/faq');
-})->name('user.faq');
-
-// Route::get('/cart', function () {
-//     return view('app/ShoppingCart');
-// })->name('user.cart');
-
-
-
+// ========================
+// Shopping Cart Routes
+// ========================
 Route::middleware('web')->group(function () {
     Route::get('/cart', [ShoppingCartController::class, 'index'])->name('user.cart');
     Route::post('/cart/update', [ShoppingCartController::class, 'update'])->name('cart.update');
     Route::post('/cart/remove', [ShoppingCartController::class, 'remove'])->name('cart.remove');
     Route::post('/cart/clear', [ShoppingCartController::class, 'clearCart'])->name('cart.clearAll');
-
+    Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add');
 });
 
+// ========================
+// Product Details Route
+// ========================
+Route::get('/product/{id}', function ($id) {
+    $product = Product::findOrFail($id);
+    return view('app.ProductDetails', ['product' => $product]);
+})->name('product.details');
 
+// ========================
+// Checkout Routes
+// ========================
+Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
+Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
+Route::view('/checkout3', 'app/checkout3')->name('user.checkout3');
+Route::view('/checkout4', 'app/checkout4')->name('user.checkout4');
 
-Route::get('/my-profile', [UserProfileController::class, 'Profile'] )->name('user.my-profile');
-Route::get('/my-profile/{id}/edit', [UserProfileController::class, 'edit'] )->name('user.my-profile.edit');
-Route::put('/my-profile/{id}', [UserProfileController::class, 'update'] )->name('user.my-profile.update');
-Route::post('/update-profile-picture', [UserProfileController::class, 'updateProfilePicture'])->name('user.update-profile-picture');
+// ========================
+// Payment and OTP Routes
+// ========================
+Route::middleware('auth')->group(function () {
+    Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
+});
+Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
+Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
+Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
 
+// ========================
+// Order Summary & Download
+// ========================
+Route::get('/order-summary/download', [OrderController::class, 'downloadOrderSummary'])->name('order.summary.download');
 
-// =============admin===============
-
-Route::get('/dashboardd', function () {
+// ========================
+// Admin Dashboard (Demo View)
+// ========================
+Route::middleware('checkLogin')->get('/dashboardd', function () {
     return view('admin/dashboard');
-})->middleware('checkLogin')->name('admin.dashboard');
+})->name('admin.dashboard');
 
-
-Route::prefix('/dashboardd/usermanagement')
-// ->middleware('checkLogin')
-->name('admin.users.')->group(function () {
+// ========================
+// Admin - User Management
+// ========================
+Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
@@ -96,59 +108,22 @@ Route::prefix('/dashboardd/usermanagement')
     Route::post('/{id}/unblock', [UserController::class, 'unblock'])->name('unblock');
 });
 
-
-Route::get('/contactUs', function () {
-    return view('app/contactUs');
-})->name('user.contactUs');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/dashboardd/brandmanagement', function () {
-    return view('admin/brandDetils');
-})->middleware('checkLogin')->name('admin.dashboard');
-//brandDetils
-
-Route::prefix('/dashboardd/brandmanagement')
-// ->middleware('checkLogin')
-->name('admin.brands.')->group(function () {
+// ========================
+// Admin - Brand Management
+// ========================
+Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');
     Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('edit');
     Route::put('/{id}', [BrandController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('destroy');
-    // Route::post('/{id}/block', [BrandController::class, 'block'])->name('block');
-    // Route::post('/{id}/unblock', [BrandController::class, 'unblock'])->name('unblock');
 });
 
-// <<<<<<< HEAD
-// Route::get('/product/{id}', function ($id) {
-//     return view('app.ProductDetails', ['id' => $id]);
-// })
-// // ->middleware('checkLogin')
-// ->name('product.details');
-
-use App\Models\Product;
-
-Route::get('/product/{id}', function ($id) {
-    $product = Product::findOrFail($id); // fetch the product or return 404
-    return view('app.ProductDetails', ['product' => $product]);
-})->name('product.details');
-
-
-
-//need to make product view controller to product and complete the base code need to connet conly =routes
-
-
-
-
-Route::prefix('dashboardd/products')->name('admin.products.')
-// ->middleware('checkLogin')
-->group(function () 
-{
+// ========================
+// Admin - Product Management
+// ========================
+Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');
@@ -157,75 +132,12 @@ Route::prefix('dashboardd/products')->name('admin.products.')
     Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
 });
 
+// ========================
+// Laravel Default Auth Routes
+// ========================
+require __DIR__ . '/auth.php';
 
-// use App\Http\Controllers\CartController;
-
-// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// Route::get('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
-// Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-// Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// require __DIR__.'/auth.php';
-
-
-
-
-Route::post('/add-to-cart', [AddtoCartControlle::class, 'add'])->name('cart.add');
-
-
-
-// =======
-Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
-Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
-// function() {
-//     return view('app/checkout1'); 
-// }
-// )->name('user.checkout1');
-// Route::get('/checkout2', function() {
-//     return view('app/checkout2'); 
-// })->name('user.checkout2');
-Route::get('/checkout3', function() {
-    return view('app/checkout3'); 
-})->name('user.checkout3');
-Route::get('/checkout4', function() {
-    return view('app/checkout4'); 
-})->name('user.checkout4');
-require __DIR__.'/auth.php';
-// >>>>>>> origin/checkoutDevelopment
-
-
-Route::post('/payment/save', [PaymentController::class, 'store'])->middleware('auth')->name('save.payment');
-Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
-Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
-
-
-Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
-
-
-Route::get('/order-summary/download', [OrderController::class, 'downloadOrderSummary'])->name('order.summary.download');
-
-
-// use Illuminate\Support\Facades\Mail;
-
-// Route::get('/test-email', function () {
-//     Mail::raw('This is a test email from Laravel!', function ($message) {
-//         $message->to('hsdbandaranayake@gmail.com')
-//                 ->subject('Test Email from Laravel');
-//     });
-
-//     return 'Email sent!';
-// });
-
-
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
