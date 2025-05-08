@@ -16,6 +16,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\checkout1;
 use App\Http\Controllers\checkout2Controller;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Checkout3Controller; // Ensure this class exists in the specified namespace
+use App\Http\Controllers\OrderController; // Ensure this class exists in the specified namespace
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -208,16 +210,22 @@ Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('ver
 Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
 
 
-use Illuminate\Support\Facades\Mail;
+Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
 
-Route::get('/test-email', function () {
-    Mail::raw('This is a test email from Laravel!', function ($message) {
-        $message->to('hsdbandaranayake@gmail.com')
-                ->subject('Test Email from Laravel');
-    });
 
-    return 'Email sent!';
-});
+Route::get('/order-summary/download', [OrderController::class, 'downloadOrderSummary'])->name('order.summary.download');
+
+
+// use Illuminate\Support\Facades\Mail;
+
+// Route::get('/test-email', function () {
+//     Mail::raw('This is a test email from Laravel!', function ($message) {
+//         $message->to('hsdbandaranayake@gmail.com')
+//                 ->subject('Test Email from Laravel');
+//     });
+
+//     return 'Email sent!';
+// });
 
 
 

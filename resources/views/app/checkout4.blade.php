@@ -19,7 +19,7 @@
         
         <div class="action-buttons-checkout">
             <button class="track-order-btn">Track Order</button>
-            <a href="#" class="generate-receipt">Generate Receipt</a>
+            <a href="{{ route('order.summary.download') }}" class="generate-receipt">Generate Receipt</a>
         </div>
     </div>
 </div>

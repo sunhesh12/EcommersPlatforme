@@ -54,6 +54,11 @@ $sum += $item->product->price * $item->quantity;
                     </div>
                     <p id="otp-timer" style="color: red; font-weight: bold;"></p>
 
+                    <a href="{{ route('resend.otp') }}" id="resend-otp-link" style="display:none; color: blue; cursor: pointer;">
+                        Resend OTP
+                    </a>
+
+
                     @if (session('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
@@ -195,13 +200,17 @@ $sum += $item->product->price * $item->quantity;
     function startOtpTimer() {
         let timerDisplay = document.getElementById("otp-timer");
         let confirmButton = document.querySelector(".confirm-button");
+        let resendLink = document.getElementById("resend-otp-link");
         let seconds = 60;
 
-        let countdown = setInterval(function () {
+        resendLink.style.display = "none"; // Hide initially
+
+        let countdown = setInterval(function() {
             if (seconds <= 0) {
                 clearInterval(countdown);
                 timerDisplay.textContent = "OTP expired.";
                 confirmButton.disabled = true;
+                resendLink.style.display = "inline"; // Show resend link
             } else {
                 let mins = Math.floor(seconds / 60);
                 let secs = seconds % 60;
@@ -211,8 +220,7 @@ $sum += $item->product->price * $item->quantity;
         }, 1000);
     }
 
-    // Start the timer when the page loads
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         startOtpTimer();
     });
 </script>
