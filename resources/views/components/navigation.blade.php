@@ -41,6 +41,8 @@
                         <button type="submit" class="logout-btn">Logout</button>
                     </form>
                     <a href="{{ route('user.my-profile') }}"><button type="submit" class="logout-btn">My Profile</button></a>
+                    <br>
+                    <a href="{{ route('user.checkout4') }}"><button type="submit" class="logout-btn">Check Order</button></a>
                 </div>
             </div>
             @else

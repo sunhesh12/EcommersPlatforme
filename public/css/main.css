@@ -133,6 +133,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
+    width: max-content;
     top: 70px;
     right: 0;
     background-color: white;

@@ -32,7 +32,9 @@ Route::view('/contactUs', 'app/contactUs')->name('user.contactUs');
 // catalog Routes
 // ========================
 
-Route::get('/catalog', [catalogController::class, 'index'])->name('user.catalog');
+// Route::get('/catalog', [catalogController::class, 'index'])->name('user.catalog');
+Route::get('/catalog', [CatalogController::class, 'index01'])->name('catalog.filter');
+
 
 // ========================
 // Authentication Routes

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AddToCart;
+use App\Models\Brand;
 
 class catalogController extends Controller
 {
@@ -28,4 +29,28 @@ class catalogController extends Controller
         return view('app.catalog01', compact('products', 'cartProductIds'));
         // return view('app.home', compact('products'));
     }
+
+    public function index01(Request $request)
+{
+    $query = Product::query();
+
+    if ($request->filled('min_price')) {
+        $query->where('price', '>=', $request->min_price);
+    }
+
+    if ($request->filled('max_price')) {
+        $query->where('price', '<=', $request->max_price);
+    }
+
+    if ($request->filled('brand')) {
+        $query->whereIn('brand_id', $request->brand);
+    }
+
+    $products = $query->get();
+    $brands = Brand::whereIn('id', Product::distinct()->pluck('brand_id'))->get();
+    $cartProductIds = session()->get('cart', []);
+
+    return view('app.catalog01', compact('products', 'brands', 'cartProductIds'));
+}
+
 }
