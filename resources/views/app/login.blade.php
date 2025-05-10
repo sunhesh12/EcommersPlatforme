@@ -17,12 +17,12 @@
             <input type="hidden" name="product_id" value="{{ request('product_id') }}">
 
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="new-password" required>
 
             <div class="password-field">
                 <label for="password">Password *</label>
                 <div style="position: relative;">
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Enter your password" required>
                     <button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
                         👁
                     </button>
