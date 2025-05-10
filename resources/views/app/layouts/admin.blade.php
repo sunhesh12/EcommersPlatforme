@@ -17,6 +17,7 @@
             <a href="{{ route('admin.brands.index') }}">Brand Management</a>
             <a href="{{ route('admin.products.index') }}">Product Management</a>
             <a href="{{ route('admin.users.index') }}">Order Management</a>
+            <a href="{{ route('home') }}">User View</a>
             <!-- <a href="#">Orders</a> -->
             <a href="#">Settings</a>
         </nav>

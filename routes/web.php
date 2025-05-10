@@ -122,7 +122,7 @@ Route::middleware('checkLogin')->get('/dashboardd', function () {
 // ========================
 // Admin - User Management
 // ========================
-Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+Route::middleware('checkLogin')->prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
@@ -136,7 +136,7 @@ Route::prefix('/dashboardd/usermanagement')->name('admin.users.')->group(functio
 // ========================
 // Admin - Brand Management
 // ========================
-Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+Route::middleware('checkLogin')->prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');
@@ -148,7 +148,7 @@ Route::prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(funct
 // ========================
 // Admin - Product Management
 // ========================
-Route::prefix('dashboardd/products')->name('admin.products.')->group(function () {
+Route::middleware('checkLogin')->prefix('dashboardd/products')->name('admin.products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');

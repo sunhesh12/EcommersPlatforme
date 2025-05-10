@@ -24,8 +24,12 @@
                 <li><a href="{{ route('user.contactUs') }}">Contact Us</a></li>
                 <li><a href="{{ route('user.aboutuss') }}">About Us</a></li>
                 <li><a href="#">Repairs</a></li>
+                @if (Auth::check() && Auth::user()->is_admin)
+                <a href="{{ route('admin.dashboard') }}" class="adminSpecial" >Admin View</a>
+                @endif
             </ul>
         </div>
+
         <div class="NavigationBar-SecondryRoute-left">
             <a href="{{ route('catalog.filter') }}"><img src={{ asset('icon/search.png') }} alt="logo" width="50px" height="50px"></a>
             <a href="{{route('user.cart') }}"><img src={{ asset('icon/cart.png') }} alt="logo" width="50px" height="50px"></a>
