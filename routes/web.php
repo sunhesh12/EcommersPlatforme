@@ -54,6 +54,14 @@ use App\Http\Controllers\ForgotPasswordController;
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
+use App\Http\Controllers\changePasswordController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/change-password', [changePasswordController::class, 'showChangePasswordForm'])->name('user.change-password');
+    Route::post('/change-password', [changePasswordController::class, 'changePassword'])->name('user.update-password');
+});
+
+
 // ========================
 // User Profile Routes
 // ========================

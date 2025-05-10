@@ -33,19 +33,25 @@
             @if (Auth::check())
             <div class="dropdown" id="profileDropdown">
                 <a href="javascript:void(0);" onclick="toggleDropdown()" class="profile-link">
-                    <img src="{{ asset('default.png') }}" alt="Profile" width="60px" height="60px" style="border-radius: 100%;">
+                    <img src="{{ Auth::user()->profile_picture ? asset( Auth::user()->profile_picture) : asset('default.png') }}"
+                        alt="Profile" width="60px" height="60px" style="border-radius: 100%;">
                 </a>
                 <div class="dropdown-content" id="dropdownContent">
                     <form method="GET" action="{{ route('logoutt') }}">
                         @csrf
                         <button type="submit" class="logout-btn">Logout</button>
                     </form>
-                    <a href="{{ route('user.my-profile') }}"><button type="submit" class="logout-btn">My Profile</button></a>
+                    <a href="{{ route('user.my-profile') }}">
+                        <button type="submit" class="logout-btn">My Profile</button>
+                    </a>
                     <br>
-                    <a href="{{ route('user.checkout4') }}"><button type="submit" class="logout-btn">Check Order</button></a>
+                    <a href="{{ route('user.checkout4') }}">
+                        <button type="submit" class="logout-btn">Check Order</button>
+                    </a>
                 </div>
             </div>
             @else
+
             <a href="{{ route('user.loginn') }}" class="login-btn">Login</a>
             @endif
 

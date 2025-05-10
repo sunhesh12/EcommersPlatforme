@@ -142,3 +142,13 @@ ul li {
     font-size: 14px;
     margin-bottom: 5px;
 }
+
+
+.login-error{
+    height: max-content;
+    padding: 1px;
+    border-radius: 5px;
+    color: white;
+    /* color: red; */
+    background-color: rgba(255, 0, 0, 0.726);
+}

@@ -121,6 +121,93 @@
   background-color: #f1f8ff;
 }
 
+
+/* change password form */
+
+.change-password-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.change-password-container form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.change-password-container form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.change-password-container form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.change-password-container form button:hover {
+  background-color: #0056b3;
+}
+
+.change-password-container .error,
+.change-password-container .success {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.change-password-container .error {
+  background-color: #ffe5e5;
+  color: #c0392b;
+}
+
+.change-password-container .success {
+  background-color: #e0ffe0;
+  color: #27ae60;
+}
+
+.changepassword-container{
+  width: 30%;
+  padding-top: 42px;
+
+}
+
+.updatePssword{
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .profile-container {

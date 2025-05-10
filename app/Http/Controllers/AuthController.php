@@ -14,6 +14,7 @@ class AuthController extends Controller
     {
         return view('app.login');
     }
+    
     public function login(Request $request)
     {
         $request->validate([
