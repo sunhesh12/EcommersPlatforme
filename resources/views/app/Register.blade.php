@@ -15,8 +15,8 @@
         <form action="{{ route('register.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="name" placeholder="Enter your name" required>
-            <input type="email" name="email" placeholder="Enter your Email" required>
-            <input type="password" name="password" placeholder="Create Password" required>
+            <input type="email" name="email" placeholder="Enter your Email" autocomplete="new-password" required>
+            <input type="password" name="password" placeholder="Create Password" autocomplete="new-password" required>
             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
 
             <input type="file" name="profile_picture">

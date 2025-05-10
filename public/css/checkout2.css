@@ -1,12 +1,13 @@
 /* public/css/checkout2.css */
 
 .checkout-container {
+    /* background-color: #0069d9; */
     max-width: 1200px;
     margin: 0 auto;
     padding: 30px 20px;
     padding-top: 100px;
     font-family: 'Figtree', sans-serif;
-    /* display: flex; */
+
 }
 
 /* Progress bar styling */
@@ -65,12 +66,15 @@
 .checkout-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    width: 100%;
+    gap: 50px;
+    /* background-color: red; */
 }
 
 .payment-section {
     flex: 1;
     min-width: 300px;
+    margin-right: 50px;
 }
 
 .order-summary {

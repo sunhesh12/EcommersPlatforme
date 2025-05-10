@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="checkout-container">
-    <div class="breadcrumb">
+    <!-- <div class="breadcrumb">
         <a href="#">Home</a>
         <span class="separator">·</span>
         <a href="#">Shopping Cart</a>
         <span class="separator">·</span>
         <span class="current">Checkout Process</span>
-    </div>
+    </div> -->
 
     <h1 class="checkout-title">Checkout</h1>
 
