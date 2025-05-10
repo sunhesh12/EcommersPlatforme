@@ -27,7 +27,7 @@
             </ul>
         </div>
         <div class="NavigationBar-SecondryRoute-left">
-            <a href=""><img src={{ asset('icon/search.png') }} alt="logo" width="50px" height="50px"></a>
+            <a href="{{ route('catalog.filter') }}"><img src={{ asset('icon/search.png') }} alt="logo" width="50px" height="50px"></a>
             <a href="{{route('user.cart') }}"><img src={{ asset('icon/cart.png') }} alt="logo" width="50px" height="50px"></a>
             <!-- <a href="{{ route('user.my-profile') }}"><img src={{ asset('default.png') }} alt="logo" width="60px" height="60px" style="border-radius: 100%;"></a> -->
             @if (Auth::check())

@@ -116,3 +116,29 @@
     background-color: #999;
 }
 
+.searchInput {
+    width: 90%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #4a90e2;
+    border-radius: 25px;
+    background-color: #f8faff;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+}
+
+.searchInput::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+    background-color: #fff;
+}
+
+

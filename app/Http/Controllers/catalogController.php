@@ -34,6 +34,20 @@ class catalogController extends Controller
 {
     $query = Product::query();
 
+    $search = $request->input('search', ''); // Get 'search' input or default to an empty string
+    $query->where(function($q) use ($search) {
+        $q->where('model', 'like', "%{$search}%")
+          ->orWhere('processor', 'like', "%{$search}%")
+          ->orWhere('graphics', 'like', "%{$search}%")
+          ->orWhere('memory', 'like', "%{$search}%")
+          ->orWhere('display', 'like', "%{$search}%")
+          ->orWhere('storage', 'like', "%{$search}%")
+          ->orWhere('io_ports', 'like', "%{$search}%")
+          ->orWhere('os', 'like', "%{$search}%")
+          ->orWhere('color', 'like', "%{$search}%");
+    });
+    
+
     if ($request->filled('min_price')) {
         $query->where('price', '>=', $request->min_price);
     }
@@ -52,5 +66,46 @@ class catalogController extends Controller
 
     return view('app.catalog01', compact('products', 'brands', 'cartProductIds'));
 }
+
+
+// later update
+
+// public function liveCatalog(Request $request)
+// {
+//     $query = Product::query();
+
+//     if ($request->filled('search')) {
+//         $search = $request->search;
+//         $query->where(function ($q) use ($search) {
+//             $q->where('model', 'like', "%{$search}%")
+//               ->orWhere('processor', 'like', "%{$search}%")
+//               ->orWhere('graphics', 'like', "%{$search}%")
+//               ->orWhere('memory', 'like', "%{$search}%")
+//               ->orWhere('display', 'like', "%{$search}%")
+//               ->orWhere('storage', 'like', "%{$search}%")
+//               ->orWhere('ports', 'like', "%{$search}%")
+//               ->orWhere('os', 'like', "%{$search}%")
+//               ->orWhere('color', 'like', "%{$search}%");
+//         });
+//     }
+
+//     if ($request->filled('min_price')) {
+//         $query->where('price', '>=', $request->min_price);
+//     }
+
+//     if ($request->filled('max_price')) {
+//         $query->where('price', '<=', $request->max_price);
+//     }
+
+//     if ($request->has('brand')) {
+//         $query->whereIn('brand_id', $request->brand);
+//     }
+
+//     $products = $query->get();
+//     $cartProductIds = session()->get('cart', []);
+
+//     return view('components.product-list', compact('products', 'cartProductIds'))->render();
+// }
+
 
 }

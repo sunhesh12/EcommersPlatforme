@@ -17,6 +17,7 @@
                     <form method="GET" action="{{ route('catalog.filter') }}">
                         <div class="filterSection">
                             <h3>Filter by Price</h3>
+                            <input type="text" name="search" placeholder="Search Anything..." value="{{ request('search') }}" class="searchInput" autocomplete="new-password">
                             <div class="price-range-container">
                                 <input type="range" id="min-price-slider" name="min_price" min="0" max="500000" step="5000" value="{{ request('min_price', 0) }}">
                                 <input type="range" id="max-price-slider" name="max_price" min="0" max="500000" step="5000" value="{{ request('max_price', 500000) }}">

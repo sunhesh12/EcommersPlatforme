@@ -34,6 +34,8 @@ Route::view('/contactUs', 'app/contactUs')->name('user.contactUs');
 
 // Route::get('/catalog', [catalogController::class, 'index'])->name('user.catalog');
 Route::get('/catalog', [CatalogController::class, 'index01'])->name('catalog.filter');
+Route::get('/catalog/filter-live', [ProductController::class, 'liveCatalog'])->name('catalog.filter.live');
+
 
 
 // ========================
