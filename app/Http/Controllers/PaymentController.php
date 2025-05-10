@@ -39,7 +39,7 @@ class PaymentController extends Controller
 
         // Send OTP to user email
         Mail::raw("Your payment OTP is: $otp", function ($message) {
-            $message->to('hsdbandaranayake@gmail.com')
+            $message->to(Auth::user()->email)
                 ->subject('Payment OTP Verification');
         });
 
