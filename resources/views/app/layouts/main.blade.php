@@ -23,7 +23,7 @@
 
 <!-- <<<<<<< HEAD -->
 <!-- ======= -->
-    <!-- <link rel="stylesheet" href="{{ asset('css/register.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 <!-- >>>>>>> origin/registerPageDevelopment -->
 <!-- ======= -->
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">

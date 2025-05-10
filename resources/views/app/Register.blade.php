@@ -1,13 +1,13 @@
 @extends('app.layouts.main')
 
 @section('content')
-<div class="navigation">
+<!-- <div class="navigation">
     <nav>
         <a href="{{ route('home') }}">Home</a> › <span>Register</span>
     </nav>
-</div>
+</div> -->
 
-<div class="container">
+<div class="container-register">
     <div class="register-box">
         <h2><span class="highlighttext">Create</span> Your Account</h2>
 
