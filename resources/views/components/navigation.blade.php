@@ -24,26 +24,38 @@
                 <li><a href="{{ route('user.contactUs') }}">Contact Us</a></li>
                 <li><a href="{{ route('user.aboutuss') }}">About Us</a></li>
                 <li><a href="#">Repairs</a></li>
+                @if (Auth::check() && Auth::user()->is_admin)
+                <a href="{{ route('admin.dashboard') }}" class="adminSpecial" >Admin View</a>
+                @endif
             </ul>
         </div>
+
         <div class="NavigationBar-SecondryRoute-left">
-            <a href=""><img src={{ asset('icon/search.png') }} alt="logo" width="50px" height="50px"></a>
+            <a href="{{ route('catalog.filter') }}"><img src={{ asset('icon/search.png') }} alt="logo" width="50px" height="50px"></a>
             <a href="{{route('user.cart') }}"><img src={{ asset('icon/cart.png') }} alt="logo" width="50px" height="50px"></a>
             <!-- <a href="{{ route('user.my-profile') }}"><img src={{ asset('default.png') }} alt="logo" width="60px" height="60px" style="border-radius: 100%;"></a> -->
             @if (Auth::check())
             <div class="dropdown" id="profileDropdown">
                 <a href="javascript:void(0);" onclick="toggleDropdown()" class="profile-link">
-                    <img src="{{ asset('default.png') }}" alt="Profile" width="60px" height="60px" style="border-radius: 100%;">
+                    <img src="{{ Auth::user()->profile_picture ? asset( Auth::user()->profile_picture) : asset('default.png') }}"
+                        alt="Profile" width="60px" height="60px" style="border-radius: 100%;">
                 </a>
                 <div class="dropdown-content" id="dropdownContent">
                     <form method="GET" action="{{ route('logoutt') }}">
                         @csrf
                         <button type="submit" class="logout-btn">Logout</button>
                     </form>
-                    <a href="{{ route('user.my-profile') }}"><button type="submit" class="logout-btn">My Profile</button></a>
+                    <a href="{{ route('user.my-profile') }}">
+                        <button type="submit" class="logout-btn">My Profile</button>
+                    </a>
+                    <br>
+                    <a href="{{ route('user.checkout4') }}">
+                        <button type="submit" class="logout-btn">Check Order</button>
+                    </a>
                 </div>
             </div>
             @else
+
             <a href="{{ route('user.loginn') }}" class="login-btn">Login</a>
             @endif
 

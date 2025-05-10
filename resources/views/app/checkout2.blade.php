@@ -2,19 +2,7 @@
 
 @section('content')
 <div class="checkout-container">
-    <div class="checkout-progress">
-        <div class="progress-step">
-            <div class="step-number">1</div>
-            <div class="step-text">Shipping</div>
-        </div>
-        <div class="progress-line">
-            <div class="progress-line-fill"></div>
-        </div>
-        <div class="progress-step active">
-            <div class="step-number">2</div>
-            <div class="step-text">Review & Payments</div>
-        </div>
-    </div>
+
 
     <div class="checkout-content">
         <div class="payment-section">
@@ -108,9 +96,24 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
 
+</div>
+<br>
+    <!-- <br> -->
+
+    <div class="checkout-progress">
+        <div class="progress-step">
+            <div class="step-number">1</div>
+            <div class="step-text">Shipping</div>
+        </div>
+        <div class="progress-line">
+            <div class="progress-line-fill"></div>
+        </div>
+        <div class="progress-step active">
+            <div class="step-number">2</div>
+            <div class="step-text">Review & Payments</div>
+        </div>
+    </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Format card number
@@ -164,3 +167,5 @@
         // }
     });
 </script>
+@endsection
+

@@ -1,13 +1,13 @@
 @extends('app.layouts.main')
 
 @section('content')
-<div class="navigation">
+<!-- <div class="navigation">
     <nav>
         <a href="{{ route('home') }}">Home</a> › <span>Register</span>
     </nav>
-</div>
+</div> -->
 
-<div class="container">
+<div class="container-register">
     <div class="register-box">
         <h2><span class="highlighttext">Create</span> Your Account</h2>
 
@@ -15,8 +15,8 @@
         <form action="{{ route('register.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="name" placeholder="Enter your name" required>
-            <input type="email" name="email" placeholder="Enter your Email" required>
-            <input type="password" name="password" placeholder="Create Password" required>
+            <input type="email" name="email" placeholder="Enter your Email" autocomplete="new-password" required>
+            <input type="password" name="password" placeholder="Create Password" autocomplete="new-password" required>
             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
 
             <input type="file" name="profile_picture">
