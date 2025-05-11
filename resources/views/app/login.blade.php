@@ -6,6 +6,8 @@
     </nav>
 </div>
 
+
+
 <div class="loginContainer">
     <!-- Login Section -->
     <div class="body-left">
@@ -35,6 +37,8 @@
                 <label for="staySignedIn">Stay signed in</label>
                 <a href="{{ route('password.request') }}">Forgot Your Password?</a>
             </div>
+
+
             @if($errors->any())
             <div class="login-error">
                 <ul>
@@ -42,6 +46,12 @@
                     <li>{{ $err }}</li>
                     @endforeach
                 </ul>
+            </div>
+            @endif
+
+            @if (session('success'))
+            <div class="alert alert-success" style="background: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border: 1px solid #c3e6cb;">
+                {{ session('success') }}
             </div>
             @endif
 
@@ -53,7 +63,17 @@
                 <img src="{{ asset('images/google.png') }}"> Login with Google
             </button>
         </form>
-
+        @if (session('terms_popup'))
+        <div id="terms-popup" style=" display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; margin-bottom: 20px; margin-top: 15px;">
+            <p style="color: #856404;">You must accept the terms and conditions to continue.</p>
+            <form method="POST" action="{{ route('accept.terms') }}">
+                @csrf
+                <button type="submit" style="padding: 6px 12px; background-color: #28a745; color: white; border: none; border-radius: 4px;">
+                    Accept Terms & Continue
+                </button>
+            </form>
+        </div>
+        @endif
     </div>
 
     <!-- Signup Section -->
@@ -72,7 +92,7 @@
     </div>
 </div>
 <script>
-    document.getElementById('togglePassword').addEventListener('click', function () {
+    document.getElementById('togglePassword').addEventListener('click', function() {
         const passwordInput = document.getElementById('password');
         const isPassword = passwordInput.type === 'password';
         passwordInput.type = isPassword ? 'text' : 'password';
