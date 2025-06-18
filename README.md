@@ -2,132 +2,196 @@
 
 A fully functional and secure custom-built E-Commerce platform developed with Laravel. This system is designed to offer a smooth user experience while enforcing robust security mechanisms to protect user data and platform integrity.
 
-
+---
 
 ## 🚀 Features
 
-- 🧾 **User Authentication**
-  - Custom login system using `e_users` table.
-  - Session-based authentication (no Laravel Breeze/Fortify).
-  - Role-based redirection (`admin`, `customer`).
-  
-- 🛡️ **Security Implementations**
-  - **Google reCAPTCHA v2** on login to prevent bot attacks.
-  - **Failed Login Protection**: Account blocks after 5 failed attempts.
-  - **Real-Time Attempt Feedback**: Shows remaining attempts before blocking.
-  - **Email Alerts** on:
-    - Password reset request
-    - Account blocked due to suspicious attempts
-  - **CSRF Protection** and **Validation Handling** in all forms.
-  
-- 👤 **User Management**
-  - Registration, login, logout, profile editing
-  - View order history
-  - Password change functionality
-  
-- 🛍️ **Product Catalog**
-  - Filter by brand and price range
-  - Responsive design
-  - Add to cart, remove, and quantity management
-  
-- ⚙️ **Admin Panel**
-  - Manage brands, products, and categories
-  - Dashboard with charts (optional)
-  - View and unblock users
-  
-- 💌 **Email Integration**
-  - Password reset links
-  - Blocked account notifications
+### 🔐 Authentication & Security
+
+- Custom login system using `e_users` table
+- Session-based authentication (without Breeze or Fortify)
+- Role-based access control (`admin`, `customer`)
+- Google reCAPTCHA v2 integration on login
+- Account lock after 5 failed login attempts
+- OTP-based payment verification
+- CSRF protection in all forms
+- Server-side validation for all inputs
+- Email alerts on:
+  - Password reset requests
+  - Account blocks due to suspicious activity
+
+### 👤 User Management
+
+- Register, login, logout, edit profile
+- Profile picture upload with validation
+- Password change functionality
+- View order history
+- Email confirmation for blocked accounts
+
+### 🛍️ Product Catalog & Cart
+
+- Brand and price-range filtering
+- Product listing with dynamic catalog updates
+- Product detail pages
+- Add to cart, remove, quantity management
+- Session-based shopping cart
+
+### 💳 Secure Checkout Flow
+
+- 4-step checkout process with middleware protection:
+  1. Delivery Info
+  2. Cart Review
+  3. Payment & OTP
+  4. Order Summary
+- Each step is enforced using Laravel middleware
+- Encrypted card data using Laravel’s Crypt class
+
+### ⚙️ Admin Dashboard
+
+- Admin-only access using `is_admin` middleware
+- Manage products, brands, categories
+- View and unblock users
+- User management system (block/unblock/delete)
+
+### 💌 Email Integration
+
+- Password reset via mail
+- OTP delivery via mail
+- Notification for failed attempts & account status
 
 ---
 
+## 🧰 Built With
 
-## 📸 Screenshots
-
-(Add screenshots here of your login page, dashboard, product listing, etc.)
-
----
-
-Login page
-
-Dashboard
-
-Product listing
-
-Admin interface
-
-Block message
-
-## 📁 Project Structure (Main Modules)
-
-/app
-/Http/Controllers
-AuthController.php
-ProductController.php
-AdminController.php
-/resources/views
-login.blade.php
-dashboard.blade.php
-home.blade.php
-/routes
-web.php
-
-## 🛠️ Technologies Used
-
-- Laravel 10.x
+- Laravel 11
 - PHP 8.x
-- MySQL
-- HTML5, CSS3, JavaScript
+- MySQL / MariaDB
+- Blade Templating Engine
+- Bootstrap 5
 - Google reCAPTCHA
-- Laravel Mail
+- Laravel Mail (SMTP)
 
+---
 
 ## 🔐 Security Highlights
 
-| Feature | Description |
-|--------|-------------|
-| reCAPTCHA | Stops bots from brute force login attempts |
-| Block on 5 Failed Logins | Prevents further attempts after 5 failures |
-| Email Alerts | Warns users about unauthorized activities |
-| Session Control | Securely manages authenticated sessions |
-| CSRF Protection | Prevents cross-site request forgery |
-| Validation | Ensures correct input with meaningful error messages |
+| Security Feature         | Description                                                  |
+|--------------------------|--------------------------------------------------------------|
+| Google reCAPTCHA         | Prevents bots from brute-force login attempts                |
+| Login Attempt Limiter    | Account blocks after 5 failed attempts                       |
+| OTP Verification         | Validates payments with 4-digit OTP via email               |
+| Encrypted Card Info      | Credit card data encrypted using Laravel `Crypt`             |
+| Role-Based Middleware    | Admin-only routes via `is_admin` custom middleware           |
+| CSRF & Validation        | Prevents forgery and ensures valid form input                |
+| Middleware Step Checks   | Checkout guarded step-by-step with session-based middleware  |
 
 ---
 
 ## 🧪 How to Test
 
-1. Clone the repository.
-2. Run `composer install` and set up your `.env` file.
-3. Set up DB with `php artisan migrate`.
-4. Generate app key: `php artisan key:generate`.
-5. Serve: `php artisan serve`.
-6. Visit `/login` to try features (block on 5 incorrect attempts, etc.).
+1. Clone this repository  
+   ```bash
+   git clone https://github.com/your-team/ecommerce-secure-platform.git
+   cd ecommerce-secure-platform
+````
 
-✅ 7. Folder Structure (Optional)
-Show basic layout:
+2. Install dependencies
 
-bash
-Copy
-Edit
-/app/Http/Controllers
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
+
+3. Configure `.env` file
+
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. Run migrations
+
+   ```bash
+   php artisan migrate
+   ```
+
+5. Start server
+
+   ```bash
+   php artisan serve
+   ```
+
+6. Visit `/login` to test features:
+
+   * Google reCAPTCHA v2
+   * Block after 5 failed login attempts
+   * OTP payment confirmation
+   * Role-based admin protection
+
+---
+
+## 📂 Folder Structure
+
+```plaintext
+/app
+  /Http/Controllers
+    AuthController.php
+    ProductController.php
+    AdminController.php
+  /Http/Middleware
+    IsAdmin.php
+    EnsureCheckoutStep1Completed.php
+    ...
 /resources/views
-/routes/web.php
+  login.blade.php
+  dashboard.blade.php
+  home.blade.php
+/routes
+  web.php
+/bootstrap
+  app.php  // middleware aliases
+```
 
-✅ 8. Contribution (Optional)
-If you want to allow others to contribute, add:
+---
 
-How to fork
+## 📸 Screenshots
 
-PR guidelines
+*(You can paste screenshots here if you're using GitHub Markdown-supported image hosting.)*
+
+* Login page
+* Admin Dashboard
+* Product Catalog
+* Blocked User Message
+* Checkout Steps
+
+---
+
+## 👥 Contributors
+
+* **Heshan Santhush Bandaranayake** – [@Mr.SecretI CodeEdu](https://youtube.com/@Mr.SecretICodeEdu)
+* \[Name 2]
+* \[Name 3]
+* \[Name 4]
+
+---
+
+## 🤝 Contribution Guidelines
+
+We welcome contributions!
+
+* Fork the repo
+* Create your feature branch (`git checkout -b feature/NewFeature`)
+* Commit your changes (`git commit -am 'Add new feature'`)
+* Push to the branch (`git push origin feature/NewFeature`)
+* Create a Pull Request
 
 ---
 
 ## 📧 Contact
 
-**Developer**: Heshan Bandaranayake  
-**Email**: [YourEmail@example.com]  
-**GitHub**: [github.com/YourGitHub]  
+**Developer**: Heshan Bandaranayake
+**Email**: \[[you@example.com](mailto:you@example.com)]
+**GitHub**: \[github.com/yourusername]
 **YouTube**: [Mr.SecretI CodeEdu](https://youtube.com/@Mr.SecretICodeEdu)
 
 ---
@@ -135,3 +199,14 @@ PR guidelines
 ## 📄 License
 
 MIT License © 2025 Heshan Bandaranayake
+
+```
+
+---
+
+Would you like me to:
+
+- Export this as a downloadable `README.md` file?
+- Generate a matching `LICENSE` file?
+- Help you write a GitHub project description?
+```
