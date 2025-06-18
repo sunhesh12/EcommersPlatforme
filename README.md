@@ -98,7 +98,7 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 2. Install dependencies
 
-   ```bash
+  ```bash
    composer install
    npm install && npm run dev
   ```
