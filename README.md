@@ -196,9 +196,9 @@ We welcome contributions!
 ## 📧 Contact
 
 **Developer**: Heshan Bandaranayake
-**Email**: \[[you@example.com](mailto:you@example.com)]
-**GitHub**: \[github.com/yourusername]
-**YouTube**: [Mr.SecretI CodeEdu](https://youtube.com/@Mr.SecretICodeEdu)
+**Email**: \[[Heshan Bandaranayake](hsdbandaranayake@gmail.com)]
+**GitHub**: \[https://github.com/sunhesh12/EcommersPlatforme]
+
 
 ---
 
