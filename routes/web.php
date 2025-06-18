@@ -151,17 +151,47 @@ Route::get('/product/{id}', function ($id) {
 // Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
 // Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
 // Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
-    Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
-    Route::view('/checkout3', 'app/checkout3')->name('user.checkout3');
-    Route::view('/checkout4', 'app/checkout4')->name('user.checkout4');
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
+//     Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
+//     Route::view('/checkout3', 'app/checkout3')->name('user.checkout3');
+//     Route::view('/checkout4', 'app/checkout4')->name('user.checkout4');
 
-    Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
-    Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
-    Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
-    Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
+//     Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
+//     Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
+//     Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
+//     Route::get('/resend-otp', [Checkout3Controller::class, 'resendOtp'])->name('resend.otp');
+// });
+
+
+// Step 1: Checkout1 – No middleware
+Route::get('/checkout1', [checkout1::class, 'index'])->name('user.checkout1');
+Route::post('/checkout1/submit', [checkout1::class, 'submitStep1'])->name('checkout1.submit');
+
+// Step 2: Checkout2 – Only if step 1 is complete
+Route::middleware('checkout.step1')->group(function () {
+    Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
+    Route::post('/checkout2/submit', [checkout2Controller::class, 'submitStep2'])->name('checkout2.submit');
 });
+
+// Step 3: Checkout3 – Only if step 2 is complete
+Route::middleware(['checkout.step1', 'checkout.step2'])->group(function () {
+    Route::get('/checkout3', [checkout3Controller::class, 'index'])->name('user.checkout3');
+    Route::get('/resend-otp', [checkout3Controller::class, 'resendOtp'])->name('resend.otp');
+});
+
+// Step 4: OTP + Payment – Only if step 3 is complete
+Route::middleware(['auth', 'checkout.step1', 'checkout.step2', 'checkout.step3'])->group(function () {
+    Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
+    Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
+    Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
+});
+
+// Final: Checkout4 – Only if OTP (step 4) is done
+Route::middleware(['checkout.step1', 'checkout.step2', 'checkout.step3', 'checkout.step4'])->group(function () {
+    Route::view('/checkout4', 'app.checkout4')->name('user.checkout4');
+});
+
 
 // ========================
 // Order Summary & Download
@@ -180,7 +210,7 @@ Route::middleware('checkLogin')->get('/dashboardd', function () {
 // ========================
 // Admin - User Management
 // ========================
-Route::middleware('checkLogin')->prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
+Route::middleware(['checkLogin', 'is_admin'])->prefix('/dashboardd/usermanagement')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/', [UserController::class, 'store'])->name('store');
@@ -194,7 +224,7 @@ Route::middleware('checkLogin')->prefix('/dashboardd/usermanagement')->name('adm
 // ========================
 // Admin - Brand Management
 // ========================
-Route::middleware('checkLogin')->prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
+Route::middleware(['checkLogin', 'is_admin'])->prefix('/dashboardd/brandmanagement')->name('admin.brands.')->group(function () {
     Route::get('/', [BrandController::class, 'index'])->name('index');
     Route::get('/create', [BrandController::class, 'create'])->name('create');
     Route::post('/', [BrandController::class, 'store'])->name('store');
@@ -206,7 +236,7 @@ Route::middleware('checkLogin')->prefix('/dashboardd/brandmanagement')->name('ad
 // ========================
 // Admin - Product Management
 // ========================
-Route::middleware('checkLogin')->prefix('dashboardd/products')->name('admin.products.')->group(function () {
+Route::middleware(['checkLogin', 'is_admin'])->prefix('dashboardd/products')->name('admin.products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/store', [ProductController::class, 'store'])->name('store');
@@ -223,4 +253,6 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::view('/error', 'errors.error')->name('custom.error');
 

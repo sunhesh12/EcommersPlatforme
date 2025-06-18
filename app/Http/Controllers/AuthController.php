@@ -177,5 +177,8 @@ class AuthController extends Controller
     {
         Auth::logout(); // Properly log out the user
         return redirect('/')->with('success', 'Logged out successfully');
+        
+        session()->forget('checkout');
+
     }
 }
