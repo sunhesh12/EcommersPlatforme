@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\AddToCart; // Ensure this model exists in the specified namespace
+use App\Models\AddToCart;
 
 class checkout1 extends Controller
 {
-    function index()
+    public function index()
     {
-        $userId = session('user_id'); // session we created during login
+        $userId = session('user_id');
         $cartItems = AddToCart::with('product')->where('user_id', $userId)->get();
         return view('app/checkout1', compact('cartItems'));
-        // return view('app/checkout1');
+    }
+
+    public function submitStep1(Request $request)
+    {
+        // Process form...
+        session(['checkout.step1_completed' => true]);
+        return redirect()->route('user.checkout2');
     }
 }
