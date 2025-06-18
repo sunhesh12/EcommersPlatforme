@@ -96,7 +96,7 @@ A fully functional and secure custom-built E-Commerce platform developed with La
    cd ecommerce-secure-platform
   ````
 
-2. Install dependencies
+  2. Install dependencies
 
   ```bash
    composer install
