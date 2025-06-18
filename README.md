@@ -202,12 +202,3 @@ We welcome contributions!
 MIT License © 2025 Heshan Bandaranayake
 
 ```
-
----
-
-Would you like me to:
-
-- Export this as a downloadable `README.md` file?
-- Generate a matching `LICENSE` file?
-- Help you write a GitHub project description?
-```
