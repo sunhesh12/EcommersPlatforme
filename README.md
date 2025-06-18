@@ -105,22 +105,22 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 3. Configure `.env` file
 
-   ```bash
+  ```
    cp .env.example .env
    php artisan key:generate
   ```
 
 4. Run migrations
 
-   ```bash
+  ```
    php artisan migrate
-   ```
+  ```
 
 5. Start server
 
-   ```bash
+  ```
    php artisan serve
-   ```
+  ```
 
 6. Visit `/login` to test features:
 
