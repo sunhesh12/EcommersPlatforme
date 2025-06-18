@@ -169,10 +169,15 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 ## 👥 Contributors
 
-* **Heshan Santhush Bandaranayake** – [@Mr.SecretI CodeEdu](https://youtube.com/@Mr.SecretICodeEdu)
-* \[Name 2]
-* \[Name 3]
-* \[Name 4]
+| Student ID | Name                      | Role             |
+|------------|---------------------------|------------------|
+| FC212001   | H.S.D. Bandaranayake      | Team Lead        |
+| FC212002   | B.J.S. Nanayakkara        | Backend Developer|
+| FC212042   | M.G.G.S. Hansika          | UI/UX Designer   |
+| FC212027   | N.W.S. Shela              | Frontend Developer|
+| FC212038   | N.F.M.A. Fernandopulle    | QA Engineer      |
+| FC212045   | H.K.S. Peiris             | DevOps Engineer  |
+
 
 ---
 
