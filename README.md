@@ -157,7 +157,7 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 ## 📸 Screenshots
 
-*(You can paste screenshots here if you're using GitHub Markdown-supported image hosting.)*
+*(will upload)*
 
 * Login page
 * Admin Dashboard
