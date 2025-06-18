@@ -91,17 +91,17 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 1. Clone this repository  
 
-   ```bash
+
    git clone https://github.com/your-team/ecommerce-secure-platform.git
    cd ecommerce-secure-platform
-  ````
+  
 
   2. Install dependencies
 
-  ```bash
+  
    composer install
    npm install && npm run dev
-  ```
+  
 
 3. Configure `.env` file
 
