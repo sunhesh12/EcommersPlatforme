@@ -11,11 +11,13 @@ class checkout1 extends Controller
     {
         $userId = session('user_id');
         $cartItems = AddToCart::with('product')->where('user_id', $userId)->get();
-
-        // ✅ Mark step 1 as completed (if visiting the page is enough)
-        session(['checkout.step1_completed' => true]);
-        
-
         return view('app/checkout1', compact('cartItems'));
+    }
+
+    public function submitStep1(Request $request)
+    {
+        // Process form...
+        session(['checkout.step1_completed' => true]);
+        return redirect()->route('user.checkout2');
     }
 }

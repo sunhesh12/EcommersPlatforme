@@ -16,10 +16,11 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isadmin == 1) {
+        $user = Auth::user();
+        if (Auth::check() && $user->is_admin == 1) {
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Access denied. Admins only.');
+        return redirect('custom.error')->with('error', 'Access denied. Admins only.');
     }
 }

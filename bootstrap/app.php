@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'checkLogin' => CheckLogin::class,
+            'checkout.step1' => \App\Http\Middleware\EnsureCheckoutStep1Completed::class,
+            'checkout.step2' => \App\Http\Middleware\EnsureCheckoutStep2Completed::class,
+            'checkout.step3' => \App\Http\Middleware\EnsureCheckoutStep3Completed::class,
+            'isAdmin' => \App\Http\Middleware\IsAdmin::class,
+            'is_admin' => \App\Http\Middleware\IsAdmin::class,
         ]);
     })
 

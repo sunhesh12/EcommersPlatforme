@@ -18,8 +18,8 @@ class EnsureCheckoutStep1Completed
         // Check if step 1 is marked as completed (session, DB flag, etc.)
         if (!session('checkout.step1_completed')) {
             // return redirect()->route('custom.error')->with('message', 'Step 1 must be completed first.');
-
-            return redirect()->route('user.checkout1')->with('error', 'Please complete Step 1 first.');
+            
+            return redirect()->route('custom.error')->with('error', 'Please complete Step 1 first.');
         }
 
         return $next($request);
