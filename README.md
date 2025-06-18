@@ -108,7 +108,7 @@ A fully functional and secure custom-built E-Commerce platform developed with La
    ```bash
    cp .env.example .env
    php artisan key:generate
-   ```
+  ```
 
 4. Run migrations
 
