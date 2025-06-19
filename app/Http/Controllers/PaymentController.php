@@ -18,6 +18,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         // Optional: Save card if checkbox is ticked
+        session(['checkout.step2_completed' => true]);
         if ($request->has('save_card')) {
             $request->validate([
                 'card_number' => 'required',
@@ -52,6 +53,7 @@ class PaymentController extends Controller
      */
     public function showOtpForm()
     {
+        session(['checkout.step2_completed' => true]);
         $userId = session('user_id');
         $cartItems = AddToCart::with('product')->where('user_id', $userId)->get();
 
@@ -96,7 +98,7 @@ class PaymentController extends Controller
             Session::forget('otp_attempts');
 
             // ✅ Mark step 4 as completed
-            session(['checkout.step4_completed' => true]);
+            // session(['checkout.step4_completed' => true]);
 
             // Optional: clear all step data after successful order
             // session()->forget('checkout');
