@@ -157,7 +157,6 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 
 ## 📸 Screenshots
 
-*(will upload)*
 
 * Login page
 ![Alt Text](RMI/login.png)
