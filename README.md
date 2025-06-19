@@ -169,10 +169,15 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 ![Alt Text](RMI/bloackedUser.png)
 * Checkout Steps
 ![Alt Text](RMI/cart%201.png)
+
 ![Alt Text](RMI/checkout%201.png)
+
 ![Alt Text](RMI/checkout%202.png)
+
 ![Alt Text](RMI/checkout%203.png)
+
 ![Alt Text](RMI/checkout%204.png)
+
 ![Alt Text](RMI/otp%20pass.png)
 
 
