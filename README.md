@@ -160,6 +160,7 @@ A fully functional and secure custom-built E-Commerce platform developed with La
 *(will upload)*
 
 * Login page
+![Alt Text](RMI/login.png)
 * Admin Dashboard
 * Product Catalog
 * Blocked User Message
