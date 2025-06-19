@@ -172,23 +172,23 @@ Route::post('/checkout1/submit', [checkout1::class, 'submitStep1'])->name('check
 Route::middleware('checkout.step1')->group(function () {
     Route::get('/checkout2', [checkout2Controller::class, 'index'])->name('user.checkout2');
     Route::post('/checkout2/submit', [checkout2Controller::class, 'submitStep2'])->name('checkout2.submit');
+    Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
 });
 
 // Step 3: Checkout3 – Only if step 2 is complete
-Route::middleware(['checkout.step1', 'checkout.step2'])->group(function () {
+// Route::middleware(['checkout.step1', 'checkout.step2'])->group(function () {
     Route::get('/checkout3', [checkout3Controller::class, 'index'])->name('user.checkout3');
     Route::get('/resend-otp', [checkout3Controller::class, 'resendOtp'])->name('resend.otp');
-});
+// });
 
 // Step 4: OTP + Payment – Only if step 3 is complete
-Route::middleware(['auth', 'checkout.step1', 'checkout.step2', 'checkout.step3'])->group(function () {
-    Route::post('/payment/save', [PaymentController::class, 'store'])->name('save.payment');
+Route::middleware(['auth', 'checkout.step1', 'checkout.step2'])->group(function () {
     Route::get('/payment/otp', [PaymentController::class, 'showOtpForm'])->name('verify.payment.otp');
     Route::post('/payment/otp', [PaymentController::class, 'verifyOtp'])->name('verify.payment.otp.submit');
 });
 
 // Final: Checkout4 – Only if OTP (step 4) is done
-Route::middleware(['checkout.step1', 'checkout.step2', 'checkout.step3', 'checkout.step4'])->group(function () {
+Route::middleware(['checkout.step1', 'checkout.step2', 'checkout.step3'])->group(function () {
     Route::view('/checkout4', 'app.checkout4')->name('user.checkout4');
 });
 

@@ -17,7 +17,7 @@
         <div class="checkout-form-container">
             <h2 class="section-title">Shipping Address</h2>
 
-            <form action="{{ route('user.checkout2') }}" method="GET">
+            <form action="{{ route('checkout1.submit') }}" method="POST">
                 @csrf
 
                 <div class="form-row">
