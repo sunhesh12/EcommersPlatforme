@@ -116,7 +116,19 @@ A fully functional and secure custom-built E-Commerce platform developed with La
    php artisan migrate
   ```
 
-5. Start server
+5. seed database data
+
+  ```
+  php artisan db:seed
+  ```
+
+6. add storage link
+
+  ```
+  php artisan link:storage
+  ```
+
+7. Start server
 
   ```
    php artisan serve
